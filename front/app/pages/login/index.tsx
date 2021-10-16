@@ -1,41 +1,28 @@
-import axios from 'axios';
 import { NextPage } from 'next';
 import { useRouter } from 'next/dist/client/router';
 import React, { FormEvent, useContext, useState } from 'react';
 import { AuthContext } from '../_app';
 import Link from 'next/link';
+import { loginRepository } from '../../lib/api/repository/authRepository';
 
 const Login: NextPage = () => {
-  const { setCurrentUser, setIsSignedIn } = useContext(AuthContext);
+  const { setUser, setIsSignedIn } = useContext(AuthContext);
   const router = useRouter();
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
 
-
-  const onSubmit = (e: FormEvent) => {
+  const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    axios
-      .post(
-        'http://localhost:3000/login',
-        {
-          user: {
-            email: email,
-            password: password,
-          },
-        },
-        { withCredentials: true }
-      )
-      .then((res: any) => {
-        if (res.data.logged_in) {
-          setCurrentUser(res.data.user);
-          setIsSignedIn(true);
-          console.log(res.data);
-          // router.push('/');
-        } else {
-          alert(res.data.errors);
-        }
-      })
-      .catch((e) => console.error(e));
+    const loggedUser = await loginRepository(email, password);
+    if (loggedUser.logged_in) {
+      setUser(loggedUser.user);
+      setIsSignedIn(true);
+      router.push('/');
+    } else {
+      alert(
+        '認証に失敗しました。\n正しいメールアドレス・パスワードを入力し直すか、新規登録を行ってください。'
+      );
+    }
   };
   return (
     <div>

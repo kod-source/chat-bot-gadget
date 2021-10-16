@@ -1,41 +1,32 @@
 import '../styles/globals.css';
 import type { AppProps } from 'next/app';
 import { useState, useEffect, createContext } from 'react';
-import { useRouter } from 'next/dist/client/router';
-import axios from 'axios';
+import { User } from '../lib/interfaces';
+import { loggedRepository } from '../lib/api/repository/authRepository';
 
 export const AuthContext = createContext(
   {} as {
     isSignedIn: boolean;
     setIsSignedIn: React.Dispatch<React.SetStateAction<boolean>>;
-    currentUser: any;
-    setCurrentUser: any;
+    user: User | undefined;
+    setUser: React.Dispatch<React.SetStateAction<User | undefined>>;
   }
 );
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const router = useRouter();
   const [isSignedIn, setIsSignedIn] = useState<boolean>(false);
-  const [currentUser, setCurrentUser] = useState({});
+  const [user, setUser] = useState<User | undefined>();
 
-  // 認証済みのユーザーがいるかどうかチェック
-  // 確認できた場合はそのユーザーの情報を取得
-  const handleGetCurrentUser = () => {
-    axios
-      .get('http://localhost:3000/logged_in', { withCredentials: true })
-      .then((response: any) => {
-        console.log('ログイン状況', response);
-        if (response.data.logged_in && isSignedIn === false) {
-          setIsSignedIn(true);
-          setCurrentUser(response.data.user);
-        } else {
-          setIsSignedIn(false);
-          setCurrentUser([]);
-        }
-      })
-      .catch((error) => {
-        console.log('ログインエラー', error);
-      });
+  const handleGetCurrentUser = async () => {
+    const getLoggedUser = await loggedRepository();
+    console.log(getLoggedUser);
+    if (getLoggedUser.logged_in) {
+      setIsSignedIn(true);
+      setUser(getLoggedUser.user);
+    } else {
+      setIsSignedIn(false);
+      setUser(undefined);
+    }
   };
 
   useEffect(() => {
@@ -48,8 +39,8 @@ function MyApp({ Component, pageProps }: AppProps) {
         value={{
           isSignedIn,
           setIsSignedIn,
-          currentUser,
-          setCurrentUser,
+          user,
+          setUser,
         }}
       >
         <Component {...pageProps} />

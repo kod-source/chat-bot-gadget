@@ -1,11 +1,11 @@
-import axios from 'axios';
 import { NextPage } from 'next';
 import { useRouter } from 'next/dist/client/router';
 import React, { FormEvent, useContext, useState } from 'react';
+import { signUpRepository } from '../../lib/api/repository/authRepository';
 import { AuthContext } from '../_app';
 
 const SignUp: NextPage = () => {
-  const { setCurrentUser, setIsSignedIn } = useContext(AuthContext);
+  const { setUser, setIsSignedIn } = useContext(AuthContext);
   const router = useRouter();
   const [name, setName] = useState<string>('');
   const [avatar, setAvatar] = useState<string>('');
@@ -13,32 +13,28 @@ const SignUp: NextPage = () => {
   const [password, setPassword] = useState<string>('');
   const [passwordConfirmation, setPasswordConfirmation] = useState<string>('');
 
-  const onSubmit = (e: FormEvent) => {
+  const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    axios
-      .post(
-        'http://localhost:3000/signup',
-        {
-          user: {
-            name: name,
-            avatar: avatar,
-            email: email,
-            password: password,
-            password_confirmation: passwordConfirmation,
-          },
-        },
-        { withCredentials: true }
-      )
-      .then((res: any) => {
-        if (res.data.status === 'created') {
-          setCurrentUser(res.data.user);
-          setIsSignedIn(true);
-          router.push('/');
-        } else {
-          alert(res.data.errors)
-        }
-      })
-      .catch((e) => console.error(e));
+    try {
+      const signUpUser = await signUpRepository(
+        name,
+        email,
+        password,
+        passwordConfirmation,
+        avatar
+      );
+      if (signUpUser.status === 'created') {
+        setUser(signUpUser.user);
+        setIsSignedIn(true);
+        router.push('/');
+      } else {
+        alert('そのメールアドレスが使用されいる可能性があります。');
+      }
+    } catch (e) {
+      if (e instanceof Error) {
+        alert(e.message);
+      }
+    }
   };
   return (
     <div>
