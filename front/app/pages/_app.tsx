@@ -3,6 +3,7 @@ import type { AppProps } from 'next/app';
 import { useState, useEffect, createContext } from 'react';
 import { User } from '../lib/interfaces';
 import { loggedRepository } from '../lib/api/repository/authRepository';
+import 'tailwindcss/tailwind.css';
 
 export const AuthContext = createContext(
   {} as {
