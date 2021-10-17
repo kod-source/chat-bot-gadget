@@ -40,7 +40,7 @@ export const signUpRepository = async (
   email: string,
   password: string,
   passwordConfirmation: string,
-  avatar?: string
+  avatarImage?: File | null
 ): Promise<SignUpUser> => {
   const regex = /^(?=.*[./-])[a-zA-Z0-9.?/-]{8,24}$/;
   if (!name && !email && !password && !passwordConfirmation) {
@@ -57,18 +57,15 @@ export const signUpRepository = async (
   if (password !== passwordConfirmation) {
     throw new Error('パスワードが一致しません。');
   }
-  const res: AxiosResponse<SignUpUser> = await axios.post(
-    signUpUrl,
-    {
-      user: {
-        name: name,
-        avatar: avatar,
-        email: email,
-        password: password,
-        password_confirmation: passwordConfirmation,
-      },
-    },
-    { withCredentials: true }
-  );
+  const formData = new FormData();
+  formData.append('name', name);
+  formData.append('avatar', avatarImage as File);
+  formData.append('email', email);
+  formData.append('password', password);
+  formData.append('password_confirmation', passwordConfirmation);
+  console.log(formData);
+  const res: AxiosResponse<SignUpUser> = await axios.post(signUpUrl, formData, {
+    withCredentials: true,
+  });
   return res.data;
 };

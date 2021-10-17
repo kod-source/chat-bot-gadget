@@ -17,6 +17,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import homeImage from '../../public/homeImage.png';
+import Image from 'next/image';
 
 const theme = createTheme();
 
@@ -29,7 +30,7 @@ const SignUp: NextPage = () => {
     message: '',
   });
   const [name, setName] = useState<string>('');
-  const [avatar, setAvatar] = useState<string>('');
+  const [avatarImage, setAvatarImage] = useState<File | null>(null);
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [passwordConfirmation, setPasswordConfirmation] = useState<string>('');
@@ -41,7 +42,7 @@ const SignUp: NextPage = () => {
         email,
         password,
         passwordConfirmation,
-        avatar
+        avatarImage
       );
       if (signUpUser.status === 'created') {
         setUser(signUpUser.user);
@@ -115,6 +116,10 @@ const SignUp: NextPage = () => {
                 onChange={(e) => setName(e.target.value)}
                 autoFocus
               />
+              <input
+                type='file'
+                onChange={(e) => setAvatarImage(e.target.files![0])}
+              />
               <TextField
                 margin='normal'
                 required
@@ -161,9 +166,7 @@ const SignUp: NextPage = () => {
               </Button>
               <hr className='text-gray-200 my-4' />
               <Link href='/login' passHref>
-                <Button variant='text'>
-                  ログインに戻る
-                </Button>
+                <Button variant='text'>ログインに戻る</Button>
               </Link>
             </Box>
           </Box>
