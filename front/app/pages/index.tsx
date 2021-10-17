@@ -1,5 +1,6 @@
 import axios from 'axios';
 import type { NextPage } from 'next';
+import { useRouter } from 'next/dist/client/router';
 import Head from 'next/head';
 import Image from 'next/image';
 import { useContext } from 'react';
@@ -8,6 +9,7 @@ import styles from '../styles/Home.module.css';
 import { AuthContext } from './_app';
 
 const Home: NextPage = () => {
+  const router = useRouter();
   const { setUser, setIsSignedIn } = useContext(AuthContext);
 
   const logout = () => {
@@ -16,7 +18,7 @@ const Home: NextPage = () => {
       .then(() => {
         setIsSignedIn(false);
         setUser(undefined);
-        location.reload();
+        router.push('/login');
       })
       .catch((error) => console.log('ログアウトエラー', error));
   };
