@@ -17,6 +17,9 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import homeImage from '../../public/homeImage.png';
+import { IconButton } from '@mui/material';
+import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
+import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 
 const theme = createTheme();
 
@@ -29,10 +32,11 @@ const SignUp: NextPage = () => {
     message: '',
   });
   const [name, setName] = useState<string>('');
-  const [avatar, setAvatar] = useState<string>('');
+  const [avatarImage, setAvatarImage] = useState<File | null>(null);
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [passwordConfirmation, setPasswordConfirmation] = useState<string>('');
+  console.log(avatarImage);
   const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
     try {
@@ -41,7 +45,7 @@ const SignUp: NextPage = () => {
         email,
         password,
         passwordConfirmation,
-        avatar
+        avatarImage
       );
       if (signUpUser.status === 'created') {
         setUser(signUpUser.user);
@@ -115,6 +119,22 @@ const SignUp: NextPage = () => {
                 onChange={(e) => setName(e.target.value)}
                 autoFocus
               />
+              <Box textAlign='center'>
+                <IconButton>
+                  <label className='cursor-pointer'>
+                    {avatarImage ? (
+                      <AccountCircleOutlinedIcon fontSize='large' />
+                    ) : (
+                      <AccountCircleRoundedIcon fontSize='large' />
+                    )}
+                    <input
+                      type='file'
+                      className='hidden'
+                      onChange={(e) => setAvatarImage(e.target.files![0])}
+                    />
+                  </label>
+                </IconButton>
+              </Box>
               <TextField
                 margin='normal'
                 required
@@ -161,9 +181,7 @@ const SignUp: NextPage = () => {
               </Button>
               <hr className='text-gray-200 my-4' />
               <Link href='/login' passHref>
-                <Button variant='text'>
-                  ログインに戻る
-                </Button>
+                <Button variant='text'>ログインに戻る</Button>
               </Link>
             </Box>
           </Box>
