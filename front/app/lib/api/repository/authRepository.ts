@@ -63,7 +63,6 @@ export const signUpRepository = async (
   formData.append('email', email);
   formData.append('password', password);
   formData.append('password_confirmation', passwordConfirmation);
-  console.log(formData);
   const res: AxiosResponse<SignUpUser> = await axios.post(signUpUrl, formData, {
     withCredentials: true,
   });

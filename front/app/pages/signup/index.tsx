@@ -19,7 +19,6 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import homeImage from '../../public/homeImage.png';
 import { IconButton } from '@mui/material';
 import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
-import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 
 const theme = createTheme();
 
@@ -33,10 +32,10 @@ const SignUp: NextPage = () => {
   });
   const [name, setName] = useState<string>('');
   const [avatarImage, setAvatarImage] = useState<File | null>(null);
+  const [avatarValue, setAvatarValue] = useState<string>('');
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [passwordConfirmation, setPasswordConfirmation] = useState<string>('');
-  console.log(avatarImage);
   const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
     try {
@@ -67,6 +66,17 @@ const SignUp: NextPage = () => {
           message: e.message,
         });
       }
+    }
+  };
+  const onChangeInputFile = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      const file = e.target.files[0];
+      setAvatarImage(file);
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        setAvatarValue(e.target.result);
+      };
+      reader.readAsDataURL(file);
     }
   };
 
@@ -123,14 +133,14 @@ const SignUp: NextPage = () => {
                 <IconButton>
                   <label className='cursor-pointer'>
                     {avatarImage ? (
-                      <AccountCircleOutlinedIcon fontSize='large' />
+                      <Avatar alt='profile image' src={avatarValue} />
                     ) : (
                       <AccountCircleRoundedIcon fontSize='large' />
                     )}
                     <input
                       type='file'
                       className='hidden'
-                      onChange={(e) => setAvatarImage(e.target.files![0])}
+                      onChange={onChangeInputFile}
                     />
                   </label>
                 </IconButton>

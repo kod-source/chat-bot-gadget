@@ -28,7 +28,7 @@ const Home: NextPage = () => {
         <title>ガジェットボット</title>
       </Head>
       <h1>こちらはホームページ</h1>
-      <Avatar alt='Travis Howard' src={user?.avatar?.url} />
+      <Avatar alt='user image' src={user?.avatar?.url} />
       <button onClick={() => logout()}>ログアウト</button>
     </div>
   );
