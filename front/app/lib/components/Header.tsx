@@ -22,13 +22,12 @@ export const Header: FC = () => {
         setUser(undefined);
         router.push('/login');
       })
-      .catch((error) => console.log('ログアウトエラー', error));
+      .catch((e) => alert(e.message));
   };
 
   return (
     <header className='flex-grow'>
       <AppBar position='static'>
-        {/* <Toolbar className='bg-gray-50'> */}
         <Toolbar className='bg-gray-50'>
           <Link href='/' passHref>
             <IconButton
