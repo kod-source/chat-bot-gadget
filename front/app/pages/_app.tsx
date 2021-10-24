@@ -36,16 +36,18 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <>
-      <AuthContext.Provider
-        value={{
-          isSignedIn,
-          setIsSignedIn,
-          user,
-          setUser,
-        }}
-      >
-        <Component {...pageProps} />
-      </AuthContext.Provider>
+      <div className='bg-gray-200'>
+        <AuthContext.Provider
+          value={{
+            isSignedIn,
+            setIsSignedIn,
+            user,
+            setUser,
+          }}
+        >
+          <Component {...pageProps} />
+        </AuthContext.Provider>
+      </div>
     </>
   );
 }

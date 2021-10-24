@@ -1,5 +1,6 @@
 import { Avatar } from '@mui/material';
 import axios from 'axios';
+import { Header } from 'lib/components/Header';
 import type { NextPage } from 'next';
 import { useRouter } from 'next/dist/client/router';
 import Head from 'next/head';
@@ -11,25 +12,24 @@ const Home: NextPage = () => {
   const router = useRouter();
   const { user, setUser, setIsSignedIn } = useContext(AuthContext);
 
-  const logout = () => {
-    axios
-      .delete(logoutUrl, { withCredentials: true })
-      .then(() => {
-        setIsSignedIn(false);
-        setUser(undefined);
-        router.push('/login');
-      })
-      .catch((error) => console.log('ログアウトエラー', error));
-  };
-
   return (
     <div>
       <Head>
         <title>ガジェットボット</title>
       </Head>
-      <h1>こちらはホームページ</h1>
-      <Avatar alt='user image' src={user?.avatar?.url} />
-      <button onClick={() => logout()}>ログアウト</button>
+      <div className='fixed top-0 w-full'>
+        <Header />
+      </div>
+      <div className='static'>
+        <h1 className='my-40 mt-16'>こちらはホームページ</h1>
+        <Avatar alt='user image' className='static' src={user?.avatar?.url} />
+        <h1 className='my-40'>こちらはホームページ</h1>
+        <Avatar alt='user image' className='static' src={user?.avatar?.url} />
+        <h1 className='my-40'>こちらはホームページ</h1>
+        <Avatar alt='user image' className='static' src={user?.avatar?.url} />
+        <h1 className='my-40'>こちらはホームページ</h1>
+        <Avatar alt='user image' className='static' src={user?.avatar?.url} />
+      </div>
     </div>
   );
 };
