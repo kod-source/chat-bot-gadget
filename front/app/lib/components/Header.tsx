@@ -9,9 +9,11 @@ import { useRouter } from 'next/dist/client/router';
 import { logoutUrl } from 'lib/api/hostUrl/url';
 import LoginIcon from '@mui/icons-material/Login';
 import AppRegistrationSharpIcon from '@mui/icons-material/AppRegistrationSharp';
+import { Avatar } from '@mui/material';
+import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
 
 export const Header: FC = () => {
-  const { isSignedIn, setIsSignedIn, setUser } = useContext(AuthContext);
+  const { isSignedIn, setIsSignedIn, user, setUser } = useContext(AuthContext);
   const router = useRouter();
 
   const logout = () => {
@@ -52,9 +54,24 @@ export const Header: FC = () => {
           </Link>
           <div className='flex-grow flex justify-start'>
             <Link href='/user' passHref>
-              <p className='p-2 mr-44 text-gray-800 border-transparent cursor-pointer rounded-md hover:opacity-70 hover:border hover:bg-gray-300 font-serif'>
-                マイページ
-              </p>
+              <div className='flex hover:opacity-70 cursor-pointer'>
+                <p className='p-2 mr-1 text-gray-800 border-transparent rounded-md hover:border hover:bg-gray-300 font-serif'>
+                  マイページ
+                </p>
+                {isSignedIn ? (
+                  <Avatar
+                    alt='user image'
+                    className='mr-44'
+                    src={user?.avatar?.url}
+                  />
+                ) : (
+                  <AccountCircleRoundedIcon
+                    className='mr-44'
+                    fontSize='large'
+                    color='action'
+                  />
+                )}
+              </div>
             </Link>
             <p className='p-2 mr-10 text-gray-800 border-transparent underline cursor-pointer rounded-md hover:opacity-70 hover:border hover:bg-gray-300 hover:no-underline font-serif'>
               iPad
