@@ -61,24 +61,33 @@ export const Header: FC = () => {
                 {isSignedIn ? (
                   <Avatar
                     alt='user image'
-                    className='mr-44'
+                    className='mr-28'
                     src={user?.avatar?.url}
                   />
                 ) : (
                   <AccountCircleRoundedIcon
-                    className='mr-44'
+                    className='mr-28'
                     fontSize='large'
                     color='action'
                   />
                 )}
               </div>
             </Link>
+            <Link href='/iphone'>
+              <p className='p-2 mr-10 text-gray-800 border-transparent underline cursor-pointer rounded-md hover:opacity-70 hover:border hover:bg-gray-300 hover:no-underline font-serif'>
+                iPhone
+              </p>
+            </Link>
+            <Link href='/ipad'>
             <p className='p-2 mr-10 text-gray-800 border-transparent underline cursor-pointer rounded-md hover:opacity-70 hover:border hover:bg-gray-300 hover:no-underline font-serif'>
               iPad
             </p>
-            <p className='p-2 text-gray-800 border-transparent underline cursor-pointer rounded-md hover:opacity-70 hover:border hover:bg-gray-300 hover:no-underline font-serif'>
-              GadgetBot
+            </Link>
+            <Link href='mac'>
+            <p className='p-2 mr-10 text-gray-800 border-transparent underline cursor-pointer rounded-md hover:opacity-70 hover:border hover:bg-gray-300 hover:no-underline font-serif'>
+              MacBook
             </p>
+            </Link>
           </div>
           {isSignedIn ? (
             <>
