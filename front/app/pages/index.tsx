@@ -70,7 +70,7 @@ const Home: NextPage = () => {
             あなたに最適な機種を教えてくれます。
           </h2>
         </div>
-        <div className='mx-16 mb-16 flex static'>
+        <div className='mb-16 flex justify-center static'>
           <Link href='/iphone'>
             <Card className='mx-4 cursor-pointer' sx={{ maxWidth: 400 }}>
               <CardMessage
