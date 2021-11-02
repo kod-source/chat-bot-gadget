@@ -61,7 +61,7 @@ const Home: NextPage = () => {
           sx={{ width: 200, height: 200 }}
         />
       </div>
-      <div className='py-12 bg-white'>
+      <div className='py-12'>
         <div className='text-center font-mono'>
           <h1 className='text-2xl'>
             とりあえず最新機種を買おうとしていませんか？
