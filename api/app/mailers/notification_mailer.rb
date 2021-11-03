@@ -1,11 +1,13 @@
 class NotificationMailer < ApplicationMailer
   default to: 'gadgetbot.4521@gmail.com'
 
-  def contact_mail
-    # @user = user
+  def contact_mail(mail_request)
+    @name = mail_request['name']
+    @email = mail_request['email']
+    @text = mail_request['text']
     mail(
-      to: 'kod4185@gmail.com',
-      subject: "お問合せです。"
+      to: 'gadgetbot.4521@gmail.com',
+      subject: mail_request['category']
     )
   end
 end

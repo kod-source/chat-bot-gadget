@@ -15,6 +15,7 @@ import {
 } from '@mui/material';
 import { AuthContext } from 'pages/_app';
 import { Checkbox } from '@mui/material';
+import { contactSendMailRepository } from 'lib/api/repository/contactRepository';
 
 const Contact: NextPage = () => {
   const { user, isSignedIn } = useContext(AuthContext);
@@ -29,12 +30,9 @@ const Contact: NextPage = () => {
   const [email, setEmail] = useState<string>('');
   const [text, setText] = useState<string>('');
 
-  const onSubmit = (e: FormEvent) => {
+  const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    console.log(selectCategory);
-    console.log(name);
-    console.log(email);
-    console.log(text);
+    await contactSendMailRepository(selectCategory, name, email, text);
   };
 
   return (
@@ -132,6 +130,7 @@ const Contact: NextPage = () => {
           <Grid id='SubmitButtonGrid' className='gridItems' item md={12}>
             <div className='text-center'>
               <Button
+                type='submit'
                 variant='contained'
                 className='p-1 h-12 w-1/4 static transition ease-in-out duration-300 hover:-translate-y-1 hover:scale-110'
               >
