@@ -10,7 +10,7 @@ const Privacy: NextPage = () => {
       <Head>
         <title>プライバシーポリシー</title>
       </Head>
-      <div className='fixed top-0 w-full'>
+      <div className='fixed top-0 w-full z-10'>
         <Header />
       </div>
       <div className='mt-24 mb-4 border-8 border-gray-400 border-double rounded-lg w-3/5 bg-gray-300 m-auto'>

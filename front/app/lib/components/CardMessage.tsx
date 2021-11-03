@@ -19,7 +19,7 @@ export const CardMessage: FC<Props> = (props) => {
         height='140'
         image={props.image.src}
       />
-      <CardContent className='hover:opacity-70'>
+      <CardContent>
         <Typography gutterBottom variant='h5' component='div'>
           {props.title}
         </Typography>

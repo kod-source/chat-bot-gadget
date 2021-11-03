@@ -24,7 +24,7 @@ const Home: NextPage = () => {
       <Head>
         <title>GadgetBot</title>
       </Head>
-      <div className='fixed top-0 w-full'>
+      <div className='fixed top-0 w-full z-10'>
         <Header />
       </div>
       <div className='mt-16 py-36 flex justify-center bg-gray-300'>
@@ -42,7 +42,7 @@ const Home: NextPage = () => {
               <Link href='/signup' passHref>
                 <Button
                   variant='contained'
-                  className='static mb-3 p-1 transition ease-in-out duration-300 hover:-translate-y-1 hover:scale-110'
+                  className='mb-3 p-1 transition ease-in-out duration-300 hover:-translate-y-1 hover:scale-110'
                 >
                   <AppRegistrationSharpIcon />
                   新規登録
@@ -56,7 +56,6 @@ const Home: NextPage = () => {
         </div>
         <Avatar
           alt='gadget_image'
-          className='static'
           src={gadgetImage.src}
           sx={{ width: 200, height: 200 }}
         />
@@ -70,9 +69,12 @@ const Home: NextPage = () => {
             あなたに最適な機種を教えてくれます。
           </h2>
         </div>
-        <div className='mb-16 flex justify-center static'>
+        <div className='mb-16 flex justify-center'>
           <Link href='/iphone'>
-            <Card className='mx-4 cursor-pointer' sx={{ maxWidth: 400 }}>
+            <Card
+              className='mx-4 cursor-pointer hover:opacity-70'
+              sx={{ maxWidth: 400 }}
+            >
               <CardMessage
                 image={iphoneImage}
                 title='iPhone'
@@ -81,7 +83,10 @@ const Home: NextPage = () => {
             </Card>
           </Link>
           <Link href='/ipad'>
-            <Card className='mx-4 cursor-pointer' sx={{ maxWidth: 400 }}>
+            <Card
+              className='mx-4 cursor-pointer hover:opacity-70'
+              sx={{ maxWidth: 400 }}
+            >
               <CardMessage
                 image={ipadImage}
                 title='iPad'
@@ -90,7 +95,10 @@ const Home: NextPage = () => {
             </Card>
           </Link>
           <Link href='/mac'>
-            <Card className='mx-4 cursor-pointer' sx={{ maxWidth: 400 }}>
+            <Card
+              className='mx-4 cursor-pointer hover:70'
+              sx={{ maxWidth: 400 }}
+            >
               <CardMessage
                 image={macBookImage}
                 title='MacBook'
@@ -103,7 +111,7 @@ const Home: NextPage = () => {
           <div className='text-center'>
             <Button
               variant='contained'
-              className='p-1 h-12 w-1/4 bg-green-500 static transition ease-in-out duration-300 hover:bg-green-400 hover:-translate-y-1 hover:scale-110'
+              className='p-1 h-12 w-1/4 bg-green-500 transition ease-in-out duration-300 hover:bg-green-400 hover:-translate-y-1 hover:scale-110'
             >
               <AppRegistrationSharpIcon />
               無料ユーザー登録はこちら
