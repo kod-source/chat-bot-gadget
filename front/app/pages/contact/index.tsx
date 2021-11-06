@@ -16,6 +16,7 @@ import { Checkbox } from '@mui/material';
 import { contactSendMailRepository } from 'lib/api/repository/contactRepository';
 import { AlertMessage } from 'lib/components/AlertMessage';
 import { AlertState } from 'lib/interfaces';
+import { ConfirmingModal } from 'lib/components/ConfirmingModal';
 
 const Contact: NextPage = () => {
   const { user, isSignedIn } = useContext(AuthContext);
@@ -35,9 +36,14 @@ const Contact: NextPage = () => {
     message: '',
   });
   const [mailSending, setMailSending] = useState<boolean>(false);
+  const [openModal, setOpenModal] = useState<boolean>(false);
 
   const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    setOpenModal(true);
+  };
+
+  const sendContactMail = async () => {
     try {
       setMailSending(true);
       await contactSendMailRepository(selectCategory, name, email, text);
@@ -58,6 +64,7 @@ const Contact: NextPage = () => {
         message: '送信に失敗しました',
       });
     }
+    setOpenModal(false);
   };
 
   return (
@@ -93,6 +100,7 @@ const Contact: NextPage = () => {
                 <FormControlLabel
                   control={
                     <Checkbox
+                      checked={name === user?.name}
                       onChange={(e) =>
                         e.target.checked
                           ? setName(user?.name || '')
@@ -120,6 +128,7 @@ const Contact: NextPage = () => {
                 <FormControlLabel
                   control={
                     <Checkbox
+                      checked={email === user?.email}
                       onChange={(e) =>
                         e.target.checked
                           ? setEmail(user?.email || '')
@@ -168,6 +177,15 @@ const Contact: NextPage = () => {
         </form>
       </Grid>
       <Footer />
+      <ConfirmingModal
+        open={openModal}
+        title='送信確認'
+        text='本当に送信してもよろしいでしょうか？'
+        confirm={mailSending ? '送信中' : '送信する '}
+        onClose={() => setOpenModal(false)}
+        sendContactMail={() => sendContactMail()}
+        mailSending={mailSending}
+      />
       <AlertMessage
         open={alertState.open}
         handleClose={() => setAlertState({ ...alertState, open: false })}
