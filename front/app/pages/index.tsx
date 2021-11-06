@@ -96,7 +96,7 @@ const Home: NextPage = () => {
           </Link>
           <Link href='/mac'>
             <Card
-              className='mx-4 cursor-pointer hover:70'
+              className='mx-4 cursor-pointer hover:opacity-70'
               sx={{ maxWidth: 400 }}
             >
               <CardMessage

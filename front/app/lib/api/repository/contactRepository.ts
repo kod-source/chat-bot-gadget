@@ -20,6 +20,5 @@ export const contactSendMailRepository = async (
       withCredentials: true,
     }
   );
-  console.log(res);
   return res.data;
 };
