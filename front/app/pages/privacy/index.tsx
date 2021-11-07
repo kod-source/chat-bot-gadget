@@ -13,23 +13,23 @@ const Privacy: NextPage = () => {
       <div className='fixed top-0 w-full z-10'>
         <Header />
       </div>
-      <div className='mt-24 mb-4 border-8 border-gray-400 border-double rounded-lg w-3/5 bg-gray-300 m-auto'>
-        <div className='p-16'>
-          <h1 className='my-4 font-mono text-4xl'>プライバシーポリシー</h1>
+      <div className='mt-24 mb-4 border-8 border-gray-400 border-double rounded-lg lg:w-3/5 sm:w-11/12 w-full bg-gray-300 m-auto'>
+        <div className='lg:p-16 sm:p-8 p-3'>
+          <h1 className='my-4 font-mono sm:text-4xl text-2xl'>プライバシーポリシー</h1>
           <p>
             本ウェブサイトの管理者（以下，「管理者」といいます。）は，本ウェブサイト上で提供するサービス（以下,「本サービス」といいます。）における，ユーザーの個人情報の取扱いについて，以下のとおりプライバシーポリシー（以下，「本ポリシー」といいます。）を定めます。
           </p>
-          <h1 className='my-4 font-mono text-4xl'>第1条（個人情報）</h1>
+          <h1 className='my-4 font-mono sm:text-4xl text-2xl'>第1条（個人情報）</h1>
           <p>
             「個人情報」とは，個人情報保護法にいう「個人情報」を指すものとし，生存する個人に関する情報であって，当該情報に含まれる氏名，生年月日，住所，電話番号，連絡先その他の記述等により特定の個人を識別できる情報及び容貌，指紋，声紋にかかるデータ，及び健康保険証の保険者番号などの当該情報単体から特定の個人を識別できる情報（個人識別情報）を指します。
           </p>
-          <h1 className='my-4 font-mono text-4xl'>
+          <h1 className='my-4 font-mono sm:text-4xl text-2xl'>
             第2条（個人情報の収集方法）
           </h1>
           <p>
             管理者は，ユーザーと提携先などとの間でなされたユーザーの個人情報を含む取引記録や決済に関する情報を,管理者の提携先（情報提供元，広告主，広告配信先などを含みます。以下，｢提携先｣といいます。）などから収集することがあります。
           </p>
-          <h1 className='mt-4 mb-2 font-mono text-4xl'>
+          <h1 className='mt-4 mb-2 font-mono sm:text-4xl text-2xl'>
             第3条（個人情報を収集・利用する目的）
           </h1>
           <p className='mb-4'>
@@ -53,7 +53,7 @@ const Privacy: NextPage = () => {
             <li>有料サービスにおいて，ユーザーに利用料金を請求するため</li>
             <li>上記の利用目的に付随する目的</li>
           </ul>
-          <h1 className='my-4 font-mono text-4xl'>第4条（利用目的の変更）</h1>
+          <h1 className='my-4 font-mono sm:text-4xl text-2xl'>第4条（利用目的の変更）</h1>
           <ul className='list-decimal ml-8'>
             <li>
               管理者は，利用目的が変更前と関連性を有すると合理的に認められる場合に限り，個人情報の利用目的を変更するものとします。
@@ -62,14 +62,14 @@ const Privacy: NextPage = () => {
               利用目的の変更を行った場合には，変更後の目的について，管理者所定の方法により，ユーザーに通知し，または本ウェブサイト上に公表するものとします。
             </li>
           </ul>
-          <h1 className='my-4 font-mono text-4xl'>
+          <h1 className='my-4 font-mono sm:text-4xl text-2xl'>
             第5条（個人情報の第三者提供）
           </h1>
           <ul className='list-decimal ml-8'>
             <li>
               管理者は，次に掲げる場合を除いて，あらかじめユーザーの同意を得ることなく，第三者に個人情報を提供することはありません。ただし，個人情報保護法その他の法令で認められる場合を除きます。
             </li>
-            <ul className='list-disc ml-12'>
+            <ul className='list-disc sm:ml-12 ml-10'>
               <li>
                 人の生命，身体または財産の保護のために必要がある場合であって，本人の同意を得ることが困難であるとき
               </li>
@@ -82,7 +82,7 @@ const Privacy: NextPage = () => {
               <li>
                 予め次の事項を告知あるいは公表し，かつ管理者が個人情報保護委員会に届出をしたとき
               </li>
-              <ul className='list-decimal ml-16'>
+              <ul className='list-decimal sm:ml-16 ml-12'>
                 <li>利用目的に第三者への提供を含むこと</li>
                 <li>第三者に提供されるデータの項目</li>
                 <li>第三者への提供の手段または方法</li>
@@ -95,7 +95,7 @@ const Privacy: NextPage = () => {
             <li>
               前項の定めにかかわらず，次に掲げる場合には，当該情報の提供先は第三者に該当しないものとします。
             </li>
-            <ul className='list-disc ml-12'>
+            <ul className='list-disc sm:ml-12 ml-10'>
               <li>
                 管理者が利用目的の達成に必要な範囲内において個人情報の取扱いの全部または一部を委託する場合
               </li>
@@ -107,12 +107,12 @@ const Privacy: NextPage = () => {
               </li>
             </ul>
           </ul>
-          <h1 className='my-4 font-mono text-4xl'>第6条（個人情報の開示）</h1>
+          <h1 className='my-4 font-mono sm:text-4xl text-2xl'>第6条（個人情報の開示）</h1>
           <ul className='list-decimal ml-8'>
             <li>
               管理者は，本人から個人情報の開示を求められたときは，本人に対し，遅滞なくこれを開示します。ただし，開示することにより次のいずれかに該当する場合は，その全部または一部を開示しないこともあり，開示しない決定をした場合には，その旨を遅滞なく通知します。なお，個人情報の開示に際しては，1件あたり1，000円の手数料を申し受けます。
             </li>
-            <ul className='list-disc ml-12'>
+            <ul className='list-disc sm:ml-12 ml-10'>
               <li>
                 本人または第三者の生命，身体，財産その他の権利利益を害するおそれがある場合
               </li>
@@ -125,7 +125,7 @@ const Privacy: NextPage = () => {
               前項の定めにかかわらず，履歴情報および特性情報などの個人情報以外の情報については，原則として開示いたしません。
             </li>
           </ul>
-          <h1 className='my-4 font-mono text-4xl'>
+          <h1 className='my-4 font-mono sm:text-4xl text-2xl'>
             第7条（利用制限および登録抹消）
           </h1>
           <ul className='list-decimal ml-8'>
@@ -139,7 +139,7 @@ const Privacy: NextPage = () => {
               管理者は，前項の規定に基づき訂正等を行った場合，または訂正等を行わない旨の決定をしたときは遅滞なく，これをユーザーに通知します。
             </li>
           </ul>
-          <h1 className='my-4 font-mono text-4xl'>
+          <h1 className='my-4 font-mono sm:text-4xl text-2xl'>
             第8条（個人情報の利用停止等）
           </h1>
           <ul className='list-decimal ml-8'>
@@ -156,7 +156,7 @@ const Privacy: NextPage = () => {
               前2項にかかわらず，利用停止等に多額の費用を有する場合その他利用停止等を行うことが困難な場合であって，ユーザーの権利利益を保護するために必要なこれに代わるべき措置をとれる場合は，この代替策を講じるものとします。
             </li>
           </ul>
-          <h1 className='my-4 font-mono text-4xl'>
+          <h1 className='my-4 font-mono sm:text-4xl text-2xl'>
             第9条（プライバシーポリシーの変更）
           </h1>
           <ul className='list-decimal ml-8'>
@@ -167,7 +167,7 @@ const Privacy: NextPage = () => {
               管理者が別途定める場合を除いて，変更後のプライバシーポリシーは，本ウェブサイトに掲載したときから効力を生じるものとします。
             </li>
           </ul>
-          <h1 className='my-4 font-mono text-4xl'>
+          <h1 className='my-4 font-mono sm:text-4xl text-2xl'>
             第10条（お問い合わせ窓口）
           </h1>
           <p className='mb-4'>
