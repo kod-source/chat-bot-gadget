@@ -13,13 +13,13 @@ const Terms: NextPage = () => {
       <div className='fixed top-0 w-full z-10'>
         <Header />
       </div>
-      <div className='mt-24 mb-4 border-8 border-gray-400 border-double rounded-lg w-3/5 bg-gray-300 m-auto'>
-        <div className='p-16'>
-          <h1 className='my-4 font-mono text-4xl'>利用規約</h1>
+      <div className='mt-24 mb-4 border-8 border-gray-400 border-double rounded-lg lg:w-3/5 sm:w-11/12 w-full bg-gray-300 m-auto'>
+        <div className='lg:p-16 sm:p-8 p-3'>
+          <h1 className='my-4 font-mono sm:text-4xl text-2xl'>利用規約</h1>
           <p>
             この利用規約（以下，「本規約」といいます。）は，本ウェブサイトの管理者（以下，「管理者」といいます。）が本ウェブサイト上で提供するサービス（以下，「本サービス」といいます。）の利用条件を定めるものです。登録ユーザーの皆さま（以下，「ユーザー」といいます。）には，本規約に従って，本サービスをご利用いただきます。
           </p>
-          <h1 className='my-4 font-mono text-4xl'>第1条（適用）</h1>
+          <h1 className='my-4 font-mono sm:text-4xl text-2xl'>第1条（適用）</h1>
           <ul className='list-decimal ml-8'>
             <li>
               本規約は，ユーザーと管理者との間の本サービスの利用に関わる一切の関係に適用されるものとします。
@@ -31,7 +31,7 @@ const Terms: NextPage = () => {
               本規約の規定が前条の個別規定の規定と矛盾する場合には，個別規定において特段の定めなき限り，個別規定の規定が優先されるものとします。
             </li>
           </ul>
-          <h1 className='my-4 font-mono text-4xl'>第2条（利用登録）</h1>
+          <h1 className='my-4 font-mono sm:text-4xl text-2xl'>第2条（利用登録）</h1>
           <ul className='list-decimal ml-8'>
             <li>
               本サービスにおいては，登録希望者が本規約に同意の上，管理者の定める方法によって利用登録を申請し，管理者がこの承認を登録希望者に通知することによって，利用登録が完了するものとします。
@@ -45,7 +45,7 @@ const Terms: NextPage = () => {
               <li>その他，管理者が利用登録を相当でないと判断した場合</li>
             </ul>
           </ul>
-          <h1 className='my-4 font-mono text-4xl'>
+          <h1 className='my-4 font-mono sm:text-4xl text-2xl'>
             第3条（ユーザーIDおよびパスワードの管理）
           </h1>
           <ul className='list-decimal ml-8'>
@@ -59,7 +59,7 @@ const Terms: NextPage = () => {
               ユーザーID及びパスワードが第三者によって使用されたことによって生じた損害は，管理者に故意又は重大な過失がある場合を除き，管理者は一切の責任を負わないものとします。
             </li>
           </ul>
-          <h1 className='my-4 font-mono text-4xl'>第4条（禁止事項）</h1>
+          <h1 className='my-4 font-mono sm:text-4xl text-2xl'>第4条（禁止事項）</h1>
           <p>
             ユーザーは，本サービスの利用にあたり，以下の行為をしてはなりません。
           </p>
@@ -109,7 +109,7 @@ const Terms: NextPage = () => {
             <li>宗教活動または宗教団体への勧誘行為</li>
             <li>その他，管理者が不適切と判断する行為</li>
           </ul>
-          <h1 className='my-4 font-mono text-4xl'>
+          <h1 className='my-4 font-mono sm:text-4xl text-2xl'>
             第5条（本サービスの提供の停止等）
           </h1>
           <ul className='list-decimal ml-8'>
@@ -130,7 +130,7 @@ const Terms: NextPage = () => {
               管理者は，本サービスの提供の停止または中断により，ユーザーまたは第三者が被ったいかなる不利益または損害についても，一切の責任を負わないものとします。
             </li>
           </ul>
-          <h1 className='my-4 font-mono text-4xl'>第6条（著作権）</h1>
+          <h1 className='my-4 font-mono sm:text-4xl text-2xl'>第6条（著作権）</h1>
           <ul className='list-decimal ml-8'>
             <li>
               ユーザーは，自ら著作権等の必要な知的財産権を有するか，または必要な権利者の許諾を得た文章，画像や映像等の情報に関してのみ，本サービスを利用し，投稿ないしアップロードすることができるものとします。
@@ -142,7 +142,7 @@ const Terms: NextPage = () => {
               前項本文の定めるものを除き，本サービスおよび本サービスに関連する一切の情報についての著作権およびその他の知的財産権はすべて管理者または管理者にその利用を許諾した権利者に帰属し，ユーザーは無断で複製，譲渡，貸与，翻訳，改変，転載，公衆送信（送信可能化を含みます。），伝送，配布，出版，営業使用等をしてはならないものとします。
             </li>
           </ul>
-          <h1 className='my-4 font-mono text-4xl'>
+          <h1 className='my-4 font-mono sm:text-4xl text-2xl'>
             第7条（利用制限および登録抹消）
           </h1>
           <ul className='list-decimal ml-8'>
@@ -169,11 +169,11 @@ const Terms: NextPage = () => {
               管理者は，ユーザーが以下のいずれかに該当する場合には，事前の通知なく，投稿データを削除し，ユーザーに対して本サービスの全部もしくは一部の利用を制限しまたはユーザーとしての登録を抹消することができるものとします。
             </li>
           </ul>
-          <h1 className='my-4 font-mono text-4xl'>第8条（退会）</h1>
+          <h1 className='my-4 font-mono sm:text-4xl text-2xl'>第8条（退会）</h1>
           <p>
             ユーザーは，管理者の定める退会手続により，本サービスから退会できるものとします。
           </p>
-          <h1 className='my-4 font-mono text-4xl'>
+          <h1 className='my-4 font-mono sm:text-4xl text-2xl'>
             第9条（保証の否認および免責事項）
           </h1>
           <ul className='list-decimal ml-8'>
@@ -190,33 +190,33 @@ const Terms: NextPage = () => {
               管理者は，本サービスに関して，ユーザーと他のユーザーまたは第三者との間において生じた取引，連絡または紛争等について一切責任を負いません。
             </li>
           </ul>
-          <h1 className='my-4 font-mono text-4xl'>
+          <h1 className='my-4 font-mono sm:text-4xl text-2xl'>
             第10条（サービス内容の変更等）
           </h1>
           <p>
             管理者は，ユーザーに通知することなく，本サービスの内容を変更しまたは本サービスの提供を中止することができるものとし，これによってユーザーに生じた損害について一切の責任を負いません。
           </p>
-          <h1 className='my-4 font-mono text-4xl'>第11条（利用規約の変更）</h1>
+          <h1 className='my-4 font-mono sm:text-4xl text-2xl'>第11条（利用規約の変更）</h1>
           <p>
             管理者は，必要と判断した場合には，ユーザーに通知することなくいつでも本規約を変更することができるものとします。なお，本規約の変更後，本サービスの利用を開始した場合には，当該ユーザーは変更後の規約に同意したものとみなします。
           </p>
-          <h1 className='my-4 font-mono text-4xl'>
+          <h1 className='my-4 font-mono sm:text-4xl text-2xl'>
             第12条（個人情報の取扱い）
           </h1>
           <p>
             管理者は，本サービスの利用によって取得する個人情報については，管理者「プライバシーポリシー」に従い適切に取り扱うものとします。
           </p>
-          <h1 className='my-4 font-mono text-4xl'>第13条（通知または連絡）</h1>
+          <h1 className='my-4 font-mono sm:text-4xl text-2xl'>第13条（通知または連絡）</h1>
           <p>
             ユーザーと管理者との間の通知または連絡は，管理者の定める方法によって行うものとします。管理者は,ユーザーから,管理者が別途定める方式に従った変更届け出がない限り,現在登録されている連絡先が有効なものとみなして当該連絡先へ通知または連絡を行い,これらは,発信時にユーザーへ到達したものとみなします。
           </p>
-          <h1 className='my-4 font-mono text-4xl'>
+          <h1 className='my-4 font-mono sm:text-4xl text-2xl'>
             第14条（権利義務の譲渡の禁止）
           </h1>
           <p>
             ユーザーは，管理者の書面による事前の承諾なく，利用契約上の地位または本規約に基づく権利もしくは義務を第三者に譲渡し，または担保に供することはできません。
           </p>
-          <h1 className='my-4 font-mono text-4xl'>
+          <h1 className='my-4 font-mono sm:text-4xl text-2xl'>
             第15条（準拠法・裁判管轄）
           </h1>
           <ul className='list-decimal ml-8'>

@@ -75,10 +75,10 @@ const Contact: NextPage = () => {
       <div className='fixed top-0 w-full z-10'>
         <Header />
       </div>
-      <h1 className='mt-28 text-center font-mono text-4xl'>
+      <h1 className='mt-28 text-center font-mono sm:text-4xl text-2xl'>
         お問い合わせフォーム
       </h1>
-      <Grid className='my-12 w-1/2 m-auto'>
+      <Grid className='my-12 lg:w-1/2 sm:w-9/12 w-11/12 m-auto'>
         <form onSubmit={onSubmit}>
           <TextField
             select
