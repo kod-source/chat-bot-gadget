@@ -42,7 +42,7 @@ const Login: NextPage = () => {
       return;
     }
     const loggedUser = await loginRepository(email, password);
-    if (loggedUser.logged_in) {
+    if (loggedUser.loggedIn) {
       setUser(loggedUser.user);
       setIsSignedIn(true);
       router.push('/');
