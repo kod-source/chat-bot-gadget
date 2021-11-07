@@ -20,7 +20,8 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   const handleGetCurrentUser = async () => {
     const getLoggedUser = await loggedRepository();
-    if (getLoggedUser.logged_in) {
+    console.log('getLoggedUser', getLoggedUser);
+    if (getLoggedUser.loggedIn) {
       setIsSignedIn(true);
       setUser(getLoggedUser.user);
     } else {

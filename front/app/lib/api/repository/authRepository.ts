@@ -1,9 +1,23 @@
-import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
+import axios, { AxiosResponse } from 'axios';
 import { User } from '../../interfaces';
 import { loggedInUrl, loginUrl, signUpUrl } from '../hostUrl/url';
 
-interface loggedUser {
+interface UserResponse {
+  id: number;
+  name: string;
+  email: string;
+  password_digest: string;
+  created_at: Date;
+  updated_at: Date;
+  avatar?: { url: string };
+}
+interface loggedUserResponse {
   logged_in: boolean;
+  user: UserResponse;
+}
+
+interface loggedUser {
+  loggedIn: boolean;
   user: User;
 }
 
@@ -12,18 +26,23 @@ interface SignUpUser {
   user: User;
 }
 
+interface SignUpUserResponse {
+  status: string;
+  user: UserResponse;
+}
+
 export const loggedRepository = async (): Promise<loggedUser> => {
-  const res: AxiosResponse<loggedUser> = await axios.get(loggedInUrl, {
+  const res: AxiosResponse<loggedUserResponse> = await axios.get(loggedInUrl, {
     withCredentials: true,
   });
-  return res.data;
+  return userCreateResponse(res.data);
 };
 
 export const loginRepository = async (
   email: string,
   password: string
 ): Promise<loggedUser> => {
-  const res: AxiosResponse<loggedUser> = await axios.post(
+  const res: AxiosResponse<loggedUserResponse> = await axios.post(
     loginUrl,
     {
       user: { email: email, password: password },
@@ -32,7 +51,7 @@ export const loginRepository = async (
       withCredentials: true,
     }
   );
-  return res.data;
+  return userCreateResponse(res.data);
 };
 
 export const signUpRepository = async (
@@ -63,8 +82,42 @@ export const signUpRepository = async (
   formData.append('email', email);
   formData.append('password', password);
   formData.append('password_confirmation', passwordConfirmation);
-  const res: AxiosResponse<SignUpUser> = await axios.post(signUpUrl, formData, {
-    withCredentials: true,
-  });
-  return res.data;
+  const res: AxiosResponse<SignUpUserResponse> = await axios.post(
+    signUpUrl,
+    formData,
+    {
+      withCredentials: true,
+    }
+  );
+  return userCreateSignUpResponse(res.data);
+};
+
+const userCreateResponse = (res: loggedUserResponse): loggedUser => {
+  return {
+    loggedIn: res.logged_in,
+    user: {
+      id: res.user.id,
+      name: res.user.name,
+      email: res.user.email,
+      passwordDigest: res.user.password_digest,
+      createdAt: res.user.created_at,
+      updatedAt: res.user.updated_at,
+      avatar: res.user.avatar,
+    },
+  };
+};
+
+const userCreateSignUpResponse = (res: SignUpUserResponse): SignUpUser => {
+  return {
+    status: res.status,
+    user: {
+      id: res.user.id,
+      name: res.user.name,
+      email: res.user.email,
+      passwordDigest: res.user.password_digest,
+      createdAt: res.user.created_at,
+      updatedAt: res.user.updated_at,
+      avatar: res.user.avatar,
+    },
+  };
 };
