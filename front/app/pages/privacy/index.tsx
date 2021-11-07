@@ -173,7 +173,7 @@ const Privacy: NextPage = () => {
           <p className='mb-4'>
             本ポリシーに関するお問い合わせは，下記の窓口までお願いいたします。
           </p>
-          <p>Eメールアドレス：kodenginner4521@gmail.com</p>
+          <p>Eメールアドレス：gadgetbot.4521@gmail.com</p>
           <p className='mt-4'>以上</p>
         </div>
       </div>

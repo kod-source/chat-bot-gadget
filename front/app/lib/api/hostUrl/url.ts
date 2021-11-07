@@ -4,4 +4,5 @@ export const loggedInUrl = `${localhost}/logged_in`;
 export const signUpUrl = `${localhost}/signup`;
 export const loginUrl = `${localhost}/login`;
 export const logoutUrl = `${localhost}/logout`;
+export const contactSendMailUrl = `${localhost}/contact_send_mail`;
 

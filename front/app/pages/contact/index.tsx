@@ -7,14 +7,16 @@ import {
   Button,
   FormControlLabel,
   FormGroup,
-  FormLabel,
   Grid,
-  Input,
   MenuItem,
   TextField,
 } from '@mui/material';
 import { AuthContext } from 'pages/_app';
 import { Checkbox } from '@mui/material';
+import { contactSendMailRepository } from 'lib/api/repository/contactRepository';
+import { AlertMessage } from 'lib/components/AlertMessage';
+import { AlertState } from 'lib/interfaces';
+import { ConfirmingModal } from 'lib/components/ConfirmingModal';
 
 const Contact: NextPage = () => {
   const { user, isSignedIn } = useContext(AuthContext);
@@ -28,13 +30,41 @@ const Contact: NextPage = () => {
   const [name, setName] = useState<string>('');
   const [email, setEmail] = useState<string>('');
   const [text, setText] = useState<string>('');
+  const [alertState, setAlertState] = useState<AlertState>({
+    open: false,
+    type: 'info',
+    message: '',
+  });
+  const [mailSending, setMailSending] = useState<boolean>(false);
+  const [openModal, setOpenModal] = useState<boolean>(false);
 
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
-    console.log(selectCategory);
-    console.log(name);
-    console.log(email);
-    console.log(text);
+    setOpenModal(true);
+  };
+
+  const sendContactMail = async () => {
+    try {
+      setMailSending(true);
+      await contactSendMailRepository(selectCategory, name, email, text);
+      setSelectCategory('バグや問題報告');
+      setName('');
+      setEmail('');
+      setText('');
+      setMailSending(false);
+      setAlertState({
+        open: true,
+        type: 'success',
+        message: '送信に成功しました',
+      });
+    } catch {
+      setAlertState({
+        open: true,
+        type: 'error',
+        message: '送信に失敗しました',
+      });
+    }
+    setOpenModal(false);
   };
 
   return (
@@ -70,6 +100,7 @@ const Contact: NextPage = () => {
                 <FormControlLabel
                   control={
                     <Checkbox
+                      checked={name === user?.name}
                       onChange={(e) =>
                         e.target.checked
                           ? setName(user?.name || '')
@@ -97,6 +128,7 @@ const Contact: NextPage = () => {
                 <FormControlLabel
                   control={
                     <Checkbox
+                      checked={email === user?.email}
                       onChange={(e) =>
                         e.target.checked
                           ? setEmail(user?.email || '')
@@ -126,22 +158,40 @@ const Contact: NextPage = () => {
               multiline
               label='お問合せ内容'
               variant='outlined'
+              value={text}
               onChange={(e) => setText(e.target.value)}
             />
           </Grid>
           <Grid id='SubmitButtonGrid' className='gridItems' item md={12}>
             <div className='text-center'>
               <Button
+                type='submit'
                 variant='contained'
+                disabled={mailSending}
                 className='p-1 h-12 w-1/4 static transition ease-in-out duration-300 hover:-translate-y-1 hover:scale-110'
               >
-                送信する
+                {mailSending ? '送信中' : '送信する'}
               </Button>
             </div>
           </Grid>
         </form>
       </Grid>
       <Footer />
+      <ConfirmingModal
+        open={openModal}
+        title='送信確認'
+        text='本当に送信してもよろしいでしょうか？'
+        confirm={mailSending ? '送信中' : '送信する '}
+        onClose={() => setOpenModal(false)}
+        sendContactMail={() => sendContactMail()}
+        mailSending={mailSending}
+      />
+      <AlertMessage
+        open={alertState.open}
+        handleClose={() => setAlertState({ ...alertState, open: false })}
+        type={alertState.type}
+        message={alertState.message}
+      />
     </div>
   );
 };
