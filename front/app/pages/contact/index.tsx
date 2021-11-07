@@ -38,7 +38,7 @@ const Contact: NextPage = () => {
   const [mailSending, setMailSending] = useState<boolean>(false);
   const [openModal, setOpenModal] = useState<boolean>(false);
 
-  const onSubmit = async (e: FormEvent) => {
+  const onSubmit = (e: FormEvent) => {
     e.preventDefault();
     setOpenModal(true);
   };
