@@ -38,7 +38,7 @@ const User: NextPage = () => {
               <div className='mx-20'>
                 <p className='my-4'>ニックネーム　：{user?.name}</p>
                 <p className='my-4'>メールアドレス：{user?.email}</p>
-                <p className='my-4'>
+                <p className='my-4 opacity-70 text-gray-500'>
                   {user?.createdAt
                     ? DateTime.fromJSDate(new Date(user?.createdAt)).toFormat(
                         'yyyy年MM月dd日'
