@@ -21,7 +21,7 @@ export const AvatarModal: FC<Props> = (props) => {
     >
       <Box className='text-center absolute top-1/2 left-1/2 -translate-x-2/4 -translate-y-2/4 outline-none'>
         <p
-          className='absolute p-0 m-0 text-white text-2xl cursor-pointer rounded-full w-8 h-8 border-red-700 hover:bg-red-400 hover:bg-opacity-70 hover:opacity-70 hover:border'
+          className='absolute p-0 m-0 text-white text-2xl cursor-pointer rounded-full w-8 h-8 border-red-700 hover:bg-red-400 hover:bg-opacity-70 hover:opacity-70 hover:border select-none'
           onClick={() => {
             setHoverCloseButton(false);
             props.onClose();
@@ -44,6 +44,7 @@ export const AvatarModal: FC<Props> = (props) => {
           sx={{ width: 400, height: 400 }}
           alt='avatar_modal_image'
           src={props.image}
+          className='pointer-events-none'
         />
       </Box>
     </Modal>
