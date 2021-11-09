@@ -6,11 +6,13 @@ import Head from 'next/head';
 import { AuthContext } from 'pages/_app';
 import React, { useContext, useState } from 'react';
 import { DateTime } from 'luxon';
+import { AvatarModal } from 'lib/components/AvatarModal';
 
 const User: NextPage = () => {
   const { user, isSignedIn } = useContext(AuthContext);
   const [showAvatarModal, setShowAvatarModal] = useState<boolean>(false);
   console.log(user);
+  if (!user) return null;
   return (
     <div>
       <Head>
@@ -27,7 +29,8 @@ const User: NextPage = () => {
             </h1>
             <div className='flex justify-center py-16'>
               <Avatar
-                className='w-52 h-52 hover:opacity-70 cursor-pointer'
+                className='hover:opacity-70 cursor-pointer'
+                sx={{ width: 200, height: 200 }}
                 alt='user image'
                 src={user?.avatar?.url}
                 onClick={() => setShowAvatarModal(true)}
@@ -45,7 +48,7 @@ const User: NextPage = () => {
                 </p>
                 <Button
                   variant='contained'
-                  className='my-4 p-1 transition ease-in-out duration-300 transform hover:-translate-y-1 hover:scale-110'
+                  className='my-4 p-2 transition ease-in-out duration-300 transform hover:-translate-y-1 hover:scale-110'
                 >
                   プロフィールの編集
                 </Button>
@@ -58,6 +61,11 @@ const User: NextPage = () => {
         <h1>ログインしてね</h1>
       )}
       <Footer />
+      <AvatarModal
+        open={showAvatarModal}
+        onClose={() => setShowAvatarModal(false)}
+        image={user.avatar?.url || ''}
+      />
     </div>
   );
 };
