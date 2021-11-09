@@ -8,13 +8,14 @@ import React, { useContext, useState } from 'react';
 import { DateTime } from 'luxon';
 import { AvatarModal } from 'lib/components/AvatarModal';
 import { EditUserModal } from 'lib/components/EditUserModal';
-import { User } from 'lib/interfaces';
+import { Loading } from 'lib/components/Loading';
 
 const UserProfile: NextPage = () => {
   const { user, isSignedIn } = useContext(AuthContext);
   const [showAvatarModal, setShowAvatarModal] = useState<boolean>(false);
   const [showEditUserModal, setShowEditUserModal] = useState<boolean>(false);
 
+  if (!user) return <Loading />;
   return (
     <div>
       <Head>
@@ -73,7 +74,7 @@ const UserProfile: NextPage = () => {
       <EditUserModal
         open={showEditUserModal}
         onClose={() => setShowEditUserModal(false)}
-        user={user as User}
+        user={user}
       />
     </div>
   );
