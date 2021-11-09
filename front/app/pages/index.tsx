@@ -13,10 +13,12 @@ import iphoneImage from '../public/iphoneImage.jpg';
 import ipadImage from '../public/ipadImage.jpg';
 import { CardMessage } from 'lib/components/CardMessage';
 import { Footer } from 'lib/components/Footer';
+import { Loading } from 'lib/components/Loading';
 
 const Home: NextPage = () => {
-  const { isSignedIn } = useContext(AuthContext);
+  const { user, isSignedIn } = useContext(AuthContext);
 
+  if (!user) return <Loading />;
   return (
     <div>
       <Head>
