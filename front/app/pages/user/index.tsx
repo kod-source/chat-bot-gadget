@@ -7,12 +7,15 @@ import { AuthContext } from 'pages/_app';
 import React, { useContext, useState } from 'react';
 import { DateTime } from 'luxon';
 import { AvatarModal } from 'lib/components/AvatarModal';
+import { EditUserModal } from 'lib/components/EditUserModal';
+import { User } from 'lib/interfaces';
 
-const User: NextPage = () => {
+const UserProfile: NextPage = () => {
   const { user, isSignedIn } = useContext(AuthContext);
   const [showAvatarModal, setShowAvatarModal] = useState<boolean>(false);
+  const [showEditUserModal, setShowEditUserModal] = useState<boolean>(false);
   console.log(user);
-  if (!user) return null;
+
   return (
     <div>
       <Head>
@@ -38,6 +41,7 @@ const User: NextPage = () => {
               <div className='mx-20'>
                 <p className='my-4'>ニックネーム　：{user?.name}</p>
                 <p className='my-4'>メールアドレス：{user?.email}</p>
+                {user?.memo && <p className='my-4'>メモ：{user.memo}</p>}
                 <p className='my-4 opacity-70 text-gray-500'>
                   {user?.createdAt
                     ? DateTime.fromJSDate(new Date(user?.createdAt)).toFormat(
@@ -49,6 +53,7 @@ const User: NextPage = () => {
                 <Button
                   variant='contained'
                   className='my-4 p-2 transition ease-in-out duration-300 transform hover:-translate-y-1 hover:scale-110'
+                  onClick={() => setShowEditUserModal(true)}
                 >
                   プロフィールの編集
                 </Button>
@@ -64,10 +69,15 @@ const User: NextPage = () => {
       <AvatarModal
         open={showAvatarModal}
         onClose={() => setShowAvatarModal(false)}
-        image={user.avatar?.url || ''}
+        image={user?.avatar?.url || ''}
+      />
+      <EditUserModal
+        open={showEditUserModal}
+        onClose={() => setShowEditUserModal(false)}
+        user={user as User}
       />
     </div>
   );
 };
 
-export default User;
+export default UserProfile;
