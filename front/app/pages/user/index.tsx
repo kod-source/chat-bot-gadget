@@ -14,7 +14,6 @@ const UserProfile: NextPage = () => {
   const { user, isSignedIn } = useContext(AuthContext);
   const [showAvatarModal, setShowAvatarModal] = useState<boolean>(false);
   const [showEditUserModal, setShowEditUserModal] = useState<boolean>(false);
-  console.log(user);
 
   return (
     <div>
