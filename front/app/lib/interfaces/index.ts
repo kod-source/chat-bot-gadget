@@ -5,6 +5,7 @@ export interface User {
   name: string;
   email: string;
   passwordDigest: string;
+  memo: string | undefined;
   createdAt: Date;
   updatedAt: Date;
   avatar?: { url: string };

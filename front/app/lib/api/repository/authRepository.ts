@@ -7,6 +7,7 @@ interface UserResponse {
   name: string;
   email: string;
   password_digest: string;
+  memo: string | undefined;
   created_at: Date;
   updated_at: Date;
   avatar?: { url: string };
@@ -18,7 +19,7 @@ interface loggedUserResponse {
 
 interface loggedUser {
   loggedIn: boolean;
-  user: User;
+  user: User | undefined;
 }
 
 interface SignUpUser {
@@ -93,6 +94,12 @@ export const signUpRepository = async (
 };
 
 const userCreateResponse = (res: loggedUserResponse): loggedUser => {
+  if (res.logged_in === false) {
+    return {
+      loggedIn: res.logged_in,
+      user: undefined,
+    };
+  }
   return {
     loggedIn: res.logged_in,
     user: {
@@ -100,6 +107,7 @@ const userCreateResponse = (res: loggedUserResponse): loggedUser => {
       name: res.user.name,
       email: res.user.email,
       passwordDigest: res.user.password_digest,
+      memo: res.user.memo,
       createdAt: res.user.created_at,
       updatedAt: res.user.updated_at,
       avatar: res.user.avatar,
@@ -115,6 +123,7 @@ const userCreateSignUpResponse = (res: SignUpUserResponse): SignUpUser => {
       name: res.user.name,
       email: res.user.email,
       passwordDigest: res.user.password_digest,
+      memo: res.user.memo,
       createdAt: res.user.created_at,
       updatedAt: res.user.updated_at,
       avatar: res.user.avatar,
