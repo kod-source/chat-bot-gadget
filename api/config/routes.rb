@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   get '/logged_in', to: 'sessions#logged_in?'
   delete '/destroy', to: 'sessions#destroy'
   post '/contact_send_mail', to: 'contacts#contact_send_mail'
+  resources :users, only: [:update]
 end

@@ -18,6 +18,7 @@ export interface AlertState {
 }
 
 export interface EditUserProfile {
+  id: number;
   name: string;
   email: string;
   memo: string;

@@ -1,17 +1,7 @@
 import axios, { AxiosResponse } from 'axios';
 import { User } from '../../interfaces';
 import { loggedInUrl, loginUrl, signUpUrl } from '../hostUrl/url';
-
-interface UserResponse {
-  id: number;
-  name: string;
-  email: string;
-  password_digest: string;
-  memo: string | undefined;
-  created_at: Date;
-  updated_at: Date;
-  avatar?: { url: string };
-}
+import { UserResponse } from './userRepository';
 interface loggedUserResponse {
   logged_in: boolean;
   user: UserResponse;

@@ -1,5 +1,6 @@
 class RegistrationsController < ApplicationController
     def signup
+        @user = User.ew(ristrations_params)
         @user = User.new(registrations_params)
         if @user.save
             login!

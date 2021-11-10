@@ -12,6 +12,7 @@ import {
 } from '@mui/material';
 import { EditUserProfile, User } from 'lib/interfaces';
 import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
+import { updateRepository } from 'lib/api/repository/userRepository';
 
 interface Props {
   open: boolean;
@@ -22,6 +23,7 @@ interface Props {
 export const EditUserModal: FC<Props> = (props) => {
   const [hoverCloseButton, setHoverCloseButton] = useState<boolean>(false);
   const [state, setState] = useState<EditUserProfile>({
+    id: props.user.id,
     name: props.user.name,
     email: props.user.email,
     memo: props.user.memo || '',
@@ -44,8 +46,14 @@ export const EditUserModal: FC<Props> = (props) => {
     }
   };
 
-  const onSubmit = (e: FormEvent) => {
+  const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    try {
+      const user = await updateRepository(state);
+      console.log('user', user);
+    } catch (e: any) {
+      alert(e.message);
+    }
   };
 
   return (
