@@ -16,3 +16,10 @@ export interface AlertState {
   type: AlertColor;
   message: string;
 }
+
+export interface EditUserProfile {
+  name: string;
+  email: string;
+  memo: string;
+  avatar?: File | null;
+}
