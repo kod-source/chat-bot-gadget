@@ -73,8 +73,9 @@ const SignUp: NextPage = () => {
       const file = e.target.files[0];
       setAvatarImage(file);
       const reader = new FileReader();
-      reader.onload = (e: any) => {
-        setAvatarValue(e.target.result);
+      reader.onload = (e: ProgressEvent<FileReader>) => {
+        if (!e.target) return null;
+        setAvatarValue(e.target.result as string);
       };
       reader.readAsDataURL(file);
     }
@@ -140,6 +141,7 @@ const SignUp: NextPage = () => {
                     <input
                       type='file'
                       className='hidden'
+                      accept='image/*'
                       onChange={onChangeInputFile}
                     />
                   </label>
