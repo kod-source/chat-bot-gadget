@@ -1,7 +1,11 @@
 class UsersController < ApplicationController
   def update
     user = User.find(params[:id])
-    user.update! update_params
+    if params[:avatar].class == String
+      user.update! params.permit(:name, :email, :memo)
+    else
+      user.update! update_params
+    end
 
     render json: user
   end

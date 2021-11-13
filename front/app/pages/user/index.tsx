@@ -11,7 +11,7 @@ import { EditUserModal } from 'lib/components/EditUserModal';
 import { Loading } from 'lib/components/Loading';
 
 const UserProfile: NextPage = () => {
-  const { user, isSignedIn } = useContext(AuthContext);
+  const { user, setUser, isSignedIn } = useContext(AuthContext);
   const [showAvatarModal, setShowAvatarModal] = useState<boolean>(false);
   const [showEditUserModal, setShowEditUserModal] = useState<boolean>(false);
 
@@ -38,10 +38,18 @@ const UserProfile: NextPage = () => {
                 src={user?.avatar?.url}
                 onClick={() => setShowAvatarModal(true)}
               />
-              <div className='mx-20'>
+              <div className='mx-20 w-3/12'>
                 <p className='my-4'>ニックネーム　：{user?.name}</p>
                 <p className='my-4'>メールアドレス：{user?.email}</p>
-                {user?.memo && <p className='my-4'>メモ：{user.memo}</p>}
+                <p className='my-4'>
+                  メモ：
+                  {user.memo?.split('\n').map((m) => (
+                    <p>
+                      {m}
+                      <br />
+                    </p>
+                  ))}
+                </p>
                 <p className='my-4 opacity-70 text-gray-500'>
                   {user?.createdAt
                     ? DateTime.fromJSDate(new Date(user?.createdAt)).toFormat(
@@ -75,6 +83,8 @@ const UserProfile: NextPage = () => {
         open={showEditUserModal}
         onClose={() => setShowEditUserModal(false)}
         user={user}
+        setUser={setUser}
+        setShowEditUserModal={setShowEditUserModal}
       />
     </div>
   );

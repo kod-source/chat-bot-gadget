@@ -23,7 +23,6 @@ export const updateRepository = async (
   UserData.append('memo', editUserProfile.memo);
   const res: AxiosResponse<UserResponse> = await axios.patch(
     `${editUserProfileUrl}/${editUserProfile.id}`,
-    // { user: editUserProfile },
     UserData,
     {
       withCredentials: true,

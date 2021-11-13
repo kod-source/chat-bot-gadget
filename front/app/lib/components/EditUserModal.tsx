@@ -3,9 +3,8 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import {
   Avatar,
+  Badge,
   Button,
-  FormControlLabel,
-  FormGroup,
   Grid,
   IconButton,
   TextField,
@@ -13,11 +12,15 @@ import {
 import { EditUserProfile, User } from 'lib/interfaces';
 import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
 import { updateRepository } from 'lib/api/repository/userRepository';
+import { AlertMessage } from './AlertMessage';
+import { AlertState } from 'lib/interfaces';
 
 interface Props {
   open: boolean;
   onClose: () => void;
   user: User;
+  setUser: React.Dispatch<React.SetStateAction<User | undefined>>;
+  setShowEditUserModal: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const EditUserModal: FC<Props> = (props) => {
@@ -32,6 +35,11 @@ export const EditUserModal: FC<Props> = (props) => {
   const [avatarValue, setAvatarValue] = useState<string>(
     props.user.avatar?.url || ''
   );
+  const [alertState, setAlertState] = useState<AlertState>({
+    open: false,
+    type: 'info',
+    message: '',
+  });
 
   const onChangeInputFile = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
@@ -49,8 +57,17 @@ export const EditUserModal: FC<Props> = (props) => {
   const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
     try {
+      if (state.memo.length > 500) {
+        setAlertState({
+          open: true,
+          type: 'error',
+          message: '文字数は500文字までにしてください。',
+        });
+        return;
+      }
       const user = await updateRepository(state);
-      console.log('user', user);
+      props.setUser(user);
+      props.setShowEditUserModal(false);
     } catch (e: any) {
       alert(e.message);
     }
@@ -134,16 +151,20 @@ export const EditUserModal: FC<Props> = (props) => {
               />
             </Grid>
             <Grid className='gridItems my-4' item md={12}>
-              <TextField
-                required
-                fullWidth
-                rows={15}
-                multiline
-                label='メモ'
-                variant='outlined'
-                value={state.memo}
-                onChange={(e) => setState({ ...state, memo: e.target.value })}
-              />
+              <Badge
+                badgeContent={`${state.memo.length}/500`}
+                max={500}
+                color='secondary'
+                className='w-full'
+              >
+                <textarea
+                  className='form-control w-full border-2 p-2 rounded border-gray-300'
+                  value={state.memo}
+                  onChange={(e) => setState({ ...state, memo: e.target.value })}
+                  placeholder='メモを入力してください。'
+                  rows={15}
+                />
+              </Badge>
             </Grid>
             <Grid id='SubmitButtonGrid' className='gridItems' item md={12}>
               <div className='text-center'>
@@ -158,6 +179,12 @@ export const EditUserModal: FC<Props> = (props) => {
             </Grid>
           </form>
         </Grid>
+        <AlertMessage
+          open={alertState.open}
+          handleClose={() => setAlertState({ ...alertState, open: false })}
+          type={alertState.type}
+          message={alertState.message}
+        />
       </Box>
     </Modal>
   );
