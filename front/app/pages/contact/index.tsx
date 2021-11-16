@@ -17,7 +17,6 @@ import { contactSendMailRepository } from 'lib/api/repository/contactRepository'
 import { AlertMessage } from 'lib/components/AlertMessage';
 import { AlertState } from 'lib/interfaces';
 import { ConfirmingModal } from 'lib/components/ConfirmingModal';
-import { Loading } from 'lib/components/Loading';
 
 const Contact: NextPage = () => {
   const { user, isSignedIn } = useContext(AuthContext);
@@ -68,7 +67,6 @@ const Contact: NextPage = () => {
     setOpenModal(false);
   };
 
-  if (!user) return <Loading />
   return (
     <div>
       <Head>
