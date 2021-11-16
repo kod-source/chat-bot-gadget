@@ -18,7 +18,7 @@ import { Loading } from 'lib/components/Loading';
 const Home: NextPage = () => {
   const { user, isSignedIn } = useContext(AuthContext);
 
-  if (!user) return <Loading />;
+  // if (!user) return <Loading />;
   return (
     <div>
       <Head>
