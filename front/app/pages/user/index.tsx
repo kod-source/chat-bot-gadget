@@ -8,14 +8,14 @@ import React, { useContext, useState } from 'react';
 import { DateTime } from 'luxon';
 import { AvatarModal } from 'lib/components/AvatarModal';
 import { EditUserModal } from 'lib/components/EditUserModal';
-import { Loading } from 'lib/components/Loading';
+import DateRangeIcon from '@mui/icons-material/DateRange';
+import { NonLoginPage } from 'lib/components/NonLoginPage';
 
 const UserProfile: NextPage = () => {
   const { user, setUser, isSignedIn } = useContext(AuthContext);
   const [showAvatarModal, setShowAvatarModal] = useState<boolean>(false);
   const [showEditUserModal, setShowEditUserModal] = useState<boolean>(false);
 
-  if (!user) return <Loading />;
   return (
     <div>
       <Head>
@@ -43,7 +43,7 @@ const UserProfile: NextPage = () => {
                 <p className='my-4'>メールアドレス：{user?.email}</p>
                 <p className='my-4'>
                   メモ：
-                  {user.memo?.split('\n').map((m) => (
+                  {user?.memo?.split('\n').map((m) => (
                     <p>
                       {m}
                       <br />
@@ -51,6 +51,7 @@ const UserProfile: NextPage = () => {
                   ))}
                 </p>
                 <p className='my-4 opacity-70 text-gray-500'>
+                  <DateRangeIcon />
                   {user?.createdAt
                     ? DateTime.fromJSDate(new Date(user?.createdAt)).toFormat(
                         'yyyy年MM月dd日'
@@ -68,24 +69,39 @@ const UserProfile: NextPage = () => {
               </div>
             </div>
           </div>
-          <h1>いいね一覧</h1>
+          <div className='my-8'>
+            <h1 className='text-center font-mono my-4 text-3xl'>
+              お気に入り一覧
+            </h1>
+            <p className='text-center mt-28 text-xl'>
+              お気に入りしている商品はありません。
+            </p>
+          </div>
         </>
       ) : (
-        <h1>ログインしてね</h1>
+        <NonLoginPage />
       )}
-      <Footer />
+      {isSignedIn ? (
+        <Footer />
+      ) : (
+        <div className='absolute bottom-0 w-full'>
+          <Footer />
+        </div>
+      )}
       <AvatarModal
         open={showAvatarModal}
         onClose={() => setShowAvatarModal(false)}
         image={user?.avatar?.url || ''}
       />
-      <EditUserModal
-        open={showEditUserModal}
-        onClose={() => setShowEditUserModal(false)}
-        user={user}
-        setUser={setUser}
-        setShowEditUserModal={setShowEditUserModal}
-      />
+      {user && (
+        <EditUserModal
+          open={showEditUserModal}
+          onClose={() => setShowEditUserModal(false)}
+          user={user}
+          setUser={setUser}
+          setShowEditUserModal={setShowEditUserModal}
+        />
+      )}
     </div>
   );
 };
