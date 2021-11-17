@@ -30,15 +30,15 @@ const UserProfile: NextPage = () => {
             <h1 className='mt-16 text-center font-bold font-mono text-4xl pt-10'>
               マイページ
             </h1>
-            <div className='flex justify-center py-16'>
+            <div className='lg:flex lg:justify-center py-16'>
               <Avatar
-                className='hover:opacity-70 cursor-pointer'
+                className='hover:opacity-70 cursor-pointer m-auto lg:mx-1'
                 sx={{ width: 200, height: 200 }}
                 alt='user image'
                 src={user?.avatar?.url}
                 onClick={() => setShowAvatarModal(true)}
               />
-              <div className='mx-20 w-3/12'>
+              <div className='lg:mx-20 m-auto w-10/12 sm:w-6/12 lg:w-3/12'>
                 <p className='my-4'>ニックネーム　：{user?.name}</p>
                 <p className='my-4'>メールアドレス：{user?.email}</p>
                 <p className='my-4'>
@@ -59,13 +59,15 @@ const UserProfile: NextPage = () => {
                     : ''}
                   にアカウントを作成しています
                 </p>
-                <Button
-                  variant='contained'
-                  className='my-4 p-2 transition ease-in-out duration-300 transform hover:-translate-y-1 hover:scale-110'
-                  onClick={() => setShowEditUserModal(true)}
-                >
-                  プロフィールの編集
-                </Button>
+                <div className='text-center lg:text-left'>
+                  <Button
+                    variant='contained'
+                    className='my-4 p-2 transition ease-in-out duration-300 transform hover:-translate-y-1 hover:scale-110'
+                    onClick={() => setShowEditUserModal(true)}
+                  >
+                    プロフィールの編集
+                  </Button>
+                </div>
               </div>
             </div>
           </div>

@@ -13,7 +13,7 @@ import LoginIcon from '@mui/icons-material/Login';
 
 export const NonLoginPage = () => {
   return (
-    <Card sx={{ minWidth: 275 }} className='mt-60 mb-24 m-auto w-2/5 p-4'>
+    <Card sx={{ minWidth: 275 }} className='mt-60 mb-24 m-auto w-11/12 sm:w-10/12 lg:w-2/5 p-4'>
       <CardContent>
         <Typography sx={{ fontSize: 14 }} color='text.secondary' gutterBottom>
           ログインしてからご利用ください
