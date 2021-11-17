@@ -81,9 +81,9 @@ export const EditUserModal: FC<Props> = (props) => {
       aria-describedby='modal-modal-description'
       className='overflow-auto my-4'
     >
-      <Box className='text-center absolute top-1/2 left-1/2 w-3/5 bg-white p-4 shadow -translate-x-2/4 -translate-y-2/4'>
+      <Box className='text-center absolute top-1/2 left-1/2 w-11/12 sm:w-9/12 lg:w-3/5 bg-white p-4 shadow -translate-x-2/4 -translate-y-2/4'>
         <p
-          className='absolute top-40 p-0 m-0 text-black text-2xl cursor-pointer rounded-full w-8 h-8 hover:opacity-70 hover:bg-gray-200'
+          className='absolute top-14 sm:top-5 lg:top-8 p-0 m-0 text-black text-2xl cursor-pointer rounded-full w-8 h-8 hover:opacity-70 hover:bg-gray-200'
           onClick={() => {
             setHoverCloseButton(false);
             props.onClose();
@@ -96,13 +96,13 @@ export const EditUserModal: FC<Props> = (props) => {
         <p
           className={
             hoverCloseButton
-              ? 'absolute top-48 transition-opacity opacity-100 duration-1000 text-white text-xs border-gray-500 bg-gray-500 p-1 rounded'
-              : 'absolute top-48 opacity-0'
+              ? 'absolute sm:top-12 lg:top-16 transition-opacity opacity-100 duration-1000 text-white text-xs border-gray-500 bg-gray-500 p-1 rounded'
+              : 'absolute sm:top-12 lg:top-16 opacity-0'
           }
         >
           閉じる
         </p>
-        <h1 className='mt-36 font-mono text-2xl'>プロフィールの編集</h1>
+        <h1 className='mt-10 sm:mt-2 lg:mt-5 font-mono text-2xl'>プロフィールの編集</h1>
         <Grid className='w-11/12 m-auto'>
           <form onSubmit={onSubmit}>
             <Grid className='gridItems my-4' item md={12}>

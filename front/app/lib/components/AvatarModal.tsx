@@ -44,7 +44,13 @@ export const AvatarModal: FC<Props> = (props) => {
           sx={{ width: 400, height: 400 }}
           alt='avatar_modal_image'
           src={props.image}
-          className='pointer-events-none'
+          className='pointer-events-none sm:block hidden'
+        />
+        <Avatar
+          sx={{ width: 200, height: 200 }}
+          alt='avatar_modal_image'
+          src={props.image}
+          className='pointer-events-none sm:hidden'
         />
       </Box>
     </Modal>
