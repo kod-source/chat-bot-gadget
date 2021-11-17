@@ -1,9 +1,9 @@
 import '../styles/globals.css';
 import type { AppProps } from 'next/app';
 import { useState, useEffect, createContext } from 'react';
-import { User } from '../lib/interfaces';
-import { loggedRepository } from '../lib/api/repository/authRepository';
+import { AuthRepository } from '../lib/api/repository/authRepository';
 import 'tailwindcss/tailwind.css';
+import { User } from 'lib/api/Entity/User';
 
 export const AuthContext = createContext(
   {} as {
@@ -19,7 +19,8 @@ function MyApp({ Component, pageProps }: AppProps) {
   const [user, setUser] = useState<User | undefined>();
 
   const handleGetCurrentUser = async () => {
-    const getLoggedUser = await loggedRepository();
+    const getLoggedUser = await AuthRepository.logged();
+    console.log(getLoggedUser);
     if (getLoggedUser.loggedIn) {
       setIsSignedIn(true);
       setUser(getLoggedUser.user);

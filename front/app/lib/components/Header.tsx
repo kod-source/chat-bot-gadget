@@ -4,9 +4,7 @@ import Link from 'next/link';
 import { AuthContext } from 'pages/_app';
 import { AppBar, Button, IconButton, Toolbar, Typography } from '@mui/material';
 import LogoutIcon from '@mui/icons-material/Logout';
-import axios from 'axios';
 import { useRouter } from 'next/dist/client/router';
-import { logoutUrl } from 'lib/api/hostUrl/url';
 import LoginIcon from '@mui/icons-material/Login';
 import AppRegistrationSharpIcon from '@mui/icons-material/AppRegistrationSharp';
 import { Avatar } from '@mui/material';
@@ -15,20 +13,21 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
+import { AuthRepository } from 'lib/api/repository/authRepository';
 
 export const Header: FC = () => {
   const { isSignedIn, setIsSignedIn, user, setUser } = useContext(AuthContext);
   const router = useRouter();
 
-  const logout = () => {
-    axios
-      .delete(logoutUrl, { withCredentials: true })
-      .then(() => {
-        setIsSignedIn(false);
-        setUser(undefined);
-        router.push('/login');
-      })
-      .catch((e) => alert(e.message));
+  const logout = async () => {
+    try {
+      await AuthRepository.logout();
+      setIsSignedIn(false);
+      setUser(undefined);
+      router.push('/login');
+    } catch {
+      alert('失敗しました');
+    }
   };
 
   return (

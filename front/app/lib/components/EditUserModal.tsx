@@ -9,12 +9,12 @@ import {
   IconButton,
   TextField,
 } from '@mui/material';
-import { EditUserProfile, User } from 'lib/interfaces';
+import { User } from 'lib/interfaces';
 import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
-import { updateRepository } from 'lib/api/repository/userRepository';
+import { UserRepository } from 'lib/api/repository/userRepository';
 import { AlertMessage } from './AlertMessage';
 import { AlertState } from 'lib/interfaces';
-
+import { EditUserProfile } from 'lib/api/repository/userRepository';
 interface Props {
   open: boolean;
   onClose: () => void;
@@ -65,7 +65,8 @@ export const EditUserModal: FC<Props> = (props) => {
         });
         return;
       }
-      const user = await updateRepository(state);
+      // const user = await updateRepository(state);
+      const user = await UserRepository.update(state);
       props.setUser(user);
       props.setShowEditUserModal(false);
     } catch (e: any) {
@@ -102,7 +103,9 @@ export const EditUserModal: FC<Props> = (props) => {
         >
           閉じる
         </p>
-        <h1 className='mt-10 sm:mt-2 lg:mt-5 font-mono text-2xl'>プロフィールの編集</h1>
+        <h1 className='mt-10 sm:mt-2 lg:mt-5 font-mono text-2xl'>
+          プロフィールの編集
+        </h1>
         <Grid className='w-11/12 m-auto'>
           <form onSubmit={onSubmit}>
             <Grid className='gridItems my-4' item md={12}>

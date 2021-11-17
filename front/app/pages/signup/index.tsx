@@ -2,7 +2,7 @@ import { NextPage } from 'next';
 import Link from 'next/link';
 import { useRouter } from 'next/dist/client/router';
 import React, { FormEvent, useContext, useState } from 'react';
-import { signUpRepository } from '../../lib/api/repository/authRepository';
+import { AuthRepository } from '../../lib/api/repository/authRepository';
 import { AuthContext } from '../_app';
 import { AlertState } from '../../lib/interfaces';
 import { AlertMessage } from '../../lib/components/AlertMessage';
@@ -39,7 +39,7 @@ const SignUp: NextPage = () => {
   const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
     try {
-      const signUpUser = await signUpRepository(
+      const signUpUser = await AuthRepository.signUp(
         name,
         email,
         password,

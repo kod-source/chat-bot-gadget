@@ -53,7 +53,7 @@ const UserProfile: NextPage = () => {
                 <p className='my-4 opacity-70 text-gray-500'>
                   <DateRangeIcon />
                   {user?.createdAt
-                    ? DateTime.fromJSDate(new Date(user?.createdAt)).toFormat(
+                    ? DateTime.fromJSDate(user?.createdAt).toFormat(
                         'yyyy年MM月dd日'
                       )
                     : ''}

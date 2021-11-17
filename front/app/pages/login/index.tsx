@@ -3,7 +3,7 @@ import { useRouter } from 'next/dist/client/router';
 import React, { FormEvent, useContext, useState } from 'react';
 import { AuthContext } from '../_app';
 import Link from 'next/link';
-import { loginRepository } from '../../lib/api/repository/authRepository';
+import { AuthRepository } from '../../lib/api/repository/authRepository';
 import { AlertState } from '../../lib/interfaces';
 import { AlertMessage } from '../../lib/components/AlertMessage';
 import Avatar from '@mui/material/Avatar';
@@ -41,7 +41,7 @@ const Login: NextPage = () => {
       });
       return;
     }
-    const loggedUser = await loginRepository(email, password);
+    const loggedUser = await AuthRepository.login(email, password);
     if (loggedUser.loggedIn) {
       setUser(loggedUser.user);
       setIsSignedIn(true);
