@@ -9,12 +9,12 @@ import {
   IconButton,
   TextField,
 } from '@mui/material';
-import { User } from 'lib/interfaces';
 import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
 import { UserRepository } from 'lib/api/repository/userRepository';
 import { AlertMessage } from './AlertMessage';
 import { AlertState } from 'lib/interfaces';
 import { EditUserProfile } from 'lib/api/repository/userRepository';
+import { User } from 'lib/api/Entity/User';
 interface Props {
   open: boolean;
   onClose: () => void;
@@ -65,7 +65,6 @@ export const EditUserModal: FC<Props> = (props) => {
         });
         return;
       }
-      // const user = await updateRepository(state);
       const user = await UserRepository.update(state);
       props.setUser(user);
       props.setShowEditUserModal(false);
