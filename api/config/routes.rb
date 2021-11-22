@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   post '/contact_send_mail', to: 'contacts#contact_send_mail'
   resources :users, only: [:update]
   resource :likes, only: [:create, :destroy]
+  get '/like_products', to: 'products#like_products'
 end

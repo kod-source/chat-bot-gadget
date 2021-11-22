@@ -4,17 +4,26 @@ import { Header } from 'lib/components/Header';
 import { NextPage } from 'next';
 import Head from 'next/head';
 import { AuthContext } from 'pages/_app';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { DateTime } from 'luxon';
 import { AvatarModal } from 'lib/components/AvatarModal';
 import { EditUserModal } from 'lib/components/EditUserModal';
 import DateRangeIcon from '@mui/icons-material/DateRange';
 import { NonLoginPage } from 'lib/components/NonLoginPage';
+import { ProductRepository } from 'lib/api/repository/productRepository';
 
 const UserProfile: NextPage = () => {
   const { user, setUser, isSignedIn } = useContext(AuthContext);
   const [showAvatarModal, setShowAvatarModal] = useState<boolean>(false);
   const [showEditUserModal, setShowEditUserModal] = useState<boolean>(false);
+
+  const fetchData = async () => {
+    const products = await ProductRepository.getLikeProducts();
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   return (
     <div>
