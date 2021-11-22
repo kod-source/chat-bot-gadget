@@ -11,14 +11,17 @@ import { EditUserModal } from 'lib/components/EditUserModal';
 import DateRangeIcon from '@mui/icons-material/DateRange';
 import { NonLoginPage } from 'lib/components/NonLoginPage';
 import { ProductRepository } from 'lib/api/repository/productRepository';
+import { Product } from 'lib/api/Entity/Product';
 
 const UserProfile: NextPage = () => {
   const { user, setUser, isSignedIn } = useContext(AuthContext);
   const [showAvatarModal, setShowAvatarModal] = useState<boolean>(false);
   const [showEditUserModal, setShowEditUserModal] = useState<boolean>(false);
+  const [likeProducts, setLikeProducts] = useState<Product[]>();
 
   const fetchData = async () => {
-    const products = await ProductRepository.getLikeProducts();
+    const likeProducts = await ProductRepository.getLikeProducts();
+    setLikeProducts(likeProducts);
   };
 
   useEffect(() => {
