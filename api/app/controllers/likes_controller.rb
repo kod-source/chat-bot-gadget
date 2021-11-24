@@ -5,7 +5,6 @@ class LikesController < ApplicationController
   end
 
   def destroy
-    p 'params', params[:id]
     Like.find_by(user_id: current_user.id, product_id: params[:id]).destroy
     render json: { status: 200 }
   end
