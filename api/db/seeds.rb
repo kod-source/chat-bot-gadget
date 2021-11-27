@@ -1,3 +1,20 @@
+User.create!(
+  email: 'host@gmail.com',
+  name: 'ホストユーザー',
+  password: 'host.1234',
+  password_confirmation: 'host.1234',
+  avatar: '',
+  memo: "こちらはメモになります。\n" + "こちらに自由にメモなどを残しておくことができます。\n\n" + "是非ご活用ください！",
+)
+User.create!(
+  email: 'test@gmail.com',
+  name: 'テストユーザー',
+  password: 'test.1234',
+  password_confirmation: 'test.1234',
+  avatar: '',
+  memo: "こちらはテストユーザーです。\n" + "こちらに自由にメモなどを残しておくことができます。\n\n" + "是非ご活用ください！",
+)
+
 Product.create(
   name: 'iPad Air4',
   memo: "こちらのiPadはカラフルな色があり、お好みなカラーがあれば良いですね。\n" + "現在のiPadAir4はiPadProとの差が特になく、万人におすすでできる商品となってます。\n\n" + "※こちらの価格はWiFiモデルの価格となっており、価格は税込みの価格です。",
@@ -69,4 +86,23 @@ Product.create(
   most_low_price: 59800,
   highest_price: 77800,
   url: 'https://www.apple.com/jp/shop/buy-ipad/ipad-mini'
+)
+
+Product.find_by(name: 'iPad Air4').likes.create!(
+  user_id: User.find_by(name: 'ホストユーザー').id,
+)
+Product.find_by(name: 'iPad Pro 11インチ（第1世代）[整備済製品]').likes.create!(
+  user_id: User.find_by(name: 'ホストユーザー').id,
+)
+Product.find_by(name: 'iPad Pro 11インチ（第3世代）').likes.create!(
+  user_id: User.find_by(name: 'ホストユーザー').id,
+)
+Product.find_by(name: 'iPad Pro 12.9インチ（第4世代）[整備済製品]').likes.create!(
+  user_id: User.find_by(name: 'ホストユーザー').id,
+)
+Product.find_by(name: 'iPad mini6').likes.create!(
+  user_id: User.find_by(name: 'ホストユーザー').id,
+)
+Product.find_by(name: 'iPad（第9世代）').likes.create!(
+  user_id: User.find_by(name: 'ホストユーザー').id,
 )
