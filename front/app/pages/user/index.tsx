@@ -25,10 +25,10 @@ import { NonLoginPage } from 'lib/components/NonLoginPage';
 import { ProductRepository } from 'lib/api/repository/productRepository';
 import { Product } from 'lib/api/Entity/Product';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import { LikeRepository } from 'lib/api/repository/likeRepostiroy';
+import LabelIcon from '@mui/icons-material/Label';
 
 const ProductComponent: FC<{ product: Product }> = ({ product }) => {
   const [expanded, setExpanded] = useState<boolean>(false);
@@ -43,7 +43,11 @@ const ProductComponent: FC<{ product: Product }> = ({ product }) => {
     setLike((prevState) => !prevState);
   };
   return (
-    <Card sx={{ maxWidth: 345 }} key={product.id} className='mx-8 h-2/3'>
+    <Card
+      sx={{ maxWidth: 345 }}
+      key={product.id}
+      className='m-auto lg:mx-8 my-10 sm:my-16 lg:my-0 h-2/3'
+    >
       <CardHeader className='h-20' title={product.name} />
       <CardMedia
         component='img'
@@ -105,7 +109,7 @@ const UserProfile: NextPage = () => {
   const { user, setUser, isSignedIn } = useContext(AuthContext);
   const [showAvatarModal, setShowAvatarModal] = useState<boolean>(false);
   const [showEditUserModal, setShowEditUserModal] = useState<boolean>(false);
-  const [likeProducts, setLikeProducts] = useState<Product[]>();
+  const [likeProducts, setLikeProducts] = useState<Product[]>([]);
 
   const fetchData = async () => {
     const likeProducts = await ProductRepository.getLikeProducts();
@@ -177,23 +181,30 @@ const UserProfile: NextPage = () => {
             </div>
           </div>
           <div className='my-8'>
-            <h1 className='text-center font-mono my-4 text-3xl'>
-              お気に入り一覧
-            </h1>
-            {likeProducts ? (
+            <div className='flex justify-center text-center my-8 text-3xl font-mono'>
+              <h1>
+                お気に入り一覧
+              </h1>
+              <LabelIcon className='pt-1' fontSize='large' color='primary' />
+            </div>
+            {likeProducts.length === 0 ? (
+              <div className='text-center my-28 text-xl text-gray-600'>
+                <p className='my-1'>お気に入りしている商品はありません</p>
+                <p className='my-1'>商品を診断し、お気に入り登録しよう！</p>
+                <p className='my-1'>
+                  いつでもマイページからお気に入り商品を確認することができます！
+                </p>
+              </div>
+            ) : (
               <div className='m-auto'>
                 {sliceLikeProducts.map((Products) => (
-                  <div className='mb-16 flex justify-center'>
+                  <div className='lg:mb-16 lg:flex lg:justify-center'>
                     {Products?.map((p) => (
                       <ProductComponent product={p} />
                     ))}
                   </div>
                 ))}
               </div>
-            ) : (
-              <p className='text-center mt-28 text-xl'>
-                お気に入りしている商品はありません。
-              </p>
             )}
           </div>
         </>
