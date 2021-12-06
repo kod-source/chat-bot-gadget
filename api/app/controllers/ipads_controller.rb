@@ -1,0 +1,2 @@
+class IpadsController < ApplicationController
+end

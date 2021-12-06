@@ -1,0 +1,27 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  product_id: MyString
+  screen_size: 1.5
+  chip: MyString
+  high_perform_camera: false
+  type_c: false
+  five_g: false
+  penil_two: false
+  face_id: false
+  clean_display: false
+  center_frame: false
+  speaker_count: 1
+
+two:
+  product_id: MyString
+  screen_size: 1.5
+  chip: MyString
+  high_perform_camera: false
+  type_c: false
+  five_g: false
+  penil_two: false
+  face_id: false
+  clean_display: false
+  center_frame: false
+  speaker_count: 1

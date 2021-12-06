@@ -48,7 +48,7 @@ Product.create!(
   url: 'https://www.apple.com/jp/shop/buy-ipad/ipad-pro'
 )
 Product.create!(
-  name: 'iPad Pro 11インチ（第1世代）[整備済製品]',
+  name: 'iPad Pro 12.9インチ（第3世代）[整備済製品]',
   memo: "2020年に発売したiPad Proになります。" + "\n少し古く感じる方もいるかもしれませんが、そんなことなく現役扱うことができるかと思います。" + "\nこちらは整備済製品となっているため、お求めやすい価格で購入することができ、私のイチオシの商品になっております。" + "\n※整備済製品のため、在庫がない可能性があるためご了承ください。" + "\n\n※こちらの価格はWiFiモデルの価格となっており、価格は税込みの価格です。",
   image: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/refurb-ipad-pro-12-cell-spacegray-2019?wid=1144&hei=1144&fmt=jpeg&qlt=95&.v=1581985511549',
   most_low_price: 74800,
@@ -105,4 +105,167 @@ Product.find_by(name: 'iPad mini6').likes.create!(
 )
 Product.find_by(name: 'iPad（第9世代）').likes.create!(
   user_id: User.find_by(name: 'ホストユーザー').id,
+)
+
+Ipad.create!(
+  product_id: Product.find_by(name: 'iPad Air4').id,
+  screen_size: 10.9,
+  chip: 'A14',
+  high_perform_camera: false,
+  type_c: true,
+  five_g: false,
+  penil_two: true,
+  face_id: false,
+  clean_display: true,
+  center_frame: false,
+  speaker_count: 2,
+  dual_speaker: true,
+  thunderbolt: false,
+  weight: 458,
+  high_refresh_rate: false,
+  smart_connector: true
+)
+Ipad.create!(
+  product_id: Product.find_by(name: 'iPad Pro 11インチ（第1世代）[整備済製品]').id,
+  screen_size: 11,
+  chip: 'A12X',
+  high_perform_camera: false,
+  type_c: true,
+  five_g: false,
+  penil_two: true,
+  face_id: true,
+  clean_display: true,
+  center_frame: false,
+  speaker_count: 4,
+  dual_speaker: true,
+  thunderbolt: false,
+  weight: 468,
+  high_refresh_rate: true,
+  smart_connector: true
+)
+Ipad.create!(
+  product_id: Product.find_by(name: 'iPad Pro 11インチ（第2世代）[整備済製品]').id,
+  screen_size: 11,
+  chip: 'A12Z',
+  high_perform_camera: true,
+  type_c: true,
+  five_g: false,
+  penil_two: true,
+  face_id: true,
+  clean_display: true,
+  center_frame: false,
+  speaker_count: 4,
+  dual_speaker: true,
+  thunderbolt: false,
+  weight: 471,
+  high_refresh_rate: true,
+  smart_connector: true
+)
+Ipad.create!(
+  product_id: Product.find_by(name: 'iPad Pro 11インチ（第3世代）').id,
+  screen_size: 11,
+  chip: 'M1',
+  high_perform_camera: true,
+  type_c: true,
+  five_g: true,
+  penil_two: true,
+  face_id: true,
+  clean_display: true,
+  center_frame: true,
+  speaker_count: 4,
+  dual_speaker: true,
+  thunderbolt: true,
+  weight: 466,
+  high_refresh_rate: true,
+  smart_connector: true
+)
+Ipad.create!(
+  product_id: Product.find_by(name: 'iPad Pro 12.9インチ（第3世代）[整備済製品]').id,
+  screen_size: 12.9,
+  chip: 'A12X',
+  high_perform_camera: false,
+  type_c: true,
+  five_g: false,
+  penil_two: true,
+  face_id: true,
+  clean_display: true,
+  center_frame: false,
+  speaker_count: 4,
+  dual_speaker: true,
+  thunderbolt: false,
+  weight: 631,
+  high_refresh_rate: true,
+  smart_connector: true
+)
+Ipad.create!(
+  product_id: Product.find_by(name: 'iPad Pro 12.9インチ（第4世代）[整備済製品]').id,
+  screen_size: 12.9,
+  chip: 'A12Z',
+  high_perform_camera: true,
+  type_c: true,
+  five_g: false,
+  penil_two: true,
+  face_id: true,
+  clean_display: true,
+  center_frame: false,
+  speaker_count: 4,
+  dual_speaker: true,
+  thunderbolt: false,
+  weight: 641,
+  high_refresh_rate: true,
+  smart_connector: true
+)
+Ipad.create!(
+  product_id: Product.find_by(name: 'iPad Pro 12.9インチ（第5世代）').id,
+  screen_size: 12.9,
+  chip: 'M1',
+  high_perform_camera: true,
+  type_c: true,
+  five_g: true,
+  penil_two: true,
+  face_id: true,
+  clean_display: true,
+  center_frame: true,
+  speaker_count: 4,
+  dual_speaker: true,
+  thunderbolt: true,
+  weight: 682,
+  high_refresh_rate: true,
+  smart_connector: true
+)
+Ipad.create!(
+  product_id: Product.find_by(name: 'iPad（第9世代）').id,
+  screen_size: 10.2,
+  chip: 'A13',
+  high_perform_camera: false,
+  type_c: false,
+  five_g: false,
+  penil_two: false,
+  face_id: false,
+  clean_display: false,
+  center_frame: true,
+  speaker_count: 2,
+  dual_speaker: false,
+  thunderbolt: false,
+  weight: 487,
+  high_refresh_rate: false,
+  smart_connector: true
+)
+Ipad.create!(
+  product_id: Product.find_by(name: 'iPad mini6').id,
+  screen_size: 8.3,
+  chip: 'A15',
+  high_perform_camera: false,
+  type_c: true,
+  five_g: true,
+  penil_two: true,
+  face_id: true,
+  clean_display: true,
+  center_frame: true,
+  speaker_count: 2,
+  dual_speaker: true,
+  thunderbolt: false,
+  weight: 293,
+  high_refresh_rate: false,
+  smart_connector: false
 )

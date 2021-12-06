@@ -10,16 +10,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_22_142851) do
+ActiveRecord::Schema.define(version: 2021_12_04_155328) do
 
-  create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
+  create_table "ipads", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "product_id"
+    t.float "screen_size"
+    t.string "chip"
+    t.boolean "high_perform_camera"
+    t.boolean "type_c"
+    t.boolean "five_g"
+    t.boolean "penil_two"
+    t.boolean "face_id"
+    t.boolean "clean_display"
+    t.boolean "center_frame"
+    t.integer "speaker_count"
+    t.boolean "dual_speaker"
+    t.boolean "thunderbolt"
+    t.integer "weight"
+    t.boolean "high_refresh_rate"
+    t.boolean "smart_connector"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.integer "user_id"
     t.integer "product_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
+  create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name", null: false
     t.text "memo"
     t.string "image"
@@ -30,7 +51,7 @@ ActiveRecord::Schema.define(version: 2021_11_22_142851) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name", null: false
     t.string "avatar"
     t.string "email", null: false
