@@ -29,6 +29,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import { LikeRepository } from 'lib/api/repository/likeRepostiroy';
 import LabelIcon from '@mui/icons-material/Label';
+import { detailUrl } from 'lib/Entity/DerailUrl';
 
 const ProductComponent: FC<{ product: Product }> = ({ product }) => {
   const [expanded, setExpanded] = useState<boolean>(false);
@@ -48,13 +49,20 @@ const ProductComponent: FC<{ product: Product }> = ({ product }) => {
       key={product.id}
       className='m-auto lg:mx-8 my-10 sm:my-16 lg:my-0 h-2/3'
     >
-      <CardHeader className='h-20' title={product.name} />
-      <CardMedia
-        component='img'
-        className='h-96 w-96'
-        image={product.image}
-        alt='product_image'
-      />
+      <Link href={detailUrl(product)}>
+        <CardHeader
+          className='h-20 cursor-pointer hover:opacity-70'
+          title={product.name}
+        />
+      </Link>
+      <Link href={detailUrl(product)}>
+        <CardMedia
+          component='img'
+          className='h-96 w-96 cursor-pointer hover:opacity-70'
+          image={product.image}
+          alt='product_image'
+        />
+      </Link>
       <CardContent>
         <Typography variant='body2' className='text-lg font-semibold'>
           {product.mostLowPrice.toLocaleString()}円 〜{' '}
@@ -182,9 +190,7 @@ const UserProfile: NextPage = () => {
           </div>
           <div className='my-8'>
             <div className='flex justify-center text-center my-8 text-3xl font-mono'>
-              <h1>
-                お気に入り一覧
-              </h1>
+              <h1>お気に入り一覧</h1>
               <LabelIcon className='pt-1' fontSize='large' color='primary' />
             </div>
             {likeProducts.length === 0 ? (
