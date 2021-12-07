@@ -14,7 +14,7 @@ export class LikeRepository {
   }
 
   static async delete(productId: number): Promise<void> {
-    await axios.delete(`${LikesUrl}?id=${productId}`, {
+    await axios.delete(`${LikesUrl}/${productId}`, {
       withCredentials: true,
     });
     return;

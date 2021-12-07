@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   delete '/destroy', to: 'sessions#destroy'
   post '/contact_send_mail', to: 'contacts#contact_send_mail'
   resources :users, only: [:update]
-  resource :likes, only: [:create, :destroy]
+  resources :likes, only: [:create, :destroy]
   get '/like_products', to: 'products#like_products'
+  resources :products, only: [:show]
+  resources :ipads, only: [:index, :show]
 end

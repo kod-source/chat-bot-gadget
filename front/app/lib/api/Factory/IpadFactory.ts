@@ -22,7 +22,7 @@ export interface IpadResponseObject {
   updated_at: Date
 }
 
-export class ProductFactory {
+export class IpadFactory {
   static createFromResponse(res: IpadResponseObject): Ipad {
     return new Ipad(
       res.id,
