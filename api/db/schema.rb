@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2021_12_04_155328) do
     t.boolean "high_perform_camera"
     t.boolean "type_c"
     t.boolean "five_g"
-    t.boolean "penil_two"
+    t.boolean "pencil_two"
     t.boolean "face_id"
     t.boolean "clean_display"
     t.boolean "center_frame"
