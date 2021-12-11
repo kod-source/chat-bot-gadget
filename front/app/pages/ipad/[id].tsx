@@ -47,15 +47,17 @@ const IpadShow: NextPage<Props> = ({ id }) => {
       <div className='fixed top-0 w-full z-10'>
         <Header />
       </div>
-      <div className='my-28 flex'>
+      <div className='my-28 lg:flex'>
         <CardMedia
           component='img'
-          className='h-[500px] w-[500px] ml-[5%]'
+          className='lg:h-[500px] lg:w-[500px] lg:ml-[5%]'
           image={product.image}
           alt='product_image'
         />
         <div className='ml-3'>
-          <h1 className='font-bold text-4xl border-b-4 pb-3'>{product.name}</h1>
+          <h1 className='font-bold mt-3 lg:m-0 text-lg sm:text-2xl lg:text-4xl border-b-4 pb-3'>
+            {product.name}
+          </h1>
           <div className='mt-3 border-b-4 pb-3'>
             {product.memo.split(`\n`).map((m) => (
               <p>
@@ -64,24 +66,24 @@ const IpadShow: NextPage<Props> = ({ id }) => {
               </p>
             ))}
           </div>
-          <p className='text-2xl font-bold my-10 ml-10'>
+          <p className='text-lg sm:text-xl lg:text-2xl font-bold my-5 lg:my-10 ml-5 lg:ml-10'>
             <span className='text-red-600'>価格：</span>
             {product.mostLowPrice.toLocaleString()}円 〜
             {product.highestPrice.toLocaleString()}円　税込
           </p>
-          <div className='flex'>
+          <div className='sm:flex'>
             <Link href={product.url}>
               <a target='_blank'>
                 <Button
                   variant='contained'
-                  className='mx-2 w-56 static p-4 transition ease-in-out duration-300 hover:-translate-y-1 hover:scale-110'
+                  className='mx-2 my-1 sm:my-0 w-56 static p-4 transition ease-in-out duration-300 hover:-translate-y-1 hover:scale-110'
                 >
                   <ShoppingCartIcon />
                   商品購入ページはこちら
                 </Button>
               </a>
             </Link>
-            <Button className='mx-2 w-56 bg-red-500 text-white hover:bg-red-600 static p-4 transition ease-in-out duration-300 hover:-translate-y-1 hover:scale-110'>
+            <Button className='mx-2 my-1 sm:my-0 w-56 bg-red-500 text-white hover:bg-red-600 static p-4 transition ease-in-out duration-300 hover:-translate-y-1 hover:scale-110'>
               <FavoriteIcon />
               お気に入りに追加
             </Button>
