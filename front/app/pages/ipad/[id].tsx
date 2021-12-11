@@ -108,17 +108,15 @@ const IpadShow: NextPage<Props> = ({ id }) => {
               {ipad.faceId ? 'Face Id' : 'Touch Id'}
             </li>
             <li>Apple Pencil(第2世代)に{ipad.pencilTwo ? '対応' : '非対応'}</li>
+            <li>デュアルスピーカに{ipad.dualSpeaker ? '対応' : '非対応'}</li>
+            <li>{ipad.typeC ? 'USB Type-C' : 'Lightning端子'}搭載</li>
+            <li>
+              {ipad.cleanDisplay
+                ? '美しいLiquid Retinaディスプレイ搭載'
+                : 'Retinaディスプレイ搭載'}
+            </li>
             {show && (
               <>
-                <li>
-                  デュアルスピーカに{ipad.dualSpeaker ? '対応' : '非対応'}
-                </li>
-                <li>{ipad.typeC ? 'USB Type-C' : 'Lightning端子'}搭載</li>
-                <li>
-                  {ipad.cleanDisplay
-                    ? '美しいLiquid Retinaディスプレイ搭載'
-                    : 'Retinaディスプレイ搭載'}
-                </li>
                 {ipad.smartConnector && (
                   <li>アクセサリのためのSmart Keyboardなどに対応</li>
                 )}
