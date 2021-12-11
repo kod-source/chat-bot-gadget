@@ -5,7 +5,6 @@ import {
   CardActions,
   CardContent,
   CardHeader,
-  CardMedia,
   Collapse,
   IconButton,
   Typography,
@@ -30,6 +29,7 @@ import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import { LikeRepository } from 'lib/api/repository/likeRepostiroy';
 import LabelIcon from '@mui/icons-material/Label';
 import { detailUrl } from 'lib/Entity/DerailUrl';
+import Image from 'next/image';
 
 const ProductComponent: FC<{ product: Product }> = ({ product }) => {
   const [expanded, setExpanded] = useState<boolean>(false);
@@ -56,11 +56,12 @@ const ProductComponent: FC<{ product: Product }> = ({ product }) => {
         />
       </Link>
       <Link href={detailUrl(product)}>
-        <CardMedia
-          component='img'
-          className='h-96 w-96 cursor-pointer hover:opacity-70'
-          image={product.image}
-          alt='product_image'
+        <Image
+          src={product.image}
+          width={400}
+          height={400}
+          className='cursor-pointer hover:opacity-70'
+          alt='Product Image'
         />
       </Link>
       <CardContent>

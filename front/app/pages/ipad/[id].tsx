@@ -8,7 +8,7 @@ import { Ipad } from 'lib/api/Entity/Ipad';
 import { Loading } from 'lib/components/Loading';
 import { IpadRepository } from 'lib/api/repository/ipadRepository';
 import { ProductRepository } from 'lib/api/repository/productRepository';
-import { Button, CardMedia } from '@mui/material';
+import { Button } from '@mui/material';
 import Link from 'next/link';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
@@ -16,6 +16,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import { LikeRepository } from 'lib/api/repository/likeRepostiroy';
 import GppBadIcon from '@mui/icons-material/GppBad';
+import Image from 'next/image';
 
 interface State {
   product: Product;
@@ -54,6 +55,7 @@ const IpadShow: NextPage<Props> = ({ id }) => {
     await LikeRepository.delete(product.id);
     fetchData();
   };
+  console.log(product.image);
   return (
     <>
       <Head>
@@ -63,13 +65,15 @@ const IpadShow: NextPage<Props> = ({ id }) => {
         <Header />
       </div>
       <div className='my-28 lg:flex'>
-        <CardMedia
-          component='img'
-          className='lg:h-[500px] lg:w-[500px] lg:ml-[5%]'
-          image={product.image}
-          alt='product_image'
-        />
-        <div className='ml-3'>
+        <div className='lg:ml-[5%] text-center lg:text-left'>
+          <Image
+            src={product.image}
+            width={600}
+            height={600}
+            alt='Product Image'
+          />
+        </div>
+        <div className='mx-5 lg:mx-16'>
           <h1 className='font-bold mt-3 lg:m-0 text-lg sm:text-2xl lg:text-4xl border-b-4 pb-3'>
             {product.name}
           </h1>
