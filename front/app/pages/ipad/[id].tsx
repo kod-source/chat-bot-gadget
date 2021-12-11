@@ -8,12 +8,15 @@ import { Ipad } from 'lib/api/Entity/Ipad';
 import { Loading } from 'lib/components/Loading';
 import { IpadRepository } from 'lib/api/repository/ipadRepository';
 import { ProductRepository } from 'lib/api/repository/productRepository';
-import { Button, CardMedia } from '@mui/material';
+import { Button } from '@mui/material';
 import Link from 'next/link';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
+import { LikeRepository } from 'lib/api/repository/likeRepostiroy';
+import GppBadIcon from '@mui/icons-material/GppBad';
+import Image from 'next/image';
 
 interface State {
   product: Product;
@@ -27,11 +30,14 @@ interface Props {
 const IpadShow: NextPage<Props> = ({ id }) => {
   const [state, setState] = useState<State>();
   const [show, setShow] = useState(false);
+  const [likeProductIds, setLikeProductIds] = useState<number[]>([]);
 
   const fetchData = async () => {
     const product = await ProductRepository.get(id);
     const ipad = await IpadRepository.get(id);
+    const likes = await LikeRepository.my();
     setState({ product, ipad });
+    setLikeProductIds(likes.map((like) => like.productId));
   };
   useEffect(() => {
     fetchData();
@@ -39,6 +45,17 @@ const IpadShow: NextPage<Props> = ({ id }) => {
 
   if (!state) return <Loading />;
   const { product, ipad } = state;
+
+  const addLikeVButton = async () => {
+    await LikeRepository.create(product.id);
+    fetchData();
+  };
+
+  const deleteLikeButton = async () => {
+    await LikeRepository.delete(product.id);
+    fetchData();
+  };
+  console.log(product.image);
   return (
     <>
       <Head>
@@ -48,13 +65,15 @@ const IpadShow: NextPage<Props> = ({ id }) => {
         <Header />
       </div>
       <div className='my-28 lg:flex'>
-        <CardMedia
-          component='img'
-          className='lg:h-[500px] lg:w-[500px] lg:ml-[5%]'
-          image={product.image}
-          alt='product_image'
-        />
-        <div className='ml-3'>
+        <div className='lg:ml-[5%] text-center lg:text-left'>
+          <Image
+            src={product.image}
+            width={600}
+            height={600}
+            alt='Product Image'
+          />
+        </div>
+        <div className='mx-5 lg:mx-16'>
           <h1 className='font-bold mt-3 lg:m-0 text-lg sm:text-2xl lg:text-4xl border-b-4 pb-3'>
             {product.name}
           </h1>
@@ -83,10 +102,23 @@ const IpadShow: NextPage<Props> = ({ id }) => {
                 </Button>
               </a>
             </Link>
-            <Button className='mx-2 my-1 sm:my-0 w-56 bg-red-500 text-white hover:bg-red-600 static p-4 transition ease-in-out duration-300 hover:-translate-y-1 hover:scale-110'>
-              <FavoriteIcon />
-              お気に入りに追加
-            </Button>
+            {likeProductIds.includes(product.id) ? (
+              <Button
+                className='mx-2 my-1 sm:my-0 w-56 bg-red-600 text-white hover:bg-red-700 static p-4 transition ease-in-out duration-300 hover:-translate-y-1 hover:scale-110'
+                onClick={() => deleteLikeButton()}
+              >
+                <GppBadIcon />
+                お気に入りから削除
+              </Button>
+            ) : (
+              <Button
+                className='mx-2 my-1 sm:my-0 w-56 bg-red-500 text-white hover:bg-red-600 static p-4 transition ease-in-out duration-300 hover:-translate-y-1 hover:scale-110'
+                onClick={() => addLikeVButton()}
+              >
+                <FavoriteIcon />
+                お気に入りに追加
+              </Button>
+            )}
           </div>
           <div className='mt-7 border-b-4 pb-3'>
             <div className='flex my-1'>
