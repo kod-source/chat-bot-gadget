@@ -14,6 +14,8 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
+import { LikeRepository } from 'lib/api/repository/likeRepostiroy';
+import GppBadIcon from '@mui/icons-material/GppBad';
 
 interface State {
   product: Product;
@@ -27,11 +29,14 @@ interface Props {
 const IpadShow: NextPage<Props> = ({ id }) => {
   const [state, setState] = useState<State>();
   const [show, setShow] = useState(false);
+  const [likeProductIds, setLikeProductIds] = useState<number[]>([]);
 
   const fetchData = async () => {
     const product = await ProductRepository.get(id);
     const ipad = await IpadRepository.get(id);
+    const likes = await LikeRepository.my();
     setState({ product, ipad });
+    setLikeProductIds(likes.map((like) => like.productId));
   };
   useEffect(() => {
     fetchData();
@@ -39,6 +44,16 @@ const IpadShow: NextPage<Props> = ({ id }) => {
 
   if (!state) return <Loading />;
   const { product, ipad } = state;
+
+  const addLikeVButton = async () => {
+    await LikeRepository.create(product.id);
+    fetchData();
+  };
+
+  const deleteLikeButton = async () => {
+    await LikeRepository.delete(product.id);
+    fetchData();
+  };
   return (
     <>
       <Head>
@@ -83,10 +98,23 @@ const IpadShow: NextPage<Props> = ({ id }) => {
                 </Button>
               </a>
             </Link>
-            <Button className='mx-2 my-1 sm:my-0 w-56 bg-red-500 text-white hover:bg-red-600 static p-4 transition ease-in-out duration-300 hover:-translate-y-1 hover:scale-110'>
-              <FavoriteIcon />
-              お気に入りに追加
-            </Button>
+            {likeProductIds.includes(product.id) ? (
+              <Button
+                className='mx-2 my-1 sm:my-0 w-56 bg-red-600 text-white hover:bg-red-700 static p-4 transition ease-in-out duration-300 hover:-translate-y-1 hover:scale-110'
+                onClick={() => deleteLikeButton()}
+              >
+                <GppBadIcon />
+                お気に入りから削除
+              </Button>
+            ) : (
+              <Button
+                className='mx-2 my-1 sm:my-0 w-56 bg-red-500 text-white hover:bg-red-600 static p-4 transition ease-in-out duration-300 hover:-translate-y-1 hover:scale-110'
+                onClick={() => addLikeVButton()}
+              >
+                <FavoriteIcon />
+                お気に入りに追加
+              </Button>
+            )}
           </div>
           <div className='mt-7 border-b-4 pb-3'>
             <div className='flex my-1'>
