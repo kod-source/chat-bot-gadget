@@ -1,0 +1,137 @@
+{
+  "init": {
+    "answers": [
+      {
+        "content": "5万円以内",
+        "nextId": "end",
+        "params": { "price": 50000 }
+      },
+      {
+        "content": "7万円以内",
+        "nextId": "size",
+        "params": { "price": 70000 }
+      },
+      {
+        "content": "決まっていない",
+        "nextId": "size",
+        "params": { "price": 200000 }
+      }
+    ],
+    "question": "予算はいくらですか？"
+  },
+  "size": {
+    "answers": [
+      {
+        "content": "7.9〜8.3インチ（持ち運び前提での使用向け）",
+        "nextId": "end",
+        "params": { "name": "iPad mini6" }
+      },
+      {
+        "content": "10.2〜11インチ（無難でサイズで使用用途がいまいち定まっていない方におすすめです）",
+        "nextId": "screen",
+        "params": { "minSize": 10.2, "maxSize": 11 }
+      },
+      {
+        "content": "12.9インチ（画面がとても大きいため用途が明確な方におすすです）",
+        "nextId": "spec",
+        "params": { "minSize": 11, "maxSize": 12.9 }
+      }
+    ],
+    "question": "画面のサイズはどのくらいのものを希望しますか？"
+  },
+  "spec": {
+    "answers": [
+      {
+        "content": "はい。（かなりのオーバスペックなため、一般の方には不必要なスペックになります）",
+        "nextId": "end",
+        "params": { "chip": ["M1"] }
+      },
+      {
+        "content": "いいえ。（一般の用途では絶対にこちらで事足りるかと思います）",
+        "nextId": "camera",
+        "params": { "chip": ["A12X", "A12Z"] }
+      }
+    ],
+    "question": "重いゲームや、3Dグラフィック、沢山のレイヤーを重ねたイラストなどの使用で高スペックなiPadが必要ですか？"
+  },
+  "camera": {
+    "answers": [
+      {
+        "content": "はい。（超広角カメラやLiDARスキャナなど搭載しており、カメラの性能が高めです）",
+        "nextId": "end",
+        "params": { "highPerformCamera": true }
+      },
+      {
+        "content": "いいえ。（カメラは1つしかありませんが、たまに写真を撮るぶんには問題はないかと思います）",
+        "nextId": "end",
+        "params": { "highPerformCamera": false }
+      }
+    ],
+    "question": "iPadで写真とたくさん撮る予定がありますか？"
+  },
+  "screen": {
+    "answers": [
+      {
+        "content": "はい。（画面が綺麗に見えるメリットがあります）",
+        "nextId": "use",
+        "params": { "cleanDisplay": true }
+      },
+      {
+        "content": "いいえ。（画面が少しおくばって見えますが、普段用途では問題なしです。）",
+        "nextId": "end",
+        "params": { "cleanDisplay": false }
+      }
+    ],
+    "question": "Liquid Retinaディスプレイは必要ですか？"
+  },
+  "use": {
+    "answers": [
+      {
+        "content": "ブラウジングや動画鑑賞が主である（動作編集などもやるか考えている）",
+        "nextId": "color",
+        "params": { "chip": ["A13", "A14", "A12X", "A12Z"] }
+      },
+      {
+        "content": "動画編集や写真編集などクリエティブな作業をする（ゲームなども快適にすることができるスペック）",
+        "nextId": "color",
+        "params": { "chip": ["A14", "A12X", "A12Z", "A15"] }
+      },
+      {
+        "content": "高度な動画編集やグラフィックをたくさん重ねたイラストなど高スペックなiPadが必要（一般な人がオーバースペックになると思う）",
+        "nextId": "end",
+        "params": { "chip": ["M1"] }
+      }
+    ],
+    "question": "使用用途は次のどちらに当てはまりますか？"
+  },
+  "color": {
+    "answers": [
+      {
+        "content": "はい（グリーンやブルーなどカラー豊富にあります）",
+        "nextId": "end",
+        "params": { "manyColors": true }
+      },
+      {
+        "content": "いいえ（シルバーとスペースグレーのみとなる）",
+        "nextId": "typeC",
+        "params": { "manyColors": false }
+      }
+    ],
+    "question": "カラーが豊富なiPadが欲しい"
+  },
+  "typeC": {
+    "answers": [
+      {
+        "content": "はい（外部機器などを接続するときも便利になります）",
+        "nextId": "camera",
+        "params": { "typeC": true }
+      },
+      {
+        "content": "いいえ（Lightning端子になるのでiPhoneと同じ端子になります。）",
+        "nextId": "end",
+        "params": { "typeC": false }
+      }
+    ],
+    "question": "USB Type-CポートのiPadが欲しいですか？"
+  }
+}
