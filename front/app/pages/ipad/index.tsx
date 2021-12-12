@@ -23,7 +23,7 @@ const Ipad: NextPage = () => {
         </div>
       ) : (
         <div className='mt-40 text-center'>
-          <h1 className='text-4xl font-bold text-center text-gray-500'>
+          <h1 className='text-2xl sm:text-4xl font-bold text-center text-gray-500'>
             最適なiPadページへようこそ！
           </h1>
           <hr className='p-0 w-1/2 m-auto text-gray-500 mt-1 mb-3' />
@@ -33,7 +33,7 @@ const Ipad: NextPage = () => {
             height={500}
             className='pointer-events-none'
           />
-          <h3 className='text-xl font-bold'>iPad</h3>
+          <h3 className='text-lg sm:text-xl font-bold'>iPad</h3>
           <p className='text-yellow-700 my-3'>
             こちらはiPadを診断してくれるページになります
           </p>
