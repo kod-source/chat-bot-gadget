@@ -18,6 +18,7 @@ export interface IpadResponseObject {
   weight: number,
   high_refresh_rate: boolean,
   smart_connector: boolean,
+  many_colors: boolean,
   created_at: Date,
   updated_at: Date
 }
@@ -42,6 +43,7 @@ export class IpadFactory {
       res.weight,
       res.high_perform_camera,
       res.smart_connector,
+      res.many_colors,
       new Date(res.created_at),
       new Date(res.updated_at)
     );

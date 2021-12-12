@@ -123,7 +123,8 @@ Ipad.create!(
   thunderbolt: false,
   weight: 458,
   high_refresh_rate: false,
-  smart_connector: true
+  smart_connector: true,
+  many_colors: true
 )
 Ipad.create!(
   product_id: Product.find_by(name: 'iPad Pro 11インチ（第1世代）[整備済製品]').id,
@@ -141,7 +142,8 @@ Ipad.create!(
   thunderbolt: false,
   weight: 468,
   high_refresh_rate: true,
-  smart_connector: true
+  smart_connector: true,
+  many_colors: false
 )
 Ipad.create!(
   product_id: Product.find_by(name: 'iPad Pro 11インチ（第2世代）[整備済製品]').id,
@@ -159,7 +161,8 @@ Ipad.create!(
   thunderbolt: false,
   weight: 471,
   high_refresh_rate: true,
-  smart_connector: true
+  smart_connector: true,
+  many_colors: false
 )
 Ipad.create!(
   product_id: Product.find_by(name: 'iPad Pro 11インチ（第3世代）').id,
@@ -177,7 +180,8 @@ Ipad.create!(
   thunderbolt: true,
   weight: 466,
   high_refresh_rate: true,
-  smart_connector: true
+  smart_connector: true,
+  many_colors: false
 )
 Ipad.create!(
   product_id: Product.find_by(name: 'iPad Pro 12.9インチ（第3世代）[整備済製品]').id,
@@ -195,7 +199,8 @@ Ipad.create!(
   thunderbolt: false,
   weight: 631,
   high_refresh_rate: true,
-  smart_connector: true
+  smart_connector: true,
+  many_colors: false
 )
 Ipad.create!(
   product_id: Product.find_by(name: 'iPad Pro 12.9インチ（第4世代）[整備済製品]').id,
@@ -213,7 +218,8 @@ Ipad.create!(
   thunderbolt: false,
   weight: 641,
   high_refresh_rate: true,
-  smart_connector: true
+  smart_connector: true,
+  many_colors: false
 )
 Ipad.create!(
   product_id: Product.find_by(name: 'iPad Pro 12.9インチ（第5世代）').id,
@@ -231,7 +237,8 @@ Ipad.create!(
   thunderbolt: true,
   weight: 682,
   high_refresh_rate: true,
-  smart_connector: true
+  smart_connector: true,
+  many_colors: false
 )
 Ipad.create!(
   product_id: Product.find_by(name: 'iPad（第9世代）').id,
@@ -249,7 +256,8 @@ Ipad.create!(
   thunderbolt: false,
   weight: 487,
   high_refresh_rate: false,
-  smart_connector: true
+  smart_connector: true,
+  many_colors: false
 )
 Ipad.create!(
   product_id: Product.find_by(name: 'iPad mini6').id,
@@ -267,5 +275,6 @@ Ipad.create!(
   thunderbolt: false,
   weight: 293,
   high_refresh_rate: false,
-  smart_connector: false
+  smart_connector: false,
+  many_colors: true
 )
