@@ -55,7 +55,6 @@ const IpadShow: NextPage<Props> = ({ id }) => {
     await LikeRepository.delete(product.id);
     fetchData();
   };
-  console.log(product.image);
   return (
     <>
       <Head>
