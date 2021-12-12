@@ -114,7 +114,7 @@
       {
         "content": "いいえ（シルバーとスペースグレーのみとなる）",
         "nextId": "typeC",
-        "params": { "manyColors": false}
+        "params": { "manyColors": false }
       }
     ],
     "question": "カラーが豊富なiPadが欲しい"
@@ -129,7 +129,7 @@
       {
         "content": "いいえ（Lightning端子になるのでiPhoneと同じ端子になります。）",
         "nextId": "end",
-        "params": { "typeC": false}
+        "params": { "typeC": false }
       }
     ],
     "question": "USB Type-CポートのiPadが欲しいですか？"
