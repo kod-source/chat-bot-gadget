@@ -17,6 +17,7 @@ export class Ipad {
     public weight: number,
     public highRefreshRate: boolean,
     public smartConnector: boolean,
+    public manyColors: boolean,
     public createdAt: Date,
     public updatedAt: Date
   ) {}

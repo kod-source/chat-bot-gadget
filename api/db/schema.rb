@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_04_155328) do
+ActiveRecord::Schema.define(version: 2021_12_12_060021) do
 
   create_table "ipads", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "product_id"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 2021_12_04_155328) do
     t.boolean "smart_connector"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "many_colors"
   end
 
   create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
