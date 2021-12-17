@@ -24,7 +24,7 @@
       {
         "content": "7.9〜8.3インチ（持ち運び前提での使用向け）",
         "nextId": "end",
-        "params": { "name": "iPad mini6" }
+        "params": { "maxSize": 8.3 }
       },
       {
         "content": "10.2〜11インチ（無難でサイズで使用用途がいまいち定まっていない方におすすめです）",
@@ -50,6 +50,11 @@
         "content": "いいえ。（一般の用途では絶対にこちらで事足りるかと思います）",
         "nextId": "camera",
         "params": { "chip": ["A12X", "A12Z"] }
+      },
+      {
+        "content": "1つ前の質問に戻る",
+        "nextId": "size",
+        "params": {}
       }
     ],
     "question": "重いゲームや、3Dグラフィック、沢山のレイヤーを重ねたイラストなどの使用で高スペックなiPadが必要ですか？"
@@ -65,6 +70,11 @@
         "content": "いいえ。（カメラは1つしかありませんが、たまに写真を撮るぶんには問題はないかと思います）",
         "nextId": "end",
         "params": { "highPerformCamera": false }
+      },
+      {
+        "content": "最初の質問に戻る",
+        "nextId": "init",
+        "params": {}
       }
     ],
     "question": "iPadで写真とたくさん撮る予定がありますか？"
@@ -80,6 +90,11 @@
         "content": "いいえ。（画面が少しおくばって見えますが、普段用途では問題なしです。）",
         "nextId": "end",
         "params": { "cleanDisplay": false }
+      },
+      {
+        "content": "1つ前の質問に戻る",
+        "nextId": "size",
+        "params": {}
       }
     ],
     "question": "Liquid Retinaディスプレイは必要ですか？"
@@ -115,6 +130,11 @@
         "content": "いいえ（シルバーとスペースグレーのみとなる）",
         "nextId": "typeC",
         "params": { "manyColors": false }
+      },
+      {
+        "content": "1つ前の質問に戻る",
+        "nextId": "use",
+        "params": { "manyColors": false }
       }
     ],
     "question": "カラーが豊富なiPadが欲しい"
@@ -130,6 +150,11 @@
         "content": "いいえ（Lightning端子になるのでiPhoneと同じ端子になります。）",
         "nextId": "end",
         "params": { "typeC": false }
+      },
+      {
+        "content": "1つ前の質問に戻る",
+        "nextId": "color",
+        "params": {}
       }
     ],
     "question": "USB Type-CポートのiPadが欲しいですか？"
