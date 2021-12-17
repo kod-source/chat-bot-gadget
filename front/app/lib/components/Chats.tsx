@@ -27,13 +27,13 @@ export const Chats: FC<Props> = (props) => {
                   className='w-16 h-16'
                 />
                 <p className='my-1 ml-4 text-xl bg-white border rounded-md h-14 tracking-widest pt-3 px-2'>
-                  {chat.question}
+                  {chat.text}
                 </p>
               </div>
             ) : (
               <div className='flex justify-end mr-5'>
                 <p className='my-1 mr-4 text-xl bg-white border rounded-md h-14 tracking-widest pt-3 px-2'>
-                  {chat.selectAnswer}
+                  {chat.text}
                 </p>
                 <Avatar
                   alt='question_image'

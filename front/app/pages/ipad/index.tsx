@@ -7,9 +7,9 @@ import { Button } from '@mui/material';
 import Image from 'next/image';
 import { Answer, ChatState } from 'lib/interfaces';
 import { Chats } from 'lib/components/Chats';
-import ipadIconImage from 'public/ipadIcon.jpg';
 import { useEffect } from 'react';
 import { IpadNextId, selectIpadData } from 'lib/api/repository/ipadRepository';
+import ipadIconImage from 'public/ipadIcon.jpg';
 
 const Ipad: NextPage = () => {
   const [startIpadBot, setStartIpadBot] = useState(false);
@@ -26,7 +26,7 @@ const Ipad: NextPage = () => {
       setChats((prevState) => [
         ...prevState,
         {
-          question: ipadSelectData?.question,
+          text: ipadSelectData?.question || '',
           isQuestion: true,
         },
       ]);
@@ -36,9 +36,9 @@ const Ipad: NextPage = () => {
   const onSelectAnswer = (answer: Answer) => {
     setChats((prevState) => [
       ...prevState,
-      { selectAnswer: answer.content, isQuestion: false },
+      { text: answer.content, isQuestion: false },
     ]);
-    setNextId(answer.nextId as IpadNextId);
+    setNextId(answer.nextId);
   };
 
   return (
