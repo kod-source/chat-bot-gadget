@@ -14,6 +14,7 @@ export type IpadNextId =
   | 'camera'
   | 'color'
   | 'typeC'
+  | 'use'
   | 'end';
 
 interface IpadData {
@@ -37,6 +38,8 @@ export const selectIpadData = (nextId: IpadNextId): IpadData | null => {
       return IpadData.color;
     case 'typeC':
       return IpadData.typeC;
+    case 'use':
+      return IpadData.use;
     case 'end':
       return null;
   }

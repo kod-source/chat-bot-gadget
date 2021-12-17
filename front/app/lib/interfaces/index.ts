@@ -1,5 +1,4 @@
 import { AlertColor } from '@mui/material';
-import { IpadNextId } from 'lib/api/repository/ipadRepository';
 export interface AlertState {
   open: boolean;
   type: AlertColor;
@@ -8,7 +7,7 @@ export interface AlertState {
 
 export interface Answer {
   content: string;
-  nextId: IpadNextId;
+  nextId: string;
   params: IpadParam;
 }
 

@@ -19,26 +19,28 @@ const Ipad: NextPage = () => {
 
   useEffect(() => {
     const ipadSelectData = selectIpadData(nextId);
-    console.log(ipadSelectData);
     if (nextId === 'end') {
       alert('終了');
     } else {
-      setChats((prevState) => [
-        ...prevState,
-        {
-          text: ipadSelectData?.question || '',
-          isQuestion: true,
-        },
-      ]);
-      setAnswers(ipadSelectData?.answers || []);
+      setTimeout(() => {
+        setChats((prevState) => [
+          ...prevState,
+          {
+            text: ipadSelectData?.question || '',
+            isQuestion: true,
+          },
+        ]);
+        setAnswers(ipadSelectData?.answers || []);
+      }, 500);
     }
   }, [nextId]);
+
   const onSelectAnswer = (answer: Answer) => {
     setChats((prevState) => [
       ...prevState,
       { text: answer.content, isQuestion: false },
     ]);
-    setNextId(answer.nextId);
+    setNextId(answer.nextId as IpadNextId);
   };
 
   return (
