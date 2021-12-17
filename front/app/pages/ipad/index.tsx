@@ -3,12 +3,44 @@ import React, { useState } from 'react';
 import Head from 'next/head';
 import { Header } from 'lib/components/Header';
 import { Footer } from 'lib/components/Footer';
-import IpadDate from 'lib/DataSet/ipad_data.json';
 import { Button } from '@mui/material';
 import Image from 'next/image';
+import { Answer, ChatState } from 'lib/interfaces';
+import { Chats } from 'lib/components/Chats';
+import ipadIconImage from 'public/ipadIcon.jpg';
+import { useEffect } from 'react';
+import { IpadNextId, selectIpadData } from 'lib/api/repository/ipadRepository';
 
 const Ipad: NextPage = () => {
   const [startIpadBot, setStartIpadBot] = useState(false);
+  const [chats, setChats] = useState<ChatState[]>([]);
+  const [answers, setAnswers] = useState<Answer[]>([]);
+  const [nextId, setNextId] = useState<IpadNextId>('init');
+
+  useEffect(() => {
+    const ipadSelectData = selectIpadData(nextId);
+    console.log(ipadSelectData);
+    if (nextId === 'end') {
+      alert('終了');
+    } else {
+      setChats((prevState) => [
+        ...prevState,
+        {
+          question: ipadSelectData?.question,
+          isQuestion: true,
+        },
+      ]);
+      setAnswers(ipadSelectData?.answers || []);
+    }
+  }, [nextId]);
+  const onSelectAnswer = (answer: Answer) => {
+    setChats((prevState) => [
+      ...prevState,
+      { selectAnswer: answer.content, isQuestion: false },
+    ]);
+    setNextId(answer.nextId as IpadNextId);
+  };
+
   return (
     <>
       <Head>
@@ -18,9 +50,12 @@ const Ipad: NextPage = () => {
         <Header />
       </div>
       {startIpadBot ? (
-        <div className='mt-40'>
-          <h1>診断スタート</h1>
-        </div>
+        <Chats
+          chats={chats}
+          answers={answers}
+          avatar={ipadIconImage.src}
+          onSelectAnswer={(answer) => onSelectAnswer(answer)}
+        />
       ) : (
         <div className='mt-40 text-center'>
           <h1 className='text-2xl sm:text-4xl font-bold text-center text-gray-500'>
