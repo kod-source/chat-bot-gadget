@@ -1,7 +1,7 @@
 import { Avatar, Button } from '@mui/material';
 import { Answer, ChatState } from 'lib/interfaces';
 import { AuthContext } from 'pages/_app';
-import React, { FC, useContext } from 'react';
+import React, { FC, useContext, useEffect, useRef } from 'react';
 
 interface Props {
   chats: ChatState[];
@@ -11,15 +11,23 @@ interface Props {
 }
 
 export const Chats: FC<Props> = (props) => {
+  const scrollBottomRef = useRef<HTMLDivElement>(null);
   const { user } = useContext(AuthContext);
   const { chats, answers, avatar, onSelectAnswer } = props;
 
+  useEffect(() => {
+    scrollBottomRef?.current?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'end',
+    });
+  }, [chats]);
+
   return (
-    <section className='w-full h-[100vh]'>
+    <section className='w-full h-[93vh]'>
       <div className='border-2 rounded-md h-[750px] max-w-3xl w-full absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] bg-blue-300'>
         <div className='h-[500px] overflow-x-auto'>
           {chats.map((chat) => (
-            <div className='mt-5'>
+            <div ref={scrollBottomRef} className='mt-5'>
               {chat.isQuestion ? (
                 <div className='ml-5 flex'>
                   <Avatar
@@ -28,13 +36,23 @@ export const Chats: FC<Props> = (props) => {
                     className='w-16 h-16'
                   />
                   <p className='my-1 ml-4 text-xl bg-white border rounded-md max-w-lg text-left tracking-widest pt-3 px-2'>
-                    {chat.text}
+                    {chat.text.split('\n').map((t) => (
+                      <p>
+                        {t}
+                        <br />
+                      </p>
+                    ))}
                   </p>
                 </div>
               ) : (
                 <div className='flex justify-end mr-5'>
                   <p className='my-1 mr-4 text-xl bg-white border rounded-md max-w-lg text-right tracking-widest pt-3 px-2'>
-                    {chat.text}
+                    {chat.text.split('\n').map((t) => (
+                      <p>
+                        {t}
+                        <br />
+                      </p>
+                    ))}
                   </p>
                   <Avatar
                     alt='question_image'

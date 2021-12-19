@@ -13,11 +13,17 @@ import ipadIconImage from 'public/ipadIcon.jpg';
 
 const Ipad: NextPage = () => {
   const [startIpadBot, setStartIpadBot] = useState(false);
-  const [chats, setChats] = useState<ChatState[]>([]);
+  const [chats, setChats] = useState<ChatState[]>([
+    {
+      text: 'ご利用ありがとうございます。\nこんにちは。iPad君です。\nこれからいくつかの質問をし、あなたに最適はiPadをお探しします。',
+      isQuestion: true,
+    },
+  ]);
   const [answers, setAnswers] = useState<Answer[]>([]);
   const [nextId, setNextId] = useState<IpadNextId>('init');
 
   useEffect(() => {
+    if (!startIpadBot) return;
     const ipadSelectData = selectIpadData(nextId);
     if (nextId === 'end') {
       alert('終了');
@@ -33,7 +39,7 @@ const Ipad: NextPage = () => {
         setAnswers(ipadSelectData?.answers || []);
       }, 500);
     }
-  }, [nextId]);
+  }, [nextId, startIpadBot]);
 
   const onSelectAnswer = (answer: Answer) => {
     setChats((prevState) => [
