@@ -21,12 +21,14 @@ const Ipad: NextPage = () => {
   ]);
   const [answers, setAnswers] = useState<Answer[]>([]);
   const [nextId, setNextId] = useState<IpadNextId>('init');
+  const [isChatLoading, setIsChatLoading] = useState<boolean>(true);
 
   useEffect(() => {
     if (!startIpadBot) return;
     const ipadSelectData = selectIpadData(nextId);
     if (nextId === 'end') {
       alert('終了');
+      setIsChatLoading(false);
     } else {
       setTimeout(() => {
         setChats((prevState) => [
@@ -37,11 +39,13 @@ const Ipad: NextPage = () => {
           },
         ]);
         setAnswers(ipadSelectData?.answers || []);
+        setIsChatLoading(false);
       }, 500);
     }
   }, [nextId, startIpadBot]);
 
   const onSelectAnswer = (answer: Answer) => {
+    setIsChatLoading(true);
     setChats((prevState) => [
       ...prevState,
       { text: answer.content, isQuestion: false },
@@ -50,7 +54,7 @@ const Ipad: NextPage = () => {
   };
 
   return (
-    <>
+    <div className='min-h-[100vh] relative box-border'>
       <Head>
         <title>iPad</title>
       </Head>
@@ -63,6 +67,7 @@ const Ipad: NextPage = () => {
           answers={answers}
           avatar={ipadIconImage.src}
           onSelectAnswer={(answer) => onSelectAnswer(answer)}
+          isChatLoading={isChatLoading}
         />
       ) : (
         <div className='mt-40 text-center'>
@@ -81,7 +86,7 @@ const Ipad: NextPage = () => {
             こちらはiPadを診断してくれるページになります
           </p>
           <p className='my-3'>早速スタートしますか？</p>
-          <div className='mt-3 mb-16'>
+          <div className='mt-3'>
             <Button
               className='mx-2 my-1 sm:my-0 w-56 bg-yellow-600 text-white hover:bg-yellow-700 static p-4 transition ease-in-out duration-300 hover:-translate-y-1 hover:scale-110'
               onClick={() => setStartIpadBot(true)}
@@ -91,8 +96,10 @@ const Ipad: NextPage = () => {
           </div>
         </div>
       )}
-      <Footer />
-    </>
+      <div className='absolute bottom-0 w-full'>
+        <Footer />
+      </div>
+    </div>
   );
 };
 

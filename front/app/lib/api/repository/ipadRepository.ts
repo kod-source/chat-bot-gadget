@@ -22,6 +22,18 @@ interface IpadData {
   question: string;
 }
 
+export interface IpadParam {
+  price?: number;
+  name?: number;
+  minSize?: number;
+  maxSize?: number;
+  chip?: string[];
+  highPerformCamera?: boolean;
+  cleanDisplay?: boolean;
+  manyColors?: boolean;
+  typeC?: boolean;
+}
+
 export const selectIpadData = (nextId: IpadNextId): IpadData | null => {
   switch (nextId) {
     case 'init':

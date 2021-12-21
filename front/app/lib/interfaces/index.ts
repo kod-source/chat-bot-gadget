@@ -1,4 +1,5 @@
 import { AlertColor } from '@mui/material';
+import { IpadParam } from 'lib/api/repository/ipadRepository';
 export interface AlertState {
   open: boolean;
   type: AlertColor;
@@ -9,18 +10,6 @@ export interface Answer {
   content: string;
   nextId: string;
   params: IpadParam;
-}
-
-interface IpadParam {
-  price?: number;
-  name?: number;
-  minSize?: number;
-  maxSize?: number;
-  chip?: string[];
-  highPerformCamera?: boolean;
-  cleanDisplay?: boolean;
-  manyColors?: boolean;
-  typeC?: boolean;
 }
 
 export interface ChatState {
