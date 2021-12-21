@@ -35,7 +35,7 @@ export const Chats: FC<Props> = (props) => {
                     src={avatar}
                     className='w-16 h-16'
                   />
-                  <p className='my-1 ml-4 text-xl bg-white border rounded-md max-w-lg text-left tracking-widest pt-3 px-2'>
+                  <p className='my-1 ml-4 text-xl bg-white border rounded-md max-w-lg text-left tracking-widest py-3 px-2'>
                     {chat.text.split('\n').map((t) => (
                       <p>
                         {t}
@@ -46,7 +46,7 @@ export const Chats: FC<Props> = (props) => {
                 </div>
               ) : (
                 <div className='flex justify-end mr-5'>
-                  <p className='my-1 mr-4 text-xl bg-white border rounded-md max-w-lg text-right tracking-widest pt-3 px-2'>
+                  <p className='my-1 mr-4 text-xl bg-white border rounded-md max-w-lg text-right tracking-widest py-3 px-2'>
                     {chat.text.split('\n').map((t) => (
                       <p>
                         {t}
