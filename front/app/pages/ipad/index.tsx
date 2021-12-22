@@ -8,8 +8,13 @@ import Image from 'next/image';
 import { Answer, ChatState } from 'lib/interfaces';
 import { Chats } from 'lib/components/Chats';
 import { useEffect } from 'react';
-import { IpadNextId, selectIpadData } from 'lib/api/repository/ipadRepository';
+import {
+  IpadNextId,
+  IpadParam,
+  selectIpadData,
+} from 'lib/api/repository/ipadRepository';
 import ipadIconImage from 'public/ipadIcon.jpg';
+import { ChooseIpadParams } from 'lib/Entity/ChooseIpadParams';
 
 const Ipad: NextPage = () => {
   const [startIpadBot, setStartIpadBot] = useState(false);
@@ -22,6 +27,7 @@ const Ipad: NextPage = () => {
   const [answers, setAnswers] = useState<Answer[]>([]);
   const [nextId, setNextId] = useState<IpadNextId>('init');
   const [isChatLoading, setIsChatLoading] = useState<boolean>(true);
+  const [ipadSearchParams, setIpadSearchParams] = useState<IpadParam>();
 
   useEffect(() => {
     if (!startIpadBot) return;
@@ -51,6 +57,7 @@ const Ipad: NextPage = () => {
       { text: answer.content, isQuestion: false },
     ]);
     setNextId(answer.nextId as IpadNextId);
+    ChooseIpadParams(answer, ipadSearchParams, setIpadSearchParams);
   };
 
   return (
