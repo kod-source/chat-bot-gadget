@@ -18,9 +18,6 @@ import ipadIconImage from 'public/ipadIcon.jpg';
 import { ChooseIpadParams } from 'lib/Function/ChooseIpadParams';
 import { IpadService } from 'lib/api/Service/IpadService';
 import { Product } from 'lib/api/Entity/Product';
-import MenuIcon from '@mui/icons-material/Menu';
-import Fab from '@mui/material/Fab';
-import AddIcon from '@mui/icons-material/Add';
 import { SpeedDialTooltipOpen } from 'lib/components/SpeedDialTooltipOpen';
 
 const IpadPage: NextPage = () => {
@@ -38,6 +35,8 @@ const IpadPage: NextPage = () => {
     null
   );
   const [searchProducts, setSearchProducts] = useState<Product[]>([]);
+  console.log(searchProducts);
+  console.log(ipadSearchParams);
 
   const getSearchIpad = async (ipadSelectData: IpadData | null) => {
     if (ipadSearchParams) {
@@ -98,6 +97,7 @@ const IpadPage: NextPage = () => {
       setIpadSearchParams(null);
       setNextId('init');
     }, 500);
+    setIpadSearchParams(null);
   };
 
   const onSelectAnswer = (answer: Answer) => {

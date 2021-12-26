@@ -49,7 +49,7 @@
       {
         "content": "いいえ。（一般の用途では絶対にこちらで事足りるかと思います）",
         "nextId": "camera",
-        "params": { "chips": ["A12X", "A12Z"] }
+        "params": { "chips": ["A12X", "A12Z", "M1"] }
       },
       {
         "content": "1つ前の質問に戻る",
@@ -63,18 +63,18 @@
     "answers": [
       {
         "content": "はい。（超広角カメラやLiDARスキャナなど搭載しており、カメラの性能が高めです）",
-        "nextId": "end",
+        "nextId": "fiveG",
         "params": { "highPerformCamera": true }
       },
       {
-        "content": "いいえ。（カメラは1つしかありませんが、たまに写真を撮るぶんには問題はないかと思います）",
-        "nextId": "end",
-        "params": { "highPerformCamera": false }
+        "content": "どちらでも良い",
+        "nextId": "fiveG",
+        "params": {}
       },
       {
-        "content": "最初の質問に戻る",
-        "nextId": "init",
-        "params": {}
+        "content": "いいえ。（カメラは1つしかありませんが、たまに写真を撮るぶんには問題はないかと思います）",
+        "nextId": "fiveG",
+        "params": { "highPerformCamera": false }
       }
     ],
     "question": "iPadで写真とたくさん撮る予定がありますか？"
@@ -87,14 +87,14 @@
         "params": { "cleanDisplay": true }
       },
       {
-        "content": "いいえ。（画面が少しおくばって見えますが、普段用途では問題なしです。）",
-        "nextId": "end",
-        "params": { "cleanDisplay": false }
+        "content": "どちらでもいい。",
+        "nextId": "use",
+        "params": {}
       },
       {
-        "content": "1つ前の質問に戻る",
-        "nextId": "size",
-        "params": {}
+        "content": "いいえ。（画面が少しおくばって見えますが、普段用途では問題なしです。）",
+        "nextId": "use",
+        "params": { "cleanDisplay": false }
       }
     ],
     "question": "Liquid Retinaディスプレイは必要ですか？"
@@ -104,12 +104,12 @@
       {
         "content": "ブラウジングや動画鑑賞が主である（動作編集などもやるか考えている）",
         "nextId": "color",
-        "params": { "chips": ["A13", "A14", "A12X", "A12Z"] }
+        "params": { "chips": ["A13", "A14", "A12X", "A12Z", "A15", "M1"] }
       },
       {
         "content": "動画編集や写真編集などクリエティブな作業をする（ゲームなども快適にすることができるスペック）",
         "nextId": "color",
-        "params": { "chips": ["A14", "A12X", "A12Z", "A15"] }
+        "params": { "chips": ["A14", "A12X", "A12Z", "A15", "M1"] }
       },
       {
         "content": "高度な動画編集やグラフィックをたくさん重ねたイラストなど高スペックなiPadが必要（一般な人がオーバースペックになると思う）",
@@ -147,16 +147,156 @@
         "params": { "typeC": true }
       },
       {
-        "content": "いいえ（Lightning端子になるのでiPhoneと同じ端子になります。）",
-        "nextId": "end",
-        "params": { "typeC": false }
+        "content": "どちらでも良い。",
+        "nextId": "camera",
+        "params": {}
       },
       {
-        "content": "1つ前の質問に戻る",
-        "nextId": "color",
-        "params": {}
+        "content": "いいえ（Lightning端子になるのでiPhoneと同じ端子になります。）",
+        "nextId": "camera",
+        "params": { "typeC": false }
       }
     ],
     "question": "USB Type-CポートのiPadが欲しいですか？"
+  },
+  "fiveG": {
+    "answers": [
+      {
+        "content": "はい。",
+        "nextId": "speakerCount",
+        "params": { "fiveG": true }
+      },
+      {
+        "content": "どちらでも良い。",
+        "nextId": "speakerCount",
+        "params": {}
+      },
+      {
+        "content": "1つ前の質問に戻る",
+        "nextId": "camera",
+        "params": {}
+      }
+    ],
+    "question": "5Gに対応したiPadが欲しいですか？"
+  },
+  "speakerCount": {
+    "answers": [
+      {
+        "content": "4つ（とても立体的な音を楽しむことができます）",
+        "nextId": "faceId",
+        "params": { "speakerCount": 4 }
+      },
+      {
+        "content": "特にこだわりはない。",
+        "nextId": "faceId",
+        "params": {}
+      },
+      {
+        "content": "1つ前の質問に戻る",
+        "nextId": "fiveG",
+        "params": {}
+      }
+    ],
+    "question": "スピーカの数はいくつ欲しいですか？"
+  },
+  "faceId": {
+    "answers": [
+      {
+        "content": "FaceId",
+        "nextId": "centerFrame",
+        "params": { "faceId": true }
+      },
+      {
+        "content": "TouchId",
+        "nextId": "centerFrame",
+        "params": { "faceId": false }
+      },
+      {
+        "content": "1つ前の質問に戻る",
+        "nextId": "speakerCount",
+        "params": {}
+      }
+    ],
+    "question": "FaceIdとTouchIdどちらが良いですか？"
+  },
+  "centerFrame": {
+    "answers": [
+      {
+        "content": "はい（被写体が動き回ってもフレームの中心から外れないようにします）",
+        "nextId": "dualSpeaker",
+        "params": { "centerFrame": true }
+      },
+      {
+        "content": "どちらでも良い。",
+        "nextId": "dualSpeaker",
+        "params": {}
+      },
+      {
+        "content": "1つ前の質問に戻る",
+        "nextId": "faceId",
+        "params": {}
+      }
+    ],
+    "question": "センターフレームの機能は必要ですか？"
+  },
+  "dualSpeaker": {
+    "answers": [
+      {
+        "content": "はい（横画面で動画など見るときに表方向から音が聞こえます）",
+        "nextId": "highRefreshRate",
+        "params": { "dualSpeaker": true }
+      },
+      {
+        "content": "どちらでも良い。",
+        "nextId": "highRefreshRate",
+        "params": {}
+      },
+      {
+        "content": "1つ前の質問に戻る",
+        "nextId": "centerFrame",
+        "params": {}
+      }
+    ],
+    "question": "デュアルスピーカーは必要ですか？"
+  },
+  "highRefreshRate": {
+    "answers": [
+      {
+        "content": "はい（ヌルヌルと画面が動く感じがします）",
+        "nextId": "thunderbolt",
+        "params": { "highRefreshRate": true }
+      },
+      {
+        "content": "どちらでも良い。",
+        "nextId": "thunderbolt",
+        "params": {}
+      },
+      {
+        "content": "1つ前の質問に戻る",
+        "nextId": "dualSpeaker",
+        "params": {}
+      }
+    ],
+    "question": "120Hzの画面は必要ですか？"
+  },
+  "thunderbolt": {
+    "answers": [
+      {
+        "content": "はい（高速なデータ転送などができます）",
+        "nextId": "end",
+        "params": { "thunderbolt": true }
+      },
+      {
+        "content": "どちらでも良い。",
+        "nextId": "end",
+        "params": {}
+      },
+      {
+        "content": "1つ前の質問に戻る",
+        "nextId": "highRefreshRate",
+        "params": {}
+      }
+    ],
+    "question": "thunderbolt端子は必要ですか？"
   }
 }
