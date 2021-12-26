@@ -9,55 +9,96 @@ import { Answer, ChatState } from 'lib/interfaces';
 import { Chats } from 'lib/components/Chats';
 import { useEffect } from 'react';
 import {
+  IpadData,
   IpadNextId,
   IpadParam,
   IpadRepository,
 } from 'lib/api/repository/ipadRepository';
 import ipadIconImage from 'public/ipadIcon.jpg';
 import { ChooseIpadParams } from 'lib/Function/ChooseIpadParams';
-import { Ipad } from 'lib/api/Entity/Ipad';
 import { IpadService } from 'lib/api/Service/IpadService';
 import { Product } from 'lib/api/Entity/Product';
+import MenuIcon from '@mui/icons-material/Menu';
+import Fab from '@mui/material/Fab';
+import AddIcon from '@mui/icons-material/Add';
+import { SpeedDialTooltipOpen } from 'lib/components/SpeedDialTooltipOpen';
 
 const IpadPage: NextPage = () => {
   const [startIpadBot, setStartIpadBot] = useState(false);
   const [chats, setChats] = useState<ChatState[]>([
     {
-      text: 'ご利用ありがとうございます。\nこんにちは。iPad君です。\nこれからいくつかの質問をし、あなたに最適はiPadをお探しします。',
+      text: 'ご利用ありがとうございます。\nこんにちは。iPad君です。\n\nこれからいくつかの質問をし、あなたに最適はiPadをお探しします。',
       isQuestion: true,
     },
   ]);
   const [answers, setAnswers] = useState<Answer[]>([]);
   const [nextId, setNextId] = useState<IpadNextId>('init');
   const [isChatLoading, setIsChatLoading] = useState<boolean>(true);
-  const [ipadSearchParams, setIpadSearchParams] = useState<IpadParam>();
-  const [searchProduct, setSearchProduct] = useState<Product[]>([]);
+  const [ipadSearchParams, setIpadSearchParams] = useState<IpadParam | null>(
+    null
+  );
+  const [searchProducts, setSearchProducts] = useState<Product[]>([]);
 
-  const getSearchIpad = async () => {
-    if (!ipadSearchParams) return;
-    setSearchProduct(await IpadRepository.searchResProduct(ipadSearchParams));
+  const getSearchIpad = async (ipadSelectData: IpadData | null) => {
+    if (ipadSearchParams) {
+      const products = await IpadRepository.searchResProduct(ipadSearchParams);
+      if (products.length === 0) {
+        noneProductsSelectChats();
+        setTimeout(() => {
+          restartChats();
+        }, 500);
+        return;
+      }
+      setSearchProducts(products);
+      if (products.length === 1) {
+        endChats();
+        return;
+      }
+      selectChatsWithAnswers(ipadSelectData);
+    } else {
+      selectChatsWithAnswers(ipadSelectData);
+    }
   };
 
   useEffect(() => {
     if (!startIpadBot) return;
     const ipadSelectData = IpadService.selectData(nextId);
-    if (nextId === 'end') {
-      setIsChatLoading(false);
-      getSearchIpad();
-    } else {
-      setTimeout(() => {
-        setChats((prevState) => [
-          ...prevState,
-          {
-            text: ipadSelectData?.question || '',
-            isQuestion: true,
-          },
-        ]);
-        setAnswers(ipadSelectData?.answers || []);
-        setIsChatLoading(false);
-      }, 500);
-    }
+    getSearchIpad(ipadSelectData);
   }, [nextId, startIpadBot]);
+
+  const selectChatsWithAnswers = (ipadSelectData: IpadData | null) => {
+    setTimeout(() => {
+      setChats((prevState) => [
+        ...prevState,
+        {
+          text: ipadSelectData?.question || '',
+          isQuestion: true,
+        },
+      ]);
+      setAnswers(ipadSelectData?.answers || []);
+      setIsChatLoading(false);
+    }, 500);
+  };
+
+  const noneProductsSelectChats = () => {
+    setTimeout(() => {
+      setChats((prevState) => [
+        ...prevState,
+        {
+          text: '申し訳ございません。\n相当のiPadは見つかりませんでした🥺\n\nお手数ですが、もう一度最初からやり直してください🙏',
+          isQuestion: true,
+        },
+      ]);
+    }, 500);
+  };
+
+  const restartChats = () => {
+    setIsChatLoading(true);
+    setTimeout(() => {
+      setIpadSearchParams(null);
+      setNextId('init');
+    }, 500);
+  };
 
   const onSelectAnswer = (answer: Answer) => {
     setIsChatLoading(true);
@@ -69,6 +110,10 @@ const IpadPage: NextPage = () => {
     ChooseIpadParams(answer, ipadSearchParams, setIpadSearchParams);
   };
 
+  const endChats = () => {
+    alert('終了');
+  };
+
   return (
     <div className='min-h-[100vh] relative box-border'>
       <Head>
@@ -78,13 +123,21 @@ const IpadPage: NextPage = () => {
         <Header />
       </div>
       {startIpadBot ? (
-        <Chats
-          chats={chats}
-          answers={answers}
-          avatar={ipadIconImage.src}
-          onSelectAnswer={(answer) => onSelectAnswer(answer)}
-          isChatLoading={isChatLoading}
-        />
+        <>
+          <Chats
+            chats={chats}
+            answers={answers}
+            avatar={ipadIconImage.src}
+            onSelectAnswer={(answer) => onSelectAnswer(answer)}
+            isChatLoading={isChatLoading}
+          />
+          {ipadSearchParams && (
+            <SpeedDialTooltipOpen
+              restartChats={restartChats}
+              endChats={endChats}
+            />
+          )}
+        </>
       ) : (
         <div className='mt-40 text-center'>
           <h1 className='text-2xl sm:text-4xl font-bold text-center text-gray-500'>
