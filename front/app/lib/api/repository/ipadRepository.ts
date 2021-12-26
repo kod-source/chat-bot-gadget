@@ -20,6 +20,13 @@ export type IpadNextId =
   | 'color'
   | 'typeC'
   | 'use'
+  | 'fiveG'
+  | 'speakerCount'
+  | 'faceId'
+  | 'centerFrame'
+  | 'highRefreshRate'
+  | 'thunderbolt'
+  | 'dualSpeaker'
   | 'end';
 
 export interface IpadData {
@@ -36,6 +43,13 @@ export interface IpadParam {
   cleanDisplay?: boolean;
   manyColors?: boolean;
   typeC?: boolean;
+  speakerCount?: number;
+  faceId?: boolean;
+  centerFrame?: boolean;
+  dualSpeaker?: boolean;
+  highRefreshRate?: boolean;
+  thunderbolt?: boolean;
+  fiveG?: boolean;
 }
 
 export class IpadRepository {

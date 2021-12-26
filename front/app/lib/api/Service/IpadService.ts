@@ -37,6 +37,39 @@ export class IpadService {
     if (params.typeC || params.typeC === false) {
       urlSearchParams.append('type_c', params.typeC ? 'true' : 'false');
     }
+    if (params.fiveG || params.fiveG === false) {
+      urlSearchParams.append('five_g', params.fiveG ? 'true' : 'false');
+    }
+    if (params.speakerCount) {
+      urlSearchParams.append('speaker_count', params.speakerCount.toString());
+    }
+    if (params.faceId || params.faceId === false) {
+      urlSearchParams.append('face_id', params.faceId ? 'true' : 'false');
+    }
+    if (params.centerFrame || params.centerFrame === false) {
+      urlSearchParams.append(
+        'center_frame',
+        params.centerFrame ? 'true' : 'false'
+      );
+    }
+    if (params.dualSpeaker || params.dualSpeaker === false) {
+      urlSearchParams.append(
+        'dual_speaker',
+        params.dualSpeaker ? 'true' : 'false'
+      );
+    }
+    if (params.highRefreshRate || params.highRefreshRate === false) {
+      urlSearchParams.append(
+        'high_refresh_rate',
+        params.highRefreshRate ? 'true' : 'false'
+      );
+    }
+    if (params.thunderbolt || params.thunderbolt === false) {
+      urlSearchParams.append(
+        'thunderbolt',
+        params.thunderbolt ? 'true' : 'false'
+      );
+    }
 
     return urlSearchParams;
   }
@@ -59,6 +92,20 @@ export class IpadService {
         return IpadChatData.typeC;
       case 'use':
         return IpadChatData.use;
+      case 'fiveG':
+        return IpadChatData.fiveG;
+      case 'speakerCount':
+        return IpadChatData.speakerCount;
+      case 'faceId':
+        return IpadChatData.faceId;
+      case 'centerFrame':
+        return IpadChatData.centerFrame;
+      case 'dualSpeaker':
+        return IpadChatData.dualSpeaker;
+      case 'highRefreshRate':
+        return IpadChatData.highRefreshRate;
+      case 'thunderbolt':
+        return IpadChatData.thunderbolt;
       case 'end':
         return null;
     }
