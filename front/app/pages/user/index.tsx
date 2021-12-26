@@ -28,7 +28,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import { LikeRepository } from 'lib/api/repository/likeRepostiroy';
 import LabelIcon from '@mui/icons-material/Label';
-import { detailUrl } from 'lib/Entity/DerailUrl';
+import { detailUrl } from 'lib/Function/DerailUrl';
 import Image from 'next/image';
 
 const ProductComponent: FC<{ product: Product }> = ({ product }) => {

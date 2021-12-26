@@ -24,17 +24,17 @@
       {
         "content": "7.9〜8.3インチ（持ち運び前提での使用向け）",
         "nextId": "end",
-        "params": { "maxSize": 8.3 }
+        "params": { "minSize": 1, "maxSize": 9 }
       },
       {
-        "content": "10.2〜11インチ（無難でサイズで使用用途がいまいち定まっていない方におすすめです）",
+        "content": "10.2〜11インチ（無難でサイズで使用用途がいまいち定まっていない方にオススメです）",
         "nextId": "screen",
-        "params": { "minSize": 10.2, "maxSize": 11 }
+        "params": { "minSize": 10.1, "maxSize": 11.1 }
       },
       {
-        "content": "12.9インチ（画面がとても大きいため用途が明確な方におすすです）",
+        "content": "12.9インチ（画面がとても大きいため用途が明確な方にオススメです）",
         "nextId": "spec",
-        "params": { "minSize": 11, "maxSize": 12.9 }
+        "params": { "minSize": 11.1, "maxSize": 13 }
       }
     ],
     "question": "画面のサイズはどのくらいのものを希望しますか？"
@@ -44,12 +44,12 @@
       {
         "content": "はい。（かなりのオーバスペックなため、一般の方には不必要なスペックになります）",
         "nextId": "end",
-        "params": { "chip": ["M1"] }
+        "params": { "chips": ["M1"] }
       },
       {
         "content": "いいえ。（一般の用途では絶対にこちらで事足りるかと思います）",
         "nextId": "camera",
-        "params": { "chip": ["A12X", "A12Z"] }
+        "params": { "chips": ["A12X", "A12Z"] }
       },
       {
         "content": "1つ前の質問に戻る",
@@ -104,17 +104,17 @@
       {
         "content": "ブラウジングや動画鑑賞が主である（動作編集などもやるか考えている）",
         "nextId": "color",
-        "params": { "chip": ["A13", "A14", "A12X", "A12Z"] }
+        "params": { "chips": ["A13", "A14", "A12X", "A12Z"] }
       },
       {
         "content": "動画編集や写真編集などクリエティブな作業をする（ゲームなども快適にすることができるスペック）",
         "nextId": "color",
-        "params": { "chip": ["A14", "A12X", "A12Z", "A15"] }
+        "params": { "chips": ["A14", "A12X", "A12Z", "A15"] }
       },
       {
         "content": "高度な動画編集やグラフィックをたくさん重ねたイラストなど高スペックなiPadが必要（一般な人がオーバースペックになると思う）",
         "nextId": "end",
-        "params": { "chip": ["M1"] }
+        "params": { "chips": ["M1"] }
       }
     ],
     "question": "使用用途は次のどちらに当てはまりますか？"

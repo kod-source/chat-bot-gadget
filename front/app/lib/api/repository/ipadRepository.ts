@@ -2,8 +2,13 @@ import axios from 'axios';
 import { Ipad } from '../Entity/Ipad';
 import { IpadFactory, IpadResponseObject } from '../Factory/IpadFactory';
 import { IpadsUrl } from 'lib/api/hostUrl/url';
-import IpadData from 'lib/DataSet/ipad_data.json';
 import { Answer } from 'lib/interfaces';
+import { IpadService } from '../Service/IpadService';
+import { Product } from '../Entity/Product';
+import {
+  ProductFactory,
+  ProductResponseObject,
+} from '../Factory/ProductFactory';
 
 export type IpadNextId =
   | 'init'
@@ -17,45 +22,21 @@ export type IpadNextId =
   | 'use'
   | 'end';
 
-interface IpadData {
+export interface IpadData {
   answers: Answer[];
   question: string;
 }
 
 export interface IpadParam {
   price?: number;
-  name?: number;
   minSize?: number;
   maxSize?: number;
-  chip?: string[];
+  chips?: string[];
   highPerformCamera?: boolean;
   cleanDisplay?: boolean;
   manyColors?: boolean;
   typeC?: boolean;
 }
-
-export const selectIpadData = (nextId: IpadNextId): IpadData | null => {
-  switch (nextId) {
-    case 'init':
-      return IpadData.init;
-    case 'size':
-      return IpadData.size;
-    case 'screen':
-      return IpadData.screen;
-    case 'spec':
-      return IpadData.spec;
-    case 'camera':
-      return IpadData.camera;
-    case 'color':
-      return IpadData.color;
-    case 'typeC':
-      return IpadData.typeC;
-    case 'use':
-      return IpadData.use;
-    case 'end':
-      return null;
-  }
-};
 
 export class IpadRepository {
   static async all(): Promise<Ipad[]> {
@@ -69,5 +50,16 @@ export class IpadRepository {
       withCredentials: true,
     });
     return IpadFactory.createFromResponse(res.data);
+  }
+
+  static async searchResProduct(params: IpadParam): Promise<Product[]> {
+    const urlSearchParams = IpadService.buildSearchParams(params);
+    const res = await axios.get<ProductResponseObject[]>(
+      `${IpadsUrl}/search?${urlSearchParams.toString()}`,
+      {
+        withCredentials: true,
+      }
+    );
+    return res.data.map(ProductFactory.createFromResponse);
   }
 }
