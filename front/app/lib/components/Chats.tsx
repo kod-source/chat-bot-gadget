@@ -2,6 +2,7 @@ import { Avatar, Button, Skeleton } from '@mui/material';
 import { Answer, ChatState } from 'lib/interfaces';
 import { AuthContext } from 'pages/_app';
 import React, { FC, useContext, useEffect, useRef } from 'react';
+import { IpadParam } from 'lib/api/repository/ipadRepository';
 
 interface Props {
   chats: ChatState[];
@@ -21,7 +22,7 @@ export const Chats: FC<Props> = (props) => {
       behavior: 'smooth',
       block: 'end',
     });
-  }, [chats]);
+  }, [chats, isChatLoading]);
 
   return (
     <section className='w-full h-[93vh]'>

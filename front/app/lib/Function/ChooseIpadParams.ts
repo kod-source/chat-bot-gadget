@@ -3,13 +3,13 @@ import { Answer } from 'lib/interfaces';
 
 export const ChooseIpadParams = (
   answer: Answer,
-  ipadSearchParams: IpadParam | undefined,
+  ipadSearchParams: IpadParam | null,
   setIpadSearchParams: React.Dispatch<
-    React.SetStateAction<IpadParam | undefined>
+    React.SetStateAction<IpadParam | null>
   >
 ) => {
   if (answer.nextId === 'init') {
-    setIpadSearchParams({});
+    setIpadSearchParams(null);
     return;
   }
   const params = answer.params;

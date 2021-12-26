@@ -18,19 +18,25 @@ import ipadIconImage from 'public/ipadIcon.jpg';
 import { ChooseIpadParams } from 'lib/Function/ChooseIpadParams';
 import { IpadService } from 'lib/api/Service/IpadService';
 import { Product } from 'lib/api/Entity/Product';
+import MenuIcon from '@mui/icons-material/Menu';
+import Fab from '@mui/material/Fab';
+import AddIcon from '@mui/icons-material/Add';
+import { SpeedDialTooltipOpen } from 'lib/components/SpeedDialTooltipOpen';
 
 const IpadPage: NextPage = () => {
   const [startIpadBot, setStartIpadBot] = useState(false);
   const [chats, setChats] = useState<ChatState[]>([
     {
-      text: 'ご利用ありがとうございます。\nこんにちは。iPad君です。\nこれからいくつかの質問をし、あなたに最適はiPadをお探しします。',
+      text: 'ご利用ありがとうございます。\nこんにちは。iPad君です。\n\nこれからいくつかの質問をし、あなたに最適はiPadをお探しします。',
       isQuestion: true,
     },
   ]);
   const [answers, setAnswers] = useState<Answer[]>([]);
   const [nextId, setNextId] = useState<IpadNextId>('init');
   const [isChatLoading, setIsChatLoading] = useState<boolean>(true);
-  const [ipadSearchParams, setIpadSearchParams] = useState<IpadParam>();
+  const [ipadSearchParams, setIpadSearchParams] = useState<IpadParam | null>(
+    null
+  );
   const [searchProducts, setSearchProducts] = useState<Product[]>([]);
 
   const getSearchIpad = async (ipadSelectData: IpadData | null) => {
@@ -38,12 +44,15 @@ const IpadPage: NextPage = () => {
       const products = await IpadRepository.searchResProduct(ipadSearchParams);
       if (products.length === 0) {
         noneProductsSelectChats();
-        restartChats();
+        setTimeout(() => {
+          restartChats();
+        }, 500);
         return;
       }
       setSearchProducts(products);
       if (products.length === 1) {
-        return alert('終了');
+        endChats();
+        return;
       }
       selectChatsWithAnswers(ipadSelectData);
     } else {
@@ -84,10 +93,11 @@ const IpadPage: NextPage = () => {
   };
 
   const restartChats = () => {
+    setIsChatLoading(true);
     setTimeout(() => {
-      setIpadSearchParams({});
+      setIpadSearchParams(null);
       setNextId('init');
-    }, 1000);
+    }, 500);
   };
 
   const onSelectAnswer = (answer: Answer) => {
@@ -100,6 +110,10 @@ const IpadPage: NextPage = () => {
     ChooseIpadParams(answer, ipadSearchParams, setIpadSearchParams);
   };
 
+  const endChats = () => {
+    alert('終了');
+  };
+
   return (
     <div className='min-h-[100vh] relative box-border'>
       <Head>
@@ -109,13 +123,21 @@ const IpadPage: NextPage = () => {
         <Header />
       </div>
       {startIpadBot ? (
-        <Chats
-          chats={chats}
-          answers={answers}
-          avatar={ipadIconImage.src}
-          onSelectAnswer={(answer) => onSelectAnswer(answer)}
-          isChatLoading={isChatLoading}
-        />
+        <>
+          <Chats
+            chats={chats}
+            answers={answers}
+            avatar={ipadIconImage.src}
+            onSelectAnswer={(answer) => onSelectAnswer(answer)}
+            isChatLoading={isChatLoading}
+          />
+          {ipadSearchParams && (
+            <SpeedDialTooltipOpen
+              restartChats={restartChats}
+              endChats={endChats}
+            />
+          )}
+        </>
       ) : (
         <div className='mt-40 text-center'>
           <h1 className='text-2xl sm:text-4xl font-bold text-center text-gray-500'>
