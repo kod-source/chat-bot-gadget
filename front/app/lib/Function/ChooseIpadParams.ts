@@ -38,6 +38,6 @@ export const ChooseIpadParams = (
   } else if (params.typeC || params.typeC === false) {
     setIpadSearchParams({ ...ipadSearchParams, typeC: params.typeC });
   } else {
-    return;
+    setIpadSearchParams(ipadSearchParams);
   }
 };

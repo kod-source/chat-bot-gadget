@@ -21,7 +21,7 @@ export const Chats: FC<Props> = (props) => {
       behavior: 'smooth',
       block: 'end',
     });
-  }, [isChatLoading]);
+  }, [chats]);
 
   return (
     <section className='w-full h-[93vh]'>
