@@ -11,12 +11,15 @@ import { useEffect } from 'react';
 import {
   IpadNextId,
   IpadParam,
-  selectIpadData,
+  IpadRepository,
 } from 'lib/api/repository/ipadRepository';
 import ipadIconImage from 'public/ipadIcon.jpg';
-import { ChooseIpadParams } from 'lib/Entity/ChooseIpadParams';
+import { ChooseIpadParams } from 'lib/Function/ChooseIpadParams';
+import { Ipad } from 'lib/api/Entity/Ipad';
+import { IpadService } from 'lib/api/Service/IpadService';
+import { Product } from 'lib/api/Entity/Product';
 
-const Ipad: NextPage = () => {
+const IpadPage: NextPage = () => {
   const [startIpadBot, setStartIpadBot] = useState(false);
   const [chats, setChats] = useState<ChatState[]>([
     {
@@ -28,13 +31,19 @@ const Ipad: NextPage = () => {
   const [nextId, setNextId] = useState<IpadNextId>('init');
   const [isChatLoading, setIsChatLoading] = useState<boolean>(true);
   const [ipadSearchParams, setIpadSearchParams] = useState<IpadParam>();
+  const [searchProduct, setSearchProduct] = useState<Product[]>([]);
+
+  const getSearchIpad = async () => {
+    if (!ipadSearchParams) return;
+    setSearchProduct(await IpadRepository.searchResProduct(ipadSearchParams));
+  };
 
   useEffect(() => {
     if (!startIpadBot) return;
-    const ipadSelectData = selectIpadData(nextId);
+    const ipadSelectData = IpadService.selectData(nextId);
     if (nextId === 'end') {
-      alert('終了');
       setIsChatLoading(false);
+      getSearchIpad();
     } else {
       setTimeout(() => {
         setChats((prevState) => [
@@ -110,4 +119,4 @@ const Ipad: NextPage = () => {
   );
 };
 
-export default Ipad;
+export default IpadPage;

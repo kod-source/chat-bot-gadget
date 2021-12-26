@@ -11,5 +11,6 @@ Rails.application.routes.draw do
   resources :likes, only: [:index, :create, :destroy]
   get '/like_products', to: 'products#like_products'
   resources :products, only: [:show]
+  get '/ipads/search', to: 'ipads#search'
   resources :ipads, only: [:index, :show]
 end
