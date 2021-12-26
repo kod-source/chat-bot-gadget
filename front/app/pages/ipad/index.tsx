@@ -35,8 +35,6 @@ const IpadPage: NextPage = () => {
     null
   );
   const [searchProducts, setSearchProducts] = useState<Product[]>([]);
-  console.log(searchProducts);
-  console.log(ipadSearchParams);
 
   const getSearchIpad = async (ipadSelectData: IpadData | null) => {
     if (ipadSearchParams) {

@@ -39,7 +39,6 @@ class IpadsController < ApplicationController
                 )
               )
             )
-    p 'params', params
 
     render json: ipads.map{ |ipad| ipad.product }
   end
