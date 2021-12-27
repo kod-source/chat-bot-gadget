@@ -1,8 +1,9 @@
 import { Avatar, Button, Skeleton } from '@mui/material';
+import { IpadParam } from 'lib/api/repository/ipadRepository';
 import { Answer, ChatState } from 'lib/interfaces';
 import { AuthContext } from 'pages/_app';
 import React, { FC, useContext, useEffect, useRef } from 'react';
-import { IpadParam } from 'lib/api/repository/ipadRepository';
+import { SpeedDialTooltipOpen } from './SpeedDialTooltipOpen';
 
 interface Props {
   chats: ChatState[];
@@ -10,12 +11,24 @@ interface Props {
   avatar: string;
   onSelectAnswer: (answer: Answer) => void;
   isChatLoading: boolean;
+  ipadSearchParams: IpadParam | null;
+  restartChats: () => void;
+  endChats: () => void;
 }
 
 export const Chats: FC<Props> = (props) => {
   const scrollBottomRef = useRef<HTMLDivElement>(null);
   const { user } = useContext(AuthContext);
-  const { chats, answers, avatar, onSelectAnswer, isChatLoading } = props;
+  const {
+    chats,
+    answers,
+    avatar,
+    onSelectAnswer,
+    isChatLoading,
+    ipadSearchParams,
+    restartChats,
+    endChats,
+  } = props;
 
   useEffect(() => {
     scrollBottomRef?.current?.scrollIntoView({
@@ -101,6 +114,12 @@ export const Chats: FC<Props> = (props) => {
               )}
             </div>
           ))}
+          {ipadSearchParams && (
+            <SpeedDialTooltipOpen
+              restartChats={restartChats}
+              endChats={endChats}
+            />
+          )}
         </div>
       </div>
     </section>

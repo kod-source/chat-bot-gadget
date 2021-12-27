@@ -95,7 +95,6 @@ const IpadPage: NextPage = () => {
       setIpadSearchParams(null);
       setNextId('init');
     }, 500);
-    setIpadSearchParams(null);
   };
 
   const onSelectAnswer = (answer: Answer) => {
@@ -128,13 +127,10 @@ const IpadPage: NextPage = () => {
             avatar={ipadIconImage.src}
             onSelectAnswer={(answer) => onSelectAnswer(answer)}
             isChatLoading={isChatLoading}
+            ipadSearchParams={ipadSearchParams}
+            restartChats={restartChats}
+            endChats={endChats}
           />
-          {ipadSearchParams && (
-            <SpeedDialTooltipOpen
-              restartChats={restartChats}
-              endChats={endChats}
-            />
-          )}
         </>
       ) : (
         <div className='mt-40 text-center'>
