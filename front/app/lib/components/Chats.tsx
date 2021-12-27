@@ -39,18 +39,18 @@ export const Chats: FC<Props> = (props) => {
 
   return (
     <section className='w-full h-[93vh]'>
-      <div className='border-2 rounded-md h-[750px] max-w-3xl w-full absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] bg-blue-300'>
-        <div className='h-[500px] overflow-x-auto'>
+      <div className='border-2 rounded-md h-[650px] sm:h-[750px] max-w-xl sm:max-w-3xl w-full absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] bg-blue-300'>
+        <div className='h-[400px] sm:h-[500px] overflow-x-auto'>
           {chats.map((chat) => (
-            <div key={chat.text} className='mt-5'>
+            <div key={chat.text} className='mt-3 sm:mt-5'>
               {chat.isQuestion ? (
-                <div className='ml-5 flex'>
+                <div className='ml-2 sm:ml-5 flex'>
                   <Avatar
                     alt='question_image'
                     src={avatar}
-                    className='w-16 h-16'
+                    className='w-12 sm:w-16 h-12 sm:h-16'
                   />
-                  <p className='my-1 ml-4 text-xl bg-white border rounded-md max-w-lg text-left tracking-widest py-3 px-2'>
+                  <p className='my-1 ml-2 sm:ml-4 text-base sm:text-xl bg-white border rounded-md max-w-[200px] sm:max-w-lg text-left tracking-widest py-1 sm:py-3 px-2'>
                     {chat.text.split('\n').map((t) => (
                       <p key={t}>
                         {t}
@@ -60,8 +60,8 @@ export const Chats: FC<Props> = (props) => {
                   </p>
                 </div>
               ) : (
-                <div className='flex justify-end mr-5'>
-                  <p className='my-1 mr-4 text-xl bg-white border rounded-md max-w-lg text-right tracking-widest py-3 px-2'>
+                <div className='flex justify-end mr-2 sm:mr-5'>
+                  <p className='my-1 mr-2 sm:mr-4 text-base sm:text-xl bg-white border rounded-md max-w-[200px] sm:max-w-lg text-left tracking-widest py-1 sm:py-3 px-2'>
                     {chat.text.split('\n').map((t) => (
                       <p key={t}>
                         {t}
@@ -72,20 +72,21 @@ export const Chats: FC<Props> = (props) => {
                   <Avatar
                     alt='question_image'
                     src={user?.avatar?.url}
-                    className='w-16 h-16'
+                    className='w-12 sm:w-16 h-12 sm:h-16'
                   />
                 </div>
               )}
             </div>
           ))}
           {isChatLoading && (
-            <div className='flex ml-5 mt-5'>
-              <Skeleton variant='circular' width={64} height={64} />
+            <div className='flex ml-2 sm:ml-5 mt-3 sm:mt-5'>
+              <Skeleton
+                variant='circular'
+                className='w-12 sm:w-16 h-12 sm:h-16'
+              />
               <Skeleton
                 variant='text'
-                className='ml-4'
-                width={250}
-                height={70}
+                className='ml-4 w-48 sm:w-64 h-14 sm:h-[70px]'
               />
             </div>
           )}
@@ -98,18 +99,21 @@ export const Chats: FC<Props> = (props) => {
                 <Skeleton
                   key={a.content}
                   variant='text'
-                  className='mx-8 m-0 p-0'
-                  width={700}
-                  height={70}
+                  className='m-auto w-[95%] sm:w-11/12 h-16 sm:h-[70px]'
                 />
               ) : (
                 <Button
                   key={a.content}
-                  className='px-5 py-2 block font-bold w-11/12 mt-2 h-16 bg-white text-yellow-600 m-auto text-xl hover:text-white hover:bg-yellow-500'
+                  className='px-2 sm:px-5 py-1 sm:py-2 block font-bold w-[95%] sm:w-11/12 mt-2 h-16 bg-white text-yellow-600 m-auto text-sm sm:text-xl hover:text-white hover:bg-yellow-500'
                   disabled={isChatLoading}
                   onClick={() => onSelectAnswer(a)}
                 >
-                  {a.content}
+                  {a.content.split('\n').map((c) => (
+                      <p key={c}>
+                        {c}
+                        <br />
+                      </p>
+                    ))}
                 </Button>
               )}
             </div>

@@ -132,7 +132,7 @@ const IpadPage: NextPage = () => {
           />
         </>
       ) : (
-        <div className='pt-24 text-center'>
+        <div className='pt-24 text-center mb-5'>
           <h1 className='text-2xl sm:text-4xl font-bold text-center text-gray-500'>
             最適なiPadページへようこそ！
           </h1>
@@ -158,7 +158,7 @@ const IpadPage: NextPage = () => {
           </div>
         </div>
       )}
-      <div className='absolute bottom-0 w-full'>
+      <div className='sm:absolute sm:bottom-0 sm:w-full'>
         <Footer />
       </div>
     </div>

@@ -30,7 +30,7 @@ export const SpeedDialTooltipOpen: FC<Props> = (props) => {
   ];
 
   return (
-    <Box className='absolute bottom-1 left-[105%]'>
+    <Box className='absolute bottom-1 left-[105%] hidden lg:block'>
       <SpeedDial
         ariaLabel='SpeedDial uncontrolled open example'
         icon={open ? <CloseIcon /> : <AddIcon />}
