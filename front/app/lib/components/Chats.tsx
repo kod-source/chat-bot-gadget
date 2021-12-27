@@ -11,7 +11,7 @@ interface Props {
   avatar: string;
   onSelectAnswer: (answer: Answer) => void;
   isChatLoading: boolean;
-  ipadSearchParams: IpadParam | null;
+  ipadSearchParam: IpadParam | null;
   restartChats: () => void;
   endChats: () => void;
 }
@@ -25,7 +25,7 @@ export const Chats: FC<Props> = (props) => {
     avatar,
     onSelectAnswer,
     isChatLoading,
-    ipadSearchParams,
+    ipadSearchParam,
     restartChats,
     endChats,
   } = props;
@@ -118,7 +118,7 @@ export const Chats: FC<Props> = (props) => {
               )}
             </div>
           ))}
-          {ipadSearchParams && (
+          {ipadSearchParam && (
             <SpeedDialTooltipOpen
               restartChats={restartChats}
               endChats={endChats}

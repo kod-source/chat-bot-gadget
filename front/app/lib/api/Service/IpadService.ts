@@ -2,72 +2,72 @@ import { IpadNextId, IpadParam, IpadData } from '../repository/ipadRepository';
 import IpadChatData from 'lib/DataSet/ipad_chat_data.json';
 
 export class IpadService {
-  static buildSearchParams(params: IpadParam): URLSearchParams {
+  static buildSearchParams(param: IpadParam): URLSearchParams {
     const urlSearchParams = new URLSearchParams();
-    if (params.chips) {
-      params.chips.forEach((c) => urlSearchParams.append('chips[]', c));
+    if (param.chips) {
+      param.chips.forEach((c) => urlSearchParams.append('chips[]', c));
     }
-    if (params.cleanDisplay || params.cleanDisplay === false) {
+    if (param.cleanDisplay || param.cleanDisplay === false) {
       urlSearchParams.append(
         'clean_display',
-        params.cleanDisplay ? 'true' : 'false'
+        param.cleanDisplay ? 'true' : 'false'
       );
     }
-    if (params.highPerformCamera || params.highPerformCamera === false) {
+    if (param.highPerformCamera || param.highPerformCamera === false) {
       urlSearchParams.append(
         'high_perform_camera',
-        params.highPerformCamera ? 'true' : 'false'
+        param.highPerformCamera ? 'true' : 'false'
       );
     }
-    if (params.manyColors || params.manyColors === false) {
+    if (param.manyColors || param.manyColors === false) {
       urlSearchParams.append(
         'many_colors',
-        params.manyColors ? 'true' : 'false'
+        param.manyColors ? 'true' : 'false'
       );
     }
-    if (params.maxSize) {
-      urlSearchParams.append('max_size', params.maxSize.toString());
+    if (param.maxSize) {
+      urlSearchParams.append('max_size', param.maxSize.toString());
     }
-    if (params.minSize) {
-      urlSearchParams.append('min_size', params.minSize.toString());
+    if (param.minSize) {
+      urlSearchParams.append('min_size', param.minSize.toString());
     }
-    if (params.price) {
-      urlSearchParams.append('price', params.price.toString());
+    if (param.price) {
+      urlSearchParams.append('price', param.price.toString());
     }
-    if (params.typeC || params.typeC === false) {
-      urlSearchParams.append('type_c', params.typeC ? 'true' : 'false');
+    if (param.typeC || param.typeC === false) {
+      urlSearchParams.append('type_c', param.typeC ? 'true' : 'false');
     }
-    if (params.fiveG || params.fiveG === false) {
-      urlSearchParams.append('five_g', params.fiveG ? 'true' : 'false');
+    if (param.fiveG || param.fiveG === false) {
+      urlSearchParams.append('five_g', param.fiveG ? 'true' : 'false');
     }
-    if (params.speakerCount) {
-      urlSearchParams.append('speaker_count', params.speakerCount.toString());
+    if (param.speakerCount) {
+      urlSearchParams.append('speaker_count', param.speakerCount.toString());
     }
-    if (params.faceId || params.faceId === false) {
-      urlSearchParams.append('face_id', params.faceId ? 'true' : 'false');
+    if (param.faceId || param.faceId === false) {
+      urlSearchParams.append('face_id', param.faceId ? 'true' : 'false');
     }
-    if (params.centerFrame || params.centerFrame === false) {
+    if (param.centerFrame || param.centerFrame === false) {
       urlSearchParams.append(
         'center_frame',
-        params.centerFrame ? 'true' : 'false'
+        param.centerFrame ? 'true' : 'false'
       );
     }
-    if (params.dualSpeaker || params.dualSpeaker === false) {
+    if (param.dualSpeaker || param.dualSpeaker === false) {
       urlSearchParams.append(
         'dual_speaker',
-        params.dualSpeaker ? 'true' : 'false'
+        param.dualSpeaker ? 'true' : 'false'
       );
     }
-    if (params.highRefreshRate || params.highRefreshRate === false) {
+    if (param.highRefreshRate || param.highRefreshRate === false) {
       urlSearchParams.append(
         'high_refresh_rate',
-        params.highRefreshRate ? 'true' : 'false'
+        param.highRefreshRate ? 'true' : 'false'
       );
     }
-    if (params.thunderbolt || params.thunderbolt === false) {
+    if (param.thunderbolt || param.thunderbolt === false) {
       urlSearchParams.append(
         'thunderbolt',
-        params.thunderbolt ? 'true' : 'false'
+        param.thunderbolt ? 'true' : 'false'
       );
     }
 

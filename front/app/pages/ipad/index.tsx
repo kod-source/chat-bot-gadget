@@ -30,14 +30,14 @@ const IpadPage: NextPage = () => {
   const [answers, setAnswers] = useState<Answer[]>([]);
   const [nextId, setNextId] = useState<IpadNextId>('init');
   const [isChatLoading, setIsChatLoading] = useState<boolean>(true);
-  const [ipadSearchParams, setIpadSearchParams] = useState<IpadParam | null>(
+  const [ipadSearchParam, setIpadSearchParam] = useState<IpadParam | null>(
     null
   );
   const [searchProducts, setSearchProducts] = useState<Product[]>([]);
 
   const getSearchIpad = async (ipadSelectData: IpadData | null) => {
-    if (ipadSearchParams) {
-      const products = await IpadRepository.searchResProduct(ipadSearchParams);
+    if (ipadSearchParam) {
+      const products = await IpadRepository.searchResProduct(ipadSearchParam);
       if (products.length === 0) {
         noneProductsSelectChats();
         setTimeout(() => {
@@ -91,7 +91,7 @@ const IpadPage: NextPage = () => {
   const restartChats = () => {
     setIsChatLoading(true);
     setTimeout(() => {
-      setIpadSearchParams(null);
+      setIpadSearchParam(null);
       setNextId('init');
     }, 500);
   };
@@ -103,7 +103,7 @@ const IpadPage: NextPage = () => {
       { text: answer.content, isQuestion: false },
     ]);
     setNextId(answer.nextId as IpadNextId);
-    ChooseIpadParams(answer, ipadSearchParams, setIpadSearchParams);
+    ChooseIpadParams(answer, ipadSearchParam, setIpadSearchParam);
   };
 
   const endChats = () => {
@@ -126,7 +126,7 @@ const IpadPage: NextPage = () => {
             avatar={ipadIconImage.src}
             onSelectAnswer={(answer) => onSelectAnswer(answer)}
             isChatLoading={isChatLoading}
-            ipadSearchParams={ipadSearchParams}
+            ipadSearchParam={ipadSearchParam}
             restartChats={restartChats}
             endChats={endChats}
           />
