@@ -18,7 +18,6 @@ import ipadIconImage from 'public/ipadIcon.jpg';
 import { ChooseIpadParams } from 'lib/Function/ChooseIpadParams';
 import { IpadService } from 'lib/api/Service/IpadService';
 import { Product } from 'lib/api/Entity/Product';
-import { SpeedDialTooltipOpen } from 'lib/components/SpeedDialTooltipOpen';
 
 const IpadPage: NextPage = () => {
   const [startIpadBot, setStartIpadBot] = useState(false);
@@ -133,7 +132,7 @@ const IpadPage: NextPage = () => {
           />
         </>
       ) : (
-        <div className='mt-40 text-center'>
+        <div className='pt-24 text-center'>
           <h1 className='text-2xl sm:text-4xl font-bold text-center text-gray-500'>
             最適なiPadページへようこそ！
           </h1>
