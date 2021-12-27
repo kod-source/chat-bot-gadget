@@ -66,8 +66,8 @@ export class IpadRepository {
     return IpadFactory.createFromResponse(res.data);
   }
 
-  static async searchResProduct(params: IpadParam): Promise<Product[]> {
-    const urlSearchParams = IpadService.buildSearchParams(params);
+  static async searchResProduct(param: IpadParam): Promise<Product[]> {
+    const urlSearchParams = IpadService.buildSearchParams(param);
     const res = await axios.get<ProductResponseObject[]>(
       `${IpadsUrl}/search?${urlSearchParams.toString()}`,
       {

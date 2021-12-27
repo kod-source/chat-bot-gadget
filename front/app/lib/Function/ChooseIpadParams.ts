@@ -3,71 +3,71 @@ import { Answer } from 'lib/interfaces';
 
 export const ChooseIpadParams = (
   answer: Answer,
-  ipadSearchParams: IpadParam | null,
-  setIpadSearchParams: React.Dispatch<React.SetStateAction<IpadParam | null>>
+  ipadSearchParam: IpadParam | null,
+  setIpadSearchParam: React.Dispatch<React.SetStateAction<IpadParam | null>>
 ) => {
   if (answer.nextId === 'init') {
-    setIpadSearchParams(null);
+    setIpadSearchParam(null);
     return;
   }
   const params = answer.params;
   if (params.price) {
-    setIpadSearchParams({ ...ipadSearchParams, price: params.price });
+    setIpadSearchParam({ ...ipadSearchParam, price: params.price });
   } else if (params.maxSize) {
-    setIpadSearchParams({
-      ...ipadSearchParams,
+    setIpadSearchParam({
+      ...ipadSearchParam,
       minSize: params.minSize,
       maxSize: params.maxSize,
     });
   } else if (params.chips) {
-    setIpadSearchParams({ ...ipadSearchParams, chips: params.chips });
+    setIpadSearchParam({ ...ipadSearchParam, chips: params.chips });
   } else if (params.cleanDisplay || params.cleanDisplay === false) {
-    setIpadSearchParams({
-      ...ipadSearchParams,
+    setIpadSearchParam({
+      ...ipadSearchParam,
       cleanDisplay: params.cleanDisplay,
     });
   } else if (params.highPerformCamera || params.highPerformCamera === false) {
-    setIpadSearchParams({
-      ...ipadSearchParams,
+    setIpadSearchParam({
+      ...ipadSearchParam,
       highPerformCamera: params.highPerformCamera,
     });
   } else if (params.manyColors || params.manyColors === false) {
-    setIpadSearchParams({ ...ipadSearchParams, manyColors: params.manyColors });
+    setIpadSearchParam({ ...ipadSearchParam, manyColors: params.manyColors });
   } else if (params.typeC || params.typeC === false) {
-    setIpadSearchParams({ ...ipadSearchParams, typeC: params.typeC });
+    setIpadSearchParam({ ...ipadSearchParam, typeC: params.typeC });
   } else if (params.fiveG || params.fiveG === false) {
-    setIpadSearchParams({ ...ipadSearchParams, fiveG: params.fiveG });
+    setIpadSearchParam({ ...ipadSearchParam, fiveG: params.fiveG });
   } else if (params.speakerCount) {
-    setIpadSearchParams({
-      ...ipadSearchParams,
+    setIpadSearchParam({
+      ...ipadSearchParam,
       speakerCount: params.speakerCount,
     });
   } else if (params.faceId || params.faceId === false) {
-    setIpadSearchParams({
-      ...ipadSearchParams,
+    setIpadSearchParam({
+      ...ipadSearchParam,
       faceId: params.faceId,
     });
   } else if (params.centerFrame || params.centerFrame === false) {
-    setIpadSearchParams({
-      ...ipadSearchParams,
+    setIpadSearchParam({
+      ...ipadSearchParam,
       centerFrame: params.centerFrame,
     });
   } else if (params.highRefreshRate || params.highRefreshRate === false) {
-    setIpadSearchParams({
-      ...ipadSearchParams,
+    setIpadSearchParam({
+      ...ipadSearchParam,
       highRefreshRate: params.highRefreshRate,
     });
   } else if (params.thunderbolt || params.thunderbolt === false) {
-    setIpadSearchParams({
-      ...ipadSearchParams,
+    setIpadSearchParam({
+      ...ipadSearchParam,
       thunderbolt: params.thunderbolt,
     });
   } else if (params.dualSpeaker || params.dualSpeaker === false) {
-    setIpadSearchParams({
-      ...ipadSearchParams,
+    setIpadSearchParam({
+      ...ipadSearchParam,
       dualSpeaker: params.dualSpeaker,
     });
   } else {
-    setIpadSearchParams(ipadSearchParams);
+    setIpadSearchParam(ipadSearchParam);
   }
 };
