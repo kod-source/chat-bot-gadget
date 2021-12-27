@@ -42,12 +42,12 @@
   "spec": {
     "answers": [
       {
-        "content": "はい。（かなりのオーバスペックなため、一般の方には不必要なスペックになります）",
+        "content": "はい。\n（かなりのオーバスペックなため、一般の方には不必要なスペックになります）",
         "nextId": "end",
         "params": { "chips": ["M1"] }
       },
       {
-        "content": "いいえ。（一般の用途では絶対にこちらで事足りるかと思います）",
+        "content": "いいえ。\n（一般の用途では絶対にこちらで事足りるかと思います）",
         "nextId": "camera",
         "params": { "chips": ["A12X", "A12Z", "M1"] }
       },
@@ -82,7 +82,7 @@
   "screen": {
     "answers": [
       {
-        "content": "はい。（画面が綺麗に見えるメリットがあります）",
+        "content": "はい。\n（画面が綺麗に見えるメリットがあります）",
         "nextId": "use",
         "params": { "cleanDisplay": true }
       },
@@ -92,7 +92,7 @@
         "params": {}
       },
       {
-        "content": "いいえ。（画面が少しおくばって見えますが、普段用途では問題なしです。）",
+        "content": "いいえ。\n（画面が少しおくばって見えますが、普段用途では問題なしです。）",
         "nextId": "use",
         "params": { "cleanDisplay": false }
       }
@@ -102,12 +102,12 @@
   "use": {
     "answers": [
       {
-        "content": "ブラウジングや動画鑑賞が主である（動作編集などもやるか考えている）",
+        "content": "ブラウジングや動画鑑賞が主である\n（動作編集などもやるか考えている）",
         "nextId": "color",
         "params": { "chips": ["A13", "A14", "A12X", "A12Z", "A15", "M1"] }
       },
       {
-        "content": "動画編集や写真編集などクリエティブな作業をする（ゲームなども快適にすることができるスペック）",
+        "content": "動画編集や写真編集などクリエティブな作業をする\n（ゲームなども快適にすることができるスペック）",
         "nextId": "color",
         "params": { "chips": ["A14", "A12X", "A12Z", "A15", "M1"] }
       },
@@ -122,12 +122,12 @@
   "color": {
     "answers": [
       {
-        "content": "はい（グリーンやブルーなどカラー豊富にあります）",
+        "content": "はい\n（グリーンやブルーなどカラー豊富にあります）",
         "nextId": "end",
         "params": { "manyColors": true }
       },
       {
-        "content": "いいえ（シルバーとスペースグレーのみとなる）",
+        "content": "いいえ\n（シルバーとスペースグレーのみとなる）",
         "nextId": "typeC",
         "params": { "manyColors": false }
       },
@@ -142,7 +142,7 @@
   "typeC": {
     "answers": [
       {
-        "content": "はい（外部機器などを接続するときも便利になります）",
+        "content": "はい\n（外部機器などを接続するときも便利になります）",
         "nextId": "camera",
         "params": { "typeC": true }
       },
@@ -152,7 +152,7 @@
         "params": {}
       },
       {
-        "content": "いいえ（Lightning端子になるのでiPhoneと同じ端子になります。）",
+        "content": "いいえ\n（Lightning端子になるのでiPhoneと同じ端子になります。）",
         "nextId": "camera",
         "params": { "typeC": false }
       }
@@ -222,7 +222,7 @@
   "centerFrame": {
     "answers": [
       {
-        "content": "はい（被写体が動き回ってもフレームの中心から外れないようにします）",
+        "content": "はい\n（被写体が動き回ってもフレームの中心から外れないようにします）",
         "nextId": "dualSpeaker",
         "params": { "centerFrame": true }
       },
@@ -242,7 +242,7 @@
   "dualSpeaker": {
     "answers": [
       {
-        "content": "はい（横画面で動画など見るときに表方向から音が聞こえます）",
+        "content": "はい\n（横画面で動画など見るときに表方向から音が聞こえます）",
         "nextId": "highRefreshRate",
         "params": { "dualSpeaker": true }
       },
@@ -262,7 +262,7 @@
   "highRefreshRate": {
     "answers": [
       {
-        "content": "はい（ヌルヌルと画面が動く感じがします）",
+        "content": "はい\n（ヌルヌルと画面が動く感じがします）",
         "nextId": "thunderbolt",
         "params": { "highRefreshRate": true }
       },
@@ -282,7 +282,7 @@
   "thunderbolt": {
     "answers": [
       {
-        "content": "はい（高速なデータ転送などができます）",
+        "content": "はい\n（高速なデータ転送などができます）",
         "nextId": "end",
         "params": { "thunderbolt": true }
       },

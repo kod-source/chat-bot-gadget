@@ -18,7 +18,6 @@ import ipadIconImage from 'public/ipadIcon.jpg';
 import { ChooseIpadParams } from 'lib/Function/ChooseIpadParams';
 import { IpadService } from 'lib/api/Service/IpadService';
 import { Product } from 'lib/api/Entity/Product';
-import { SpeedDialTooltipOpen } from 'lib/components/SpeedDialTooltipOpen';
 
 const IpadPage: NextPage = () => {
   const [startIpadBot, setStartIpadBot] = useState(false);
@@ -95,7 +94,6 @@ const IpadPage: NextPage = () => {
       setIpadSearchParams(null);
       setNextId('init');
     }, 500);
-    setIpadSearchParams(null);
   };
 
   const onSelectAnswer = (answer: Answer) => {
@@ -128,16 +126,13 @@ const IpadPage: NextPage = () => {
             avatar={ipadIconImage.src}
             onSelectAnswer={(answer) => onSelectAnswer(answer)}
             isChatLoading={isChatLoading}
+            ipadSearchParams={ipadSearchParams}
+            restartChats={restartChats}
+            endChats={endChats}
           />
-          {ipadSearchParams && (
-            <SpeedDialTooltipOpen
-              restartChats={restartChats}
-              endChats={endChats}
-            />
-          )}
         </>
       ) : (
-        <div className='mt-40 text-center'>
+        <div className='pt-24 text-center mb-5'>
           <h1 className='text-2xl sm:text-4xl font-bold text-center text-gray-500'>
             最適なiPadページへようこそ！
           </h1>
@@ -163,7 +158,7 @@ const IpadPage: NextPage = () => {
           </div>
         </div>
       )}
-      <div className='absolute bottom-0 w-full'>
+      <div className='sm:absolute sm:bottom-0 sm:w-full'>
         <Footer />
       </div>
     </div>
