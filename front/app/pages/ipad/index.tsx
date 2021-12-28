@@ -18,8 +18,10 @@ import ipadIconImage from 'public/ipadIcon.jpg';
 import { ChooseIpadParams } from 'lib/Function/ChooseIpadParams';
 import { IpadService } from 'lib/api/Service/IpadService';
 import { Product } from 'lib/api/Entity/Product';
+import { useRouter } from 'next/dist/client/router';
 
 const IpadPage: NextPage = () => {
+  const router = useRouter();
   const [startIpadBot, setStartIpadBot] = useState(false);
   const [chats, setChats] = useState<ChatState[]>([
     {
@@ -33,7 +35,6 @@ const IpadPage: NextPage = () => {
   const [ipadSearchParam, setIpadSearchParam] = useState<IpadParam | null>(
     null
   );
-  const [searchProducts, setSearchProducts] = useState<Product[]>([]);
 
   const getSearchIpad = async (ipadSelectData: IpadData | null) => {
     if (ipadSearchParam) {
@@ -45,8 +46,7 @@ const IpadPage: NextPage = () => {
         }, 500);
         return;
       }
-      setSearchProducts(products);
-      if (products.length === 1) {
+      if (products.length === 1 || nextId === 'end') {
         endChats();
         return;
       }
@@ -107,7 +107,12 @@ const IpadPage: NextPage = () => {
   };
 
   const endChats = () => {
-    alert('終了');
+    if (!ipadSearchParam) return null;
+    const urlSearchParams = IpadService.appendUrlSearchParams(
+      ipadSearchParam,
+      nextId
+    );
+    router.push(`/ipad/chat_result?${urlSearchParams?.toString()}`);
   };
 
   return (
@@ -119,18 +124,16 @@ const IpadPage: NextPage = () => {
         <Header />
       </div>
       {startIpadBot ? (
-        <>
-          <Chats
-            chats={chats}
-            answers={answers}
-            avatar={ipadIconImage.src}
-            onSelectAnswer={(answer) => onSelectAnswer(answer)}
-            isChatLoading={isChatLoading}
-            ipadSearchParam={ipadSearchParam}
-            restartChats={restartChats}
-            endChats={endChats}
-          />
-        </>
+        <Chats
+          chats={chats}
+          answers={answers}
+          avatar={ipadIconImage.src}
+          onSelectAnswer={(answer) => onSelectAnswer(answer)}
+          isChatLoading={isChatLoading}
+          ipadSearchParam={ipadSearchParam}
+          restartChats={restartChats}
+          endChats={endChats}
+        />
       ) : (
         <div className='pt-24 text-center mb-5'>
           <h1 className='text-2xl sm:text-4xl font-bold text-center text-gray-500'>
