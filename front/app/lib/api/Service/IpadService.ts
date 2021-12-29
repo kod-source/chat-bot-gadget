@@ -110,4 +110,79 @@ export class IpadService {
         return null;
     }
   }
+
+  static appendUrlSearchParams(
+    param: IpadParam,
+    nextId: IpadNextId
+  ): URLSearchParams {
+    const urlSearchParams = new URLSearchParams();
+    if (nextId) {
+      urlSearchParams.append('nextId', nextId);
+    }
+    if (param.chips) {
+      urlSearchParams.append('chips', param.chips.toString());
+    }
+    if (param.cleanDisplay || param.cleanDisplay === false) {
+      urlSearchParams.append(
+        'cleanDisplay',
+        param.cleanDisplay ? 'true' : 'false'
+      );
+    }
+    if (param.highPerformCamera || param.highPerformCamera === false) {
+      urlSearchParams.append(
+        'highPerformCamera',
+        param.highPerformCamera ? 'true' : 'false'
+      );
+    }
+    if (param.manyColors || param.manyColors === false) {
+      urlSearchParams.append('manyColors', param.manyColors ? 'true' : 'false');
+    }
+    if (param.maxSize) {
+      urlSearchParams.append('maxSize', param.maxSize.toString());
+    }
+    if (param.minSize) {
+      urlSearchParams.append('minSize', param.minSize.toString());
+    }
+    if (param.price) {
+      urlSearchParams.append('price', param.price.toString());
+    }
+    if (param.typeC || param.typeC === false) {
+      urlSearchParams.append('typeC', param.typeC ? 'true' : 'false');
+    }
+    if (param.fiveG || param.fiveG === false) {
+      urlSearchParams.append('fiveG', param.fiveG ? 'true' : 'false');
+    }
+    if (param.speakerCount) {
+      urlSearchParams.append('speakerCount', param.speakerCount.toString());
+    }
+    if (param.faceId || param.faceId === false) {
+      urlSearchParams.append('faceId', param.faceId ? 'true' : 'false');
+    }
+    if (param.centerFrame || param.centerFrame === false) {
+      urlSearchParams.append(
+        'centerFrame',
+        param.centerFrame ? 'true' : 'false'
+      );
+    }
+    if (param.dualSpeaker || param.dualSpeaker === false) {
+      urlSearchParams.append(
+        'dualSpeaker',
+        param.dualSpeaker ? 'true' : 'false'
+      );
+    }
+    if (param.highRefreshRate || param.highRefreshRate === false) {
+      urlSearchParams.append(
+        'highRefreshRate',
+        param.highRefreshRate ? 'true' : 'false'
+      );
+    }
+    if (param.thunderbolt || param.thunderbolt === false) {
+      urlSearchParams.append(
+        'thunderbolt',
+        param.thunderbolt ? 'true' : 'false'
+      );
+    }
+
+    return urlSearchParams;
+  }
 }

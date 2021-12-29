@@ -127,7 +127,7 @@ export const Header: FC = () => {
           )}
         </Toolbar>
       </AppBar>
-      <AppBar position='static' className='sm:hidden'>
+      <AppBar position='static' className='sm:invisible'>
         <Accordion className='bg-gray-50'>
           <AccordionSummary
             expandIcon={<MenuIcon />}
