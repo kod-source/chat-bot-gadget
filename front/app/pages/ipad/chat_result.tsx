@@ -8,6 +8,7 @@ import { GetServerSideProps, NextPage } from 'next';
 import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import { LikeRepository } from 'lib/api/repository/likeRepostiroy';
 
 interface Props {
   nextId: string | null;
@@ -30,6 +31,7 @@ interface Props {
 
 const chatResult: NextPage<Props> = (props) => {
   const [products, setProducts] = useState<Product[]>();
+  const [likeProductIds, setLikeProductIds] = useState<number[]>([]);
 
   const fetchData = async () => {
     const ipadParam: IpadParam = {
@@ -56,12 +58,24 @@ const chatResult: NextPage<Props> = (props) => {
     const mostLowPriceProduct = products.reduce((a, b) =>
       a.mostLowPrice < b.mostLowPrice ? a : b
     );
+    const likes = await LikeRepository.my();
     setProducts(props.nextId === 'end' ? [mostLowPriceProduct] : products);
+    setLikeProductIds(likes.map((l) => l.productId));
   };
 
   useEffect(() => {
     fetchData();
   }, [props]);
+
+  const onClickLikeButton = async (id: number) => {
+    if (likeProductIds.includes(id)) {
+      await LikeRepository.delete(id);
+      setLikeProductIds(likeProductIds.filter((productId) => productId !== id));
+    } else {
+      await LikeRepository.create(id);
+      setLikeProductIds([...likeProductIds, id]);
+    }
+  };
 
   if (!products) return null;
 
@@ -73,7 +87,12 @@ const chatResult: NextPage<Props> = (props) => {
       <div className='fixed top-0 w-full z-10'>
         <Header />
       </div>
-      <ProductResultPage products={products} />
+      <ProductResultPage
+        products={products}
+        linkPath='/ipad'
+        likeProductIds={likeProductIds}
+        onClickLikeButton={onClickLikeButton}
+      />
       <Footer />
     </>
   );
