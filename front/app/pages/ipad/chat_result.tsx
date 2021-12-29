@@ -11,16 +11,16 @@ import { useState } from 'react';
 import { LikeRepository } from 'lib/api/repository/likeRepostiroy';
 
 interface Props {
-  nextId: string | null;
-  price: number | null;
-  minSize: number | null;
-  maxSize: number | null;
-  chips: string[] | null;
+  nextId: string;
+  price: number;
+  minSize: number;
+  maxSize: number;
+  chips: string[];
   highPerformCamera: boolean | null;
   cleanDisplay: boolean | null;
   manyColors: boolean | null;
   typeC: boolean | null;
-  speakerCount: number | null;
+  speakerCount: number;
   faceId: boolean | null;
   centerFrame: boolean | null;
   dualSpeaker: boolean | null;
@@ -35,17 +35,17 @@ const chatResult: NextPage<Props> = (props) => {
 
   const fetchData = async () => {
     const ipadParam: IpadParam = {
-      price: props.price || undefined,
-      minSize: props.minSize || undefined,
-      maxSize: props.maxSize || undefined,
-      chips: props.chips || undefined,
+      price: props.price,
+      minSize: props.minSize,
+      maxSize: props.maxSize,
+      chips: props.chips,
       highPerformCamera:
         props.highPerformCamera === null ? undefined : props.highPerformCamera,
       cleanDisplay:
         props.cleanDisplay === null ? undefined : props.cleanDisplay,
       manyColors: props.manyColors === null ? undefined : props.manyColors,
       typeC: props.typeC === null ? undefined : props.typeC,
-      speakerCount: props.speakerCount || undefined,
+      speakerCount: props.speakerCount,
       faceId: props.faceId === null ? undefined : props.faceId,
       centerFrame: props.centerFrame === null ? undefined : props.centerFrame,
       dualSpeaker: props.dualSpeaker === null ? undefined : props.dualSpeaker,
@@ -101,18 +101,18 @@ const chatResult: NextPage<Props> = (props) => {
 export const getServerSideProps: GetServerSideProps<Props> = async ({
   query,
 }) => {
-  const nextId = query.nextId ? String(query.nextId) : null;
-  const price = query.price ? Number(query.price) : null;
-  const chips = query.chips ? String(query.chips).split(',') : null;
-  const minSize = query.minSize ? Number(query.minSize) : null;
-  const maxSize = query.maxSize ? Number(query.maxSize) : null;
+  const nextId = query.nextId ? String(query.nextId) : '';
+  const price = query.price ? Number(query.price) : 0;
+  const chips = query.chips ? String(query.chips).split(',') : [];
+  const minSize = query.minSize ? Number(query.minSize) : 0;
+  const maxSize = query.maxSize ? Number(query.maxSize) : 0;
   const cleanDisplay = query.cleanDisplay
     ? String(query.cleanDisplay).toLowerCase() === 'true'
     : null;
   const manyColors = query.manyColors
     ? String(query.manyColors).toLowerCase() === 'true'
     : null;
-  const speakerCount = query.speakerCount ? Number(query.speakerCount) : null;
+  const speakerCount = query.speakerCount ? Number(query.speakerCount) : 0;
   const highPerformCamera = query.highPerformCamera
     ? String(query.highPerformCamera).toLowerCase() === 'true'
     : null;
