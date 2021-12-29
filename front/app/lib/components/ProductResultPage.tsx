@@ -24,9 +24,9 @@ export const ProductResultPage: FC<Props> = ({
 
   return (
     <div className='bg-blue-300 pt-36 pb-20'>
-      <div className='bg-white border-2 border-black w-3/4 m-auto'>
-        <div className='p-14'>
-          <div className='text-center text-3xl'>
+      <div className='bg-white border-2 border-black w-11/12 sm:w-5/6 lg:w-3/4 m-auto'>
+        <div className='p-10 sm:p-14'>
+          <div className='text-center text-xl sm:text-2xl lg:text-3xl'>
             <h1>結果がでました！</h1>
             <h1>
               {singularProduct
@@ -34,10 +34,10 @@ export const ProductResultPage: FC<Props> = ({
                 : 'あなたのおすすめはこれらの商品です！'}
             </h1>
           </div>
-          <div className='mt-10'>
+          <div className='mt-5 lg:mt-10'>
             {products.map((product) => (
-              <div key={product.id.toLocaleString()} className='my-10'>
-                <div className='flex'>
+              <div key={product.id.toLocaleString()} className='my-5 lg:my-10'>
+                <div className='lg:flex text-center'>
                   <Image
                     src={product.image}
                     width={400}
@@ -45,18 +45,18 @@ export const ProductResultPage: FC<Props> = ({
                     alt='Product Image'
                   />
                   <div>
-                    <h2 className='pt-5 text-center text-3xl font-bold text-green-200 text-shadow-md'>
+                    <h2 className='pt-5 text-center text-xl sm:text-3xl font-bold text-green-200 text-shadow-md'>
                       {product.name}
                     </h2>
-                    <h3 className='text-center text-4xl my-10 font-bold'>
+                    <h3 className='text-center text-2xl sm:text-4xl my-5 sm:my-10 font-bold'>
                       価格
                     </h3>
-                    <p className='text-center text-3xl text-blue-500 font-bold'>
+                    <p className='text-center text-xl sm:text-3xl text-blue-500 font-bold'>
                       {product.mostLowPrice.toLocaleString()}円〜
                       {product.highestPrice.toLocaleString()}円　税込
                     </p>
-                    <div className='flex justify-center my-4'>
-                      <p className='text-xl'>
+                    <div className='flex justify-center my-2 sm:my-4'>
+                      <p className='text-sm sm:text-xl'>
                         {likeProductIds.includes(product.id) ? 'お気に入りから削除しますか？' : 'お気に入りに追加しますか？'}
                         <IconButton
                           aria-label='add to favorites'
@@ -73,7 +73,7 @@ export const ProductResultPage: FC<Props> = ({
                         </IconButton>
                       </p>
                     </div>
-                    <div className='mt-8 flex justify-center'>
+                    <div className='mt-4 sm:mt-8 sm:flex sm:justify-center'>
                       <Link href={product.url}>
                         <a target='_blank'>
                           <Button
@@ -96,7 +96,7 @@ export const ProductResultPage: FC<Props> = ({
                     </div>
                   </div>
                 </div>
-                <div className='mt-5 px-14 tracking-widest'>
+                <div className='mt-2 sm:mt-5 sm:px-14 tracking-widest'>
                   {product.memo.split('\n').map((m) => (
                     <p key={m}>
                       {m}
