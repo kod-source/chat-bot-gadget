@@ -11,14 +11,14 @@ interface Props {
   products: Product[];
   linkPath: string;
   likeProductIds: number[];
-  onClickLikeButton: (id: number) => void
+  onClickLikeButton: (id: number) => void;
 }
 
 export const ProductResultPage: FC<Props> = ({
   products,
   linkPath,
   likeProductIds,
-  onClickLikeButton
+  onClickLikeButton,
 }) => {
   const singularProduct = products.length === 1;
 
@@ -37,7 +37,7 @@ export const ProductResultPage: FC<Props> = ({
           <div className='mt-5 lg:mt-10'>
             {products.map((product) => (
               <div key={product.id.toLocaleString()} className='my-5 lg:my-10'>
-                <div className='lg:flex text-center'>
+                <div className='lg:flex justify-center text-center'>
                   <Image
                     src={product.image}
                     width={400}
@@ -57,7 +57,9 @@ export const ProductResultPage: FC<Props> = ({
                     </p>
                     <div className='flex justify-center my-2 sm:my-4'>
                       <p className='text-sm sm:text-xl'>
-                        {likeProductIds.includes(product.id) ? 'お気に入りから削除しますか？' : 'お気に入りに追加しますか？'}
+                        {likeProductIds.includes(product.id)
+                          ? 'お気に入りから削除しますか？'
+                          : 'お気に入りに追加しますか？'}
                         <IconButton
                           aria-label='add to favorites'
                           onClick={() => onClickLikeButton(product.id)}
@@ -96,7 +98,7 @@ export const ProductResultPage: FC<Props> = ({
                     </div>
                   </div>
                 </div>
-                <div className='mt-2 sm:mt-5 sm:px-14 tracking-widest'>
+                <div className='mt-2 sm:mt-5 sm:px-14 tracking-widest w-full lg:w-11/12 xl:w-/4 2xl:w-2/3 m-auto'>
                   {product.memo.split('\n').map((m) => (
                     <p key={m}>
                       {m}
