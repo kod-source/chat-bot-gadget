@@ -57,12 +57,17 @@ const IpadShow: NextPage<Props> = ({ id }) => {
 
   const addLikeVButton = async () => {
     await LikeRepository.create(product.id);
-    fetchData();
+    setState({ ...state, likeProductIds: [...likeProductIds, product.id] });
   };
 
   const deleteLikeButton = async () => {
     await LikeRepository.delete(product.id);
-    fetchData();
+    setState({
+      ...state,
+      likeProductIds: likeProductIds.filter(
+        (productId) => productId !== product.id
+      ),
+    });
   };
   return (
     <>
