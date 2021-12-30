@@ -78,7 +78,7 @@ const IpadShow: NextPage<Props> = ({ id }) => {
         <Header />
       </div>
       <div className='my-28 lg:flex'>
-        <div className='w-1/2'>
+        <div className='w-full lg:w-1/2'>
           <ImageSwiperComponent imageSwipers={imageSwipers} />
         </div>
         <div className='mx-5 lg:mx-16'>
