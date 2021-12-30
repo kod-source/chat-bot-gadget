@@ -126,6 +126,32 @@ Ipad.create!(
   smart_connector: true,
   many_colors: true
 )
+ImageSwiper.create!(
+  ipad_id: Ipad.find_by(weight: 458).id,
+  title: '全体',
+  url: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/ipad-air-select-202009?wid=886&hei=1070&fmt=jpeg&qlt=80&.v=1599066777000'
+)
+ImageSwiper.create!(
+  ipad_id: Ipad.find_by(weight: 458).id,
+  title: 'スペースグレイ',
+  url: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/ipad-air-select-wifi-spacegray-202009?wid=940&hei=1112&fmt=png-alpha&.v=1598650646000'
+)
+ImageSwiper.create!(
+  ipad_id: Ipad.find_by(weight: 458).id,
+  title: 'グリーン',
+  url: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/ipad-air-select-wifi-green-202009?wid=940&hei=1112&fmt=png-alpha&.v=1598650644000'
+)
+ImageSwiper.create!(
+  ipad_id: Ipad.find_by(weight: 458).id,
+  title: 'ローズゴールド',
+  url: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/ipad-air-select-wifi-gold-202009?wid=940&hei=1112&fmt=png-alpha&.v=1598650644000'
+)
+ImageSwiper.create!(
+  ipad_id: Ipad.find_by(weight: 458).id,
+  title: 'スカイブルー',
+  url: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/ipad-air-select-wifi-blue-202009?wid=940&hei=1112&fmt=png-alpha&.v=1598650644000'
+)
+
 Ipad.create!(
   product_id: Product.find_by(name: 'iPad Pro 11インチ（第1世代）[整備済製品]').id,
   screen_size: 11,
@@ -145,6 +171,32 @@ Ipad.create!(
   smart_connector: true,
   many_colors: false
 )
+ImageSwiper.create!(
+  ipad_id: Ipad.find_by(weight: 468).id,
+  title: '全体',
+  url: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/refurb-ipad-pro-11-wifi-spacegray-2019_AV1?wid=1144&hei=1144&fmt=jpeg&qlt=95&.v=1581985486105'
+)
+ImageSwiper.create!(
+  ipad_id: Ipad.find_by(weight: 468).id,
+  title: 'スペースグレイ',
+  url: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/refurb-ipad-pro-11-wifi-spacegray-2019?wid=1144&hei=1144&fmt=jpeg&qlt=95&.v=1581985486323'
+)
+ImageSwiper.create!(
+  ipad_id: Ipad.find_by(weight: 468).id,
+  title: 'シルバー',
+  url: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/refurb-ipad-pro-11-wifi-silver-2019?wid=1144&hei=1144&fmt=jpeg&qlt=80&.v=1581985473264'
+)
+ImageSwiper.create!(
+  ipad_id: Ipad.find_by(weight: 468).id,
+  title: '正面',
+  url: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/refurb-ipad-pro-11-wifi-spacegray-2019_AV2?wid=1144&hei=1144&fmt=jpeg&qlt=95&.v=1581985485816'
+)
+ImageSwiper.create!(
+  ipad_id: Ipad.find_by(weight: 468).id,
+  title: '箱',
+  url: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/refurb-ipad-pro-11-wifi-spacegray-2019_AV3?wid=1144&hei=1144&fmt=jpeg&qlt=95&.v=1581985483872'
+)
+
 Ipad.create!(
   product_id: Product.find_by(name: 'iPad Pro 11インチ（第2世代）[整備済製品]').id,
   screen_size: 11,
@@ -164,6 +216,27 @@ Ipad.create!(
   smart_connector: true,
   many_colors: false
 )
+ImageSwiper.create!(
+  ipad_id: Ipad.find_by(weight: 471).id,
+  title: '全体',
+  url: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/refurb-ipad-pro-11-wifi-silver-2020_AV1?wid=1144&hei=1144&fmt=jpeg&qlt=95&.v=1627667229000'
+)
+ImageSwiper.create!(
+  ipad_id: Ipad.find_by(weight: 471).id,
+  title: 'スペースグレイ',
+  url: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/refurb-ipad-pro-11-wifi-spacegray-2020?wid=1144&hei=1144&fmt=jpeg&qlt=80&.v=1627667236000'
+)
+ImageSwiper.create!(
+  ipad_id: Ipad.find_by(weight: 471).id,
+  title: 'シルバー',
+  url: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/refurb-ipad-pro-11-wifi-silver-2020?wid=1144&hei=1144&fmt=jpeg&qlt=95&.v=1627667234000'
+)
+ImageSwiper.create!(
+  ipad_id: Ipad.find_by(weight: 471).id,
+  title: '箱',
+  url: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/refurb-ipad-pro-11-wifi-silver-2020_AV2?wid=1144&hei=1144&fmt=jpeg&qlt=95&.v=1627667224000'
+)
+
 Ipad.create!(
   product_id: Product.find_by(name: 'iPad Pro 11インチ（第3世代）').id,
   screen_size: 11,
@@ -183,6 +256,22 @@ Ipad.create!(
   smart_connector: true,
   many_colors: false
 )
+ImageSwiper.create!(
+  ipad_id: Ipad.find_by(weight: 466).id,
+  title: '全体',
+  url: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/ipad-pro-11-select-202104_GEO_JP?wid=970&amp;hei=1020&amp;fmt=png-alpha&amp;.v=1617899794000'
+)
+ImageSwiper.create!(
+  ipad_id: Ipad.find_by(weight: 466).id,
+  title: 'スペースグレイ',
+  url: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/ipad-pro-11-select-cell-spacegray-202104_GEO_JP?wid=940&hei=1112&fmt=p-jpg&qlt=95&.v=1617925781000'
+)
+ImageSwiper.create!(
+  ipad_id: Ipad.find_by(weight: 466).id,
+  title: 'シルバー',
+  url: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/ipad-pro-11-select-cell-silver-202104_GEO_JP?wid=940&hei=1112&fmt=p-jpg&qlt=95&.v=1617912655000'
+)
+
 Ipad.create!(
   product_id: Product.find_by(name: 'iPad Pro 12.9インチ（第3世代）[整備済製品]').id,
   screen_size: 12.9,
@@ -202,6 +291,28 @@ Ipad.create!(
   smart_connector: true,
   many_colors: false
 )
+ImageSwiper.create!(
+  ipad_id: Ipad.find_by(weight: 631).id,
+  title: 'スペースグレイ',
+  url: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/refurb-ipad-pro-12-cell-spacegray-2019?wid=1144&hei=1144&fmt=jpeg&qlt=80&.v=1581985511549'
+)
+ImageSwiper.create!(
+  ipad_id: Ipad.find_by(weight: 631).id,
+  title: 'シルバー',
+  url: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/refurb-ipad-pro-12-cell-silver-2019?wid=1144&hei=1144&fmt=jpeg&qlt=80&.v=1581985498474'
+)
+ImageSwiper.create!(
+  ipad_id: Ipad.find_by(weight: 631).id,
+  title: '正面',
+  url: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/refurb-ipad-pro-12-cell-spacegray-2019_AV2?wid=1144&hei=1144&fmt=jpeg&qlt=80&.v=1581985511176'
+)
+ImageSwiper.create!(
+  ipad_id: Ipad.find_by(weight: 631).id,
+  title: '箱',
+  url: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/refurb-ipad-pro-12-cell-spacegray-2019_AV3?wid=1144&hei=1144&fmt=jpeg&qlt=80&.v=1581985509563'
+)
+
+
 Ipad.create!(
   product_id: Product.find_by(name: 'iPad Pro 12.9インチ（第4世代）[整備済製品]').id,
   screen_size: 12.9,
@@ -221,6 +332,27 @@ Ipad.create!(
   smart_connector: true,
   many_colors: false
 )
+ImageSwiper.create!(
+  ipad_id: Ipad.find_by(weight: 641).id,
+  title: '全体',
+  url: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/refurb-ipad-pro-12-wifi-silver-2020_AV1?wid=1144&hei=1144&fmt=jpeg&qlt=80&.v=1626721065000'
+)
+ImageSwiper.create!(
+  ipad_id: Ipad.find_by(weight: 641).id,
+  title: 'スペースグレイ',
+  url: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/refurb-ipad-pro-12-wifi-spacegray-2020?wid=1144&hei=1144&fmt=jpeg&qlt=80&.v=1626721066000'
+)
+ImageSwiper.create!(
+  ipad_id: Ipad.find_by(weight: 641).id,
+  title: 'シルバー',
+  url: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/refurb-ipad-pro-12-wifi-silver-2020?wid=1144&hei=1144&fmt=jpeg&qlt=80&.v=1626721066000'
+)
+ImageSwiper.create!(
+  ipad_id: Ipad.find_by(weight: 641).id,
+  title: '箱',
+  url: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/refurb-ipad-pro-12-wifi-silver-2020_AV2?wid=1144&hei=1144&fmt=jpeg&qlt=80&.v=1626721054000'
+)
+
 Ipad.create!(
   product_id: Product.find_by(name: 'iPad Pro 12.9インチ（第5世代）').id,
   screen_size: 12.9,
@@ -240,6 +372,22 @@ Ipad.create!(
   smart_connector: true,
   many_colors: false
 )
+ImageSwiper.create!(
+  ipad_id: Ipad.find_by(weight: 682).id,
+  title: '全体',
+  url: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/ipad-pro-12-select-202104_GEO_JP?wid=970&amp;hei=1020&amp;fmt=png-alpha&amp;.v=1617903446000'
+)
+ImageSwiper.create!(
+  ipad_id: Ipad.find_by(weight: 682).id,
+  title: 'スペースグレイ',
+  url: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/ipad-pro-12-select-cell-spacegray-202104_GEO_JP?wid=940&hei=1112&fmt=p-jpg&qlt=95&.v=1617920528000'
+)
+ImageSwiper.create!(
+  ipad_id: Ipad.find_by(weight: 682).id,
+  title: 'シルバー',
+  url: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/ipad-pro-12-select-cell-silver-202104_GEO_JP?wid=940&hei=1112&fmt=p-jpg&qlt=95&.v=1617919660000'
+)
+
 Ipad.create!(
   product_id: Product.find_by(name: 'iPad（第9世代）').id,
   screen_size: 10.2,
@@ -259,6 +407,22 @@ Ipad.create!(
   smart_connector: true,
   many_colors: false
 )
+ImageSwiper.create!(
+  ipad_id: Ipad.find_by(weight: 487).id,
+  title: '全体',
+  url: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/ipad-2021-hero-landing-wifi?wid=900&hei=1046&fmt=jpeg&qlt=80&.v=1630973863000'
+)
+ImageSwiper.create!(
+  ipad_id: Ipad.find_by(weight: 487).id,
+  title: 'スペースグレイ',
+  url: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/ipad-2021-hero-space-wifi-select?wid=940&hei=1112&fmt=png-alpha&.v=1631308881000'
+)
+ImageSwiper.create!(
+  ipad_id: Ipad.find_by(weight: 487).id,
+  title: 'シルバー',
+  url: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/ipad-2021-hero-silver-wifi-select?wid=940&hei=1112&fmt=png-alpha&.v=1631308880000'
+)
+
 Ipad.create!(
   product_id: Product.find_by(name: 'iPad mini6').id,
   screen_size: 8.3,
@@ -277,4 +441,29 @@ Ipad.create!(
   high_refresh_rate: false,
   smart_connector: false,
   many_colors: true
+)
+ImageSwiper.create!(
+  ipad_id: Ipad.find_by(weight: 293).id,
+  title: '全体',
+  url: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/ipad-mini-select-202109?wid=1080&hei=1060&fmt=jpeg&qlt=80&.v=1631751017000'
+)
+ImageSwiper.create!(
+  ipad_id: Ipad.find_by(weight: 293).id,
+  title: 'スペースグレイ',
+  url: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/ipad-mini-select-wifi-space-gray-202109?wid=940&hei=1112&fmt=png-alpha&.v=1629840743000'
+)
+ImageSwiper.create!(
+  ipad_id: Ipad.find_by(weight: 293).id,
+  title: 'ピンク',
+  url: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/ipad-2021-hero-silver-wifi-select?wid=940&hei=1112&fmt=png-alpha&.v=1631308880000'
+)
+ImageSwiper.create!(
+  ipad_id: Ipad.find_by(weight: 293).id,
+  title: 'パープル',
+  url: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/ipad-mini-select-wifi-purple-202109?wid=940&hei=1112&fmt=png-alpha&.v=1629840735000'
+)
+ImageSwiper.create!(
+  ipad_id: Ipad.find_by(weight: 293).id,
+  title: 'スターライト',
+  url: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/ipad-mini-select-wifi-starlight-202109?wid=940&hei=1112&fmt=png-alpha&.v=1629840745000'
 )
