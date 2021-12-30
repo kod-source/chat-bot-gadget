@@ -16,16 +16,19 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import { LikeRepository } from 'lib/api/repository/likeRepostiroy';
 import GppBadIcon from '@mui/icons-material/GppBad';
-import Image from 'next/image';
-import { ImageSwiper } from 'lib/components/ImageSwiper';
+import { ImageSwiperComponent } from 'lib/components/ImageSwiperComponent';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+import { ImageSwiper } from 'lib/api/Entity/ImageSwiper';
+import { ImageSwiperRepository } from 'lib/api/repository/imageSwiperRepository';
 
 interface State {
   product: Product;
   ipad: Ipad;
+  likeProductIds: number[];
+  imageSwipers: ImageSwiper[];
 }
 
 interface Props {
@@ -35,21 +38,22 @@ interface Props {
 const IpadShow: NextPage<Props> = ({ id }) => {
   const [state, setState] = useState<State>();
   const [show, setShow] = useState(false);
-  const [likeProductIds, setLikeProductIds] = useState<number[]>([]);
 
   const fetchData = async () => {
     const product = await ProductRepository.get(id);
     const ipad = await IpadRepository.get(id);
     const likes = await LikeRepository.my();
-    setState({ product, ipad });
-    setLikeProductIds(likes.map((like) => like.productId));
+    const imageSwipers = await ImageSwiperRepository.showIpad(ipad.id);
+    const likeProductIds = likes.map((like) => like.productId);
+    setState({ product, ipad, likeProductIds, imageSwipers });
   };
+
   useEffect(() => {
     fetchData();
   }, []);
 
   if (!state) return <Loading />;
-  const { product, ipad } = state;
+  const { product, ipad, likeProductIds, imageSwipers } = state;
 
   const addLikeVButton = async () => {
     await LikeRepository.create(product.id);
@@ -69,16 +73,8 @@ const IpadShow: NextPage<Props> = ({ id }) => {
         <Header />
       </div>
       <div className='my-28 lg:flex'>
-        {/* <div className='lg:ml-[5%] text-center lg:text-left'>
-          <Image
-            src={product.image}
-            width={600}
-            height={600}
-            alt='Product Image'
-          />
-        </div> */}
         <div className='w-1/2'>
-          <ImageSwiper />
+          <ImageSwiperComponent imageSwipers={imageSwipers} />
         </div>
         <div className='mx-5 lg:mx-16'>
           <h1 className='font-bold mt-3 lg:m-0 text-lg sm:text-2xl lg:text-4xl border-b-4 pb-3'>
