@@ -17,6 +17,11 @@ import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import { LikeRepository } from 'lib/api/repository/likeRepostiroy';
 import GppBadIcon from '@mui/icons-material/GppBad';
 import Image from 'next/image';
+import { ImageSwiper } from 'lib/components/ImageSwiper';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
 
 interface State {
   product: Product;
@@ -64,13 +69,16 @@ const IpadShow: NextPage<Props> = ({ id }) => {
         <Header />
       </div>
       <div className='my-28 lg:flex'>
-        <div className='lg:ml-[5%] text-center lg:text-left'>
+        {/* <div className='lg:ml-[5%] text-center lg:text-left'>
           <Image
             src={product.image}
             width={600}
             height={600}
             alt='Product Image'
           />
+        </div> */}
+        <div className='w-1/2'>
+          <ImageSwiper />
         </div>
         <div className='mx-5 lg:mx-16'>
           <h1 className='font-bold mt-3 lg:m-0 text-lg sm:text-2xl lg:text-4xl border-b-4 pb-3'>
