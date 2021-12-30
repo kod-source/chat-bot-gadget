@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ipad_id: 1
+  iphone_id: 1
+  mac_id: 1
+  title: MyString
+  url: MyString
+
+two:
+  ipad_id: 1
+  iphone_id: 1
+  mac_id: 1
+  title: MyString
+  url: MyString
