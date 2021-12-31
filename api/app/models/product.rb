@@ -3,4 +3,5 @@ class Product < ApplicationRecord
 
   has_many :likes
   has_one :ipad
+  has_one :mac
 end

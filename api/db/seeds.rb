@@ -467,3 +467,218 @@ ImageSwiper.create!(
   title: 'スターライト',
   url: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/ipad-mini-select-wifi-starlight-202109?wid=940&hei=1112&fmt=png-alpha&.v=1629840745000'
 )
+
+Product.create!(
+  [
+    {
+      name: '13インチMacBook Air',
+      memo: "こちらはM1チップの搭載のMabBook Airになります。\n" + "最新のMacBook Airはプロと同等の性能があり一番人気の商品ではないのかと思います。\n" + "薄くて持ち運びやすさも抜群で今MacBookを書くならこれ一択なのではないかと思うくらい番人におすすめできるものになっています。" + "現在は整備品済製品として安く購入できるかもしれないので購入さるないと要チェックをお勧めします。\n\n" + "※こちらの価格はWiFiモデルの価格となっており、価格は税込みの価格です。",
+      image: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/macbook-air-space-gray-select-201810?wid=904&hei=840&fmt=jpeg&qlt=80&.v=1633027804000',
+      most_low_price: 115280,
+      highest_price: 230780,
+      url: 'https://www.apple.com/jp/shop/buy-mac/macbook-air'
+    },
+    {
+      name: '13インチMacBook Pro',
+      memo: "こちらはM1チップの搭載のMabBook Proになります。\n" + "MacBook Airとの違いとしては、ファンの有無やTouchBarの有無などがあります。\n" + "こちらのMacBook Proは現状のMacBookの中で一番バッテリー性能が良いというのもポイントになるかと思います。" + "現在は整備品済製品として安く購入できるかもしれないので購入さるないと要チェックをお勧めします。\n\n" + "※こちらの価格はWiFiモデルの価格となっており、価格は税込みの価格です。",
+      image: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/mbp-spacegray-select-202011_GEO_JP?wid=904&hei=840&fmt=jpeg&qlt=80&.v=1632948894000',
+      most_low_price: 148280,
+      highest_price: 258280,
+      url: 'https://www.apple.com/jp/shop/buy-mac/macbook-pro/13インチ'
+    },
+    {
+      name: '14インチMacBook Pro',
+      memo: "こちらはM1Pro、M1Maxチップの搭載のMabBook Proになります。\n" + "こちらのMacBookは本当のプロ向けモデルになっており、性能がとても高く一般的な人では使いこなすのは困難なのではないかと思います。\n" + "こちらのMacBook Proは画面サイズが大きなりましたが、少し重量も増え他のがデメリットにもなるかと思います。\n" + "こちらのモデルを買う方は本当にこのスペックが必要な人のみを購入をお勧めします。" + "是非一度店頭などお試しください！\n\n" + "※こちらの価格はWiFiモデルの価格となっており、価格は税込みの価格です。",
+      image: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/mbp14-spacegray-select-202110_GEO_JP?wid=904&hei=840&fmt=jpeg&qlt=80&.v=1633657361000',
+      most_low_price: 239800,
+      highest_price: 673800,
+      url: 'https://www.apple.com/jp/shop/buy-mac/macbook-pro/14インチ'
+    },
+    {
+      name: '16インチMacBook Pro',
+      memo: "こちらはM1Pro、M1Maxチップの搭載のMabBook Proになります。\n" + "こちらのMacBookは本当のプロ向けモデルになっており、性能がとても高く一般的な人では使いこなすのは困難なのではないかと思います。\n" + "こちらのMacBook Proは画面サイズが大きいのでマルチタスクがやりやすいかと思います。しかし、その分重量も大きくなり持ち運ぶのには適していないかと思います。\n" + "こちらのMacBook Proにしかない機能として、ハイパワーモードというのも搭載しております。" + "是非一度店頭などお試しください！\n\n" + "※こちらの価格はWiFiモデルの価格となっており、価格は税込みの価格です。",
+      image: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/mbp16-spacegray-select-202110_GEO_JP?wid=904&hei=840&fmt=jpeg&qlt=80&.v=1633657684000',
+      most_low_price: 299800,
+      highest_price: 707800,
+      url: 'https://www.apple.com/jp/shop/buy-mac/macbook-pro/16インチ'
+    },
+    {
+      name: '13インチMacBook Pro [整備済製品]',
+      memo: "こちらはintelチップの搭載したのMabBook Proになります。\n" + "intelチップではないと動かないアプリを使用しないかりぎりはApple Silicon搭載のMac Bookを購入するのをお勧めします。\n" + "しかしApple Siliconに対応していないアプリなどがあるのが現状です。\n" + "こちらのMacBook はとてもファンが周りときには雑音くらいなる時もあり、バッテリー性能もそこまで解くないため、購入させる場合はそちらも考慮することをお勧めします。" + "是非一度店頭などお試しください！\n\n" + "※こちらの価格はWiFiモデルの価格となっており、価格は税込みの価格です。",
+      image: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/refurb-mbp13touchbar-performance-space-gallery-2020_GEO_JP?wid=1144&hei=1144&fmt=jpeg&qlt=80&.v=1593570148000',
+      most_low_price: 175780,
+      highest_price: 194480,
+      url: 'https://www.apple.com/jp/shop/refurbished/mac/macbook-pro'
+    },
+    {
+      name: '16インチMacBook Pro [整備済製品]',
+      memo: "こちらはintelチップの搭載したのMabBook Proになります。\n" + "intelチップではないと動かないアプリを使用しないかりぎりはApple Silicon搭載のMac Bookを購入するのをお勧めします。\n" + "しかしApple Siliconに対応していないアプリなどがあるのが現状です。\n" + "こちらのMacBook はとてもファンが周りときには雑音くらいなる時もあり、バッテリー性能もそこまで解くないため、購入させる場合はそちらも考慮することをお勧めします。" + "是非一度店頭などお試しください！\n\n" + "※こちらの価格はWiFiモデルの価格となっており、価格は税込みの価格です。",
+      image: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/refurb-mbp16touch-space-gallery-2020_GEO_JP?wid=1144&hei=1144&fmt=jpeg&qlt=80&.v=1596750726000',
+      most_low_price: 227800,
+      highest_price: 424150,
+      url: 'https://www.apple.com/jp/shop/refurbished/mac/macbook-pro'
+    }
+  ]
+)
+
+Mac.create!(
+  [
+    {
+      product_id: Product.find_by(name: '13インチMacBook Air').id,
+      apple_silicon: true,
+      chips: ['M1'],
+      size: 13.3,
+      max_memory: 16,
+      max_cpu_core: 8,
+      max_gpu_core: 8,
+      max_storage: 2,
+      battery_driven_time: 18,
+      touch_bar: false,
+      storages: ['256GB', '512GB', '1TB', '2TB'],
+      memorys: ['8GB', '16GB'],
+      mini_led_display: false,
+      pro_motion_display: false,
+      weight: 1.29,
+      in_camra_pixel: 720,
+      thunderbolt_count: 2,
+      hdmi_port: false,
+      sa_card_slot: false,
+      notch: false,
+      wi_fi_six: true,
+      power_adaper: 30,
+      fan_existence: false
+    },
+    {
+      product_id: Product.find_by(name: '13インチMacBook Pro').id,
+      apple_silicon: true,
+      chips: ['M1'],
+      size: 13.3,
+      max_memory: 16,
+      max_cpu_core: 8,
+      max_gpu_core: 8,
+      max_storage: 2,
+      battery_driven_time: 20,
+      touch_bar: true,
+      storages: ['256GB', '512GB', '1TB', '2TB'],
+      memorys: ['8GB', '16GB'],
+      mini_led_display: false,
+      pro_motion_display: false,
+      weight: 1.4,
+      in_camra_pixel: 720,
+      thunderbolt_count: 2,
+      hdmi_port: false,
+      sa_card_slot: false,
+      notch: false,
+      wi_fi_six: true,
+      power_adaper: 61,
+      fan_existence: true
+    },
+    {
+      product_id: Product.find_by(name: '14インチMacBook Pro').id,
+      apple_silicon: true,
+      chips: ['M1 Pro', 'M1 Max'],
+      size: 14.2,
+      max_memory: 64,
+      max_cpu_core: 10,
+      max_gpu_core: 32,
+      max_storage: 8,
+      battery_driven_time: 17,
+      touch_bar: false,
+      storages: ['512GB', '1TB', '2TB', '4TB', '8TB'],
+      memorys: ['16GB', '32GB', '64GB(M1 Max)'],
+      mini_led_display: true,
+      pro_motion_display: true,
+      weight: 1.6,
+      in_camra_pixel: 1080,
+      thunderbolt_count: 3,
+      hdmi_port: true,
+      sa_card_slot: true,
+      notch: true,
+      wi_fi_six: true,
+      power_adaper: 67,
+      fan_existence: true
+    },
+    {
+      product_id: Product.find_by(name: '16インチMacBook Pro').id,
+      apple_silicon: true,
+      chips: ['M1 Pro', 'M1 Max'],
+      size: 16.2,
+      max_memory: 64,
+      max_cpu_core: 10,
+      max_gpu_core: 32,
+      max_storage: 8,
+      battery_driven_time: 21,
+      touch_bar: false,
+      storages: ['512GB', '1TB', '2TB', '4TB', '8TB'],
+      memorys: ['16GB', '32GB', '64GB(M1 Max)'],
+      mini_led_display: true,
+      pro_motion_display: true,
+      weight: 2.1,
+      in_camra_pixel: 1080,
+      thunderbolt_count: 3,
+      hdmi_port: true,
+      sa_card_slot: true,
+      notch: true,
+      wi_fi_six: true,
+      power_adaper: 140,
+      fan_existence: true
+    },
+    {
+      product_id: Product.find_by(name: '13インチMacBook Pro [整備済製品]').id,
+      apple_silicon: false,
+      chips: ['Core i5', 'Core i7'],
+      size: 13.3,
+      max_memory: 32,
+      max_cpu_core: 4,
+      max_storage: 4,
+      battery_driven_time: 10,
+      touch_bar: true,
+      storages: ['512GB', '1TB', '2TB', '4TB'],
+      memorys: ['16GB', '32GB'],
+      mini_led_display: false,
+      pro_motion_display: false,
+      weight: 1.4,
+      in_camra_pixel: 720,
+      thunderbolt_count: 4,
+      hdmi_port: false,
+      sa_card_slot: false,
+      notch: false,
+      wi_fi_six: false,
+      power_adaper: 61,
+      fan_existence: true
+    },
+    {
+      product_id: Product.find_by(name: '16インチMacBook Pro [整備済製品]').id,
+      apple_silicon: false,
+      chips: ['Core i5', 'Core i7', 'Core i9'],
+      size: 16,
+      max_memory: 64,
+      max_cpu_core: 8,
+      max_storage: 8,
+      battery_driven_time: 11,
+      touch_bar: true,
+      storages: ['512GB', '1TB', '2TB', '4TB', '8TB'],
+      memorys: ['16GB', '32GB', '64GB'],
+      mini_led_display: false,
+      pro_motion_display: false,
+      weight: 2.0,
+      in_camra_pixel: 720,
+      thunderbolt_count: 4,
+      hdmi_port: false,
+      sa_card_slot: false,
+      notch: false,
+      wi_fi_six: false,
+      power_adaper: 96,
+      fan_existence: true
+    }
+  ]
+)
+Product.find_by(name: '13インチMacBook Air').likes.create!(
+  user_id: User.find_by(name: 'ホストユーザー').id,
+)
+Product.find_by(name: '13インチMacBook Pro').likes.create!(
+  user_id: User.find_by(name: 'ホストユーザー').id,
+)
+Product.find_by(name: '14インチMacBook Pro').likes.create!(
+  user_id: User.find_by(name: 'ホストユーザー').id,
+)
