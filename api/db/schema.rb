@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_30_021918) do
+ActiveRecord::Schema.define(version: 2021_12_31_084306) do
 
   create_table "image_swipers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.integer "ipad_id"
@@ -51,6 +51,35 @@ ActiveRecord::Schema.define(version: 2021_12_30_021918) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "macs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "product_id"
+    t.boolean "apple_silicon"
+    t.string "chips"
+    t.float "size"
+    t.integer "max_memory"
+    t.integer "max_cpu_core"
+    t.integer "max_gpu_core"
+    t.integer "max_storage"
+    t.integer "battery_driven_time"
+    t.boolean "touch_bar"
+    t.string "storages"
+    t.string "memorys"
+    t.boolean "mini_led_display"
+    t.boolean "pro_motion_display"
+    t.float "weight"
+    t.integer "in_camra_pixel"
+    t.integer "thunderbolt_count"
+    t.boolean "hdmi_port"
+    t.boolean "sa_card_slot"
+    t.boolean "notch"
+    t.boolean "wi_fi_six"
+    t.integer "power_adaper"
+    t.boolean "fan_existence"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["product_id"], name: "index_macs_on_product_id"
+  end
+
   create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name", null: false
     t.text "memo"
@@ -72,4 +101,5 @@ ActiveRecord::Schema.define(version: 2021_12_30_021918) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "macs", "products"
 end
