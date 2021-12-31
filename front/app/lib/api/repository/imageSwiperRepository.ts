@@ -16,4 +16,12 @@ export class ImageSwiperRepository {
     );
     return res.data.map(ImageSwiperFactory.createFormResponse);
   }
+
+  static async showMac(macId: number): Promise<ImageSwiper[]> {
+    const res = await axios.get<ImageSwiperResponseObject[]>(
+      `${ImageSwiperUrl}?mac_id=${macId}`,
+      { withCredentials: true }
+    );
+    return res.data.map(ImageSwiperFactory.createFormResponse);
+  }
 }

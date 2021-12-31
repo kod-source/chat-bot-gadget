@@ -67,13 +67,13 @@ ActiveRecord::Schema.define(version: 2021_12_31_084306) do
     t.boolean "mini_led_display"
     t.boolean "pro_motion_display"
     t.float "weight"
-    t.integer "in_camra_pixel"
+    t.integer "in_camera_pixel"
     t.integer "thunderbolt_count"
     t.boolean "hdmi_port"
-    t.boolean "sa_card_slot"
+    t.boolean "sd_card_slot"
     t.boolean "notch"
     t.boolean "wi_fi_six"
-    t.integer "power_adaper"
+    t.integer "power_adapter"
     t.boolean "fan_existence"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

@@ -11,5 +11,6 @@ export const LikesUrl = `${localhost}/likes`;
 export const ProductsUrl = `${localhost}/products`;
 export const IpadsUrl = `${localhost}/ipads`;
 export const ImageSwiperUrl = `${localhost}/image_swipers`;
+export const MacsUrl = `${localhost}/macs`;
 
 
