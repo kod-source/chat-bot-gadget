@@ -17,7 +17,7 @@ User.create!(
 
 Product.create!(
   name: 'iPad Air4',
-  memo: "こちらのiPadはカラフルな色があり、お好みなカラーがあれば良いですね。\n" + "現在のiPadAir4はiPadProとの差が特になく、万人におすすでできる商品となってます。\n\n" + "※こちらの価格はWiFiモデルの価格となっており、価格は税込みの価格です。",
+  memo: "こちらのiPadはカラフルな色があり、お好みなカラーがあれば良いですね。\n" + "現在のiPadAir4はiPadProとの差が特になく、万人におすすでできる商品となってます。\n" + "現在ではプロ殺しのAirと言われているくらいとてもコスパの良い製品に仕上がっているのではないかと思います。\n" + "まず色々なことがしたいけど、特に何買ったら良いか分からな人などはこちらのiPadは最適になるのではないかと思います。\n" + "是非一度店頭などお試しください！\n\n" + "※こちらの価格はWiFiモデルの価格となっており、価格は税込みの価格です。",
   image: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/ipad-air-select-202009?wid=886&hei=1070&fmt=jpeg&qlt=80&.v=1599066777000',
   most_low_price: 63580,
   highest_price: 82280,

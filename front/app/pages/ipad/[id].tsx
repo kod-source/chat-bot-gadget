@@ -74,131 +74,135 @@ const IpadShow: NextPage<Props> = ({ id }) => {
       <Head>
         <title>{product.name}</title>
       </Head>
-      <div className='fixed top-0 w-full z-10'>
-        <Header />
-      </div>
-      <div className='my-28 lg:flex'>
-        <div className='w-full lg:w-1/2'>
-          <ImageSwiperComponent imageSwipers={imageSwipers} />
+      <div className='flex flex-col min-h-[100vh]'>
+        <div className='fixed top-0 w-full z-10'>
+          <Header />
         </div>
-        <div className='mx-5 lg:mx-16'>
-          <h1 className='font-bold mt-3 lg:m-0 text-lg sm:text-2xl lg:text-4xl border-b-4 pb-3'>
-            {product.name}
-          </h1>
-          <div className='mt-3 border-b-4 pb-3'>
-            {product.memo.split(`\n`).map((m) => (
-              <p>
-                {m}
-                <br />
-              </p>
-            ))}
+        <div className='my-28 lg:flex'>
+          <div className='w-full lg:w-1/2'>
+            <ImageSwiperComponent imageSwipers={imageSwipers} />
           </div>
-          <p className='text-lg sm:text-xl lg:text-2xl font-bold my-5 lg:my-10 ml-5 lg:ml-10'>
-            <span className='text-red-600'>価格：</span>
-            {product.mostLowPrice.toLocaleString()}円 〜
-            {product.highestPrice.toLocaleString()}円　税込
-          </p>
-          <div className='sm:flex'>
-            <Link href={product.url}>
-              <a target='_blank'>
+          <div className='mx-5 lg:mx-16'>
+            <h1 className='font-bold mt-3 lg:m-0 text-lg sm:text-2xl lg:text-4xl border-b-4 pb-3'>
+              {product.name}
+            </h1>
+            <div className='mt-3 border-b-4 pb-3'>
+              {product.memo.split(`\n`).map((m) => (
+                <p>
+                  {m}
+                  <br />
+                </p>
+              ))}
+            </div>
+            <p className='text-lg sm:text-xl lg:text-2xl font-bold my-5 lg:my-10 ml-5 lg:ml-10'>
+              <span className='text-red-600'>価格：</span>
+              {product.mostLowPrice.toLocaleString()}円 〜
+              {product.highestPrice.toLocaleString()}円　税込
+            </p>
+            <div className='sm:flex'>
+              <Link href={product.url}>
+                <a target='_blank'>
+                  <Button
+                    variant='contained'
+                    className='mx-2 my-1 sm:my-0 w-56 static p-4 transition ease-in-out duration-300 hover:-translate-y-1 hover:scale-110'
+                  >
+                    <ShoppingCartIcon />
+                    商品購入ページはこちら
+                  </Button>
+                </a>
+              </Link>
+              {likeProductIds.includes(product.id) ? (
                 <Button
-                  variant='contained'
-                  className='mx-2 my-1 sm:my-0 w-56 static p-4 transition ease-in-out duration-300 hover:-translate-y-1 hover:scale-110'
+                  className='mx-2 my-1 sm:my-0 w-56 bg-red-600 text-white hover:bg-red-700 static p-4 transition ease-in-out duration-300 hover:-translate-y-1 hover:scale-110'
+                  onClick={() => deleteLikeButton()}
                 >
-                  <ShoppingCartIcon />
-                  商品購入ページはこちら
+                  <GppBadIcon />
+                  お気に入りから削除
                 </Button>
-              </a>
-            </Link>
-            {likeProductIds.includes(product.id) ? (
-              <Button
-                className='mx-2 my-1 sm:my-0 w-56 bg-red-600 text-white hover:bg-red-700 static p-4 transition ease-in-out duration-300 hover:-translate-y-1 hover:scale-110'
-                onClick={() => deleteLikeButton()}
-              >
-                <GppBadIcon />
-                お気に入りから削除
-              </Button>
-            ) : (
-              <Button
-                className='mx-2 my-1 sm:my-0 w-56 bg-red-500 text-white hover:bg-red-600 static p-4 transition ease-in-out duration-300 hover:-translate-y-1 hover:scale-110'
-                onClick={() => addLikeVButton()}
-              >
-                <FavoriteIcon />
-                お気に入りに追加
-              </Button>
-            )}
-          </div>
-          <div className='mt-7 border-b-4 pb-3'>
-            <div className='flex my-1'>
-              <p className='w-32'>ブランド</p>
-              <p>Apple(アップル)</p>
+              ) : (
+                <Button
+                  className='mx-2 my-1 sm:my-0 w-56 bg-red-500 text-white hover:bg-red-600 static p-4 transition ease-in-out duration-300 hover:-translate-y-1 hover:scale-110'
+                  onClick={() => addLikeVButton()}
+                >
+                  <FavoriteIcon />
+                  お気に入りに追加
+                </Button>
+              )}
             </div>
-            <div className='flex my-1'>
-              <p className='w-32'>画面サイズ</p>
-              <p>{ipad.screenSize} インチ</p>
+            <div className='mt-7 border-b-4 pb-3'>
+              <div className='flex my-1'>
+                <p className='w-32'>ブランド</p>
+                <p>Apple(アップル)</p>
+              </div>
+              <div className='flex my-1'>
+                <p className='w-32'>画面サイズ</p>
+                <p>{ipad.screenSize} インチ</p>
+              </div>
+              <div className='flex my-1'>
+                <p className='w-32'>重量</p>
+                <p>{ipad.weight} g</p>
+              </div>
             </div>
-            <div className='flex my-1'>
-              <p className='w-32'>重量</p>
-              <p>{ipad.weight} g</p>
-            </div>
-          </div>
-          <h1 className='mt-3 text-xl font-bold'>この商品について</h1>
-          <ul className='list-disc ml-6'>
-            <li>{ipad.chip}チップ</li>
-            <li>
-              セキュア認証とApple Pay のための
-              {ipad.faceId ? 'Face Id' : 'Touch Id'}
-            </li>
-            <li>Apple Pencil(第2世代)に{ipad.pencilTwo ? '対応' : '非対応'}</li>
-            <li>デュアルスピーカに{ipad.dualSpeaker ? '対応' : '非対応'}</li>
-            <li>{ipad.typeC ? 'USB Type-C' : 'Lightning端子'}搭載</li>
-            <li>
-              {ipad.cleanDisplay
-                ? '美しいLiquid Retinaディスプレイ搭載'
-                : 'Retinaディスプレイ搭載'}
-            </li>
-            {show && (
-              <>
-                {ipad.smartConnector && (
-                  <li>アクセサリのためのSmart Keyboardなどに対応</li>
-                )}
-                {ipad.thunderbolt && (
+            <h1 className='mt-3 text-xl font-bold'>この商品について</h1>
+            <ul className='list-disc ml-6'>
+              <li>{ipad.chip}チップ</li>
+              <li>
+                セキュア認証とApple Pay のための
+                {ipad.faceId ? 'Face Id' : 'Touch Id'}
+              </li>
+              <li>
+                Apple Pencil(第2世代)に{ipad.pencilTwo ? '対応' : '非対応'}
+              </li>
+              <li>デュアルスピーカに{ipad.dualSpeaker ? '対応' : '非対応'}</li>
+              <li>{ipad.typeC ? 'USB Type-C' : 'Lightning端子'}搭載</li>
+              <li>
+                {ipad.cleanDisplay
+                  ? '美しいLiquid Retinaディスプレイ搭載'
+                  : 'Retinaディスプレイ搭載'}
+              </li>
+              {show && (
+                <>
+                  {ipad.smartConnector && (
+                    <li>アクセサリのためのSmart Keyboardなどに対応</li>
+                  )}
+                  {ipad.thunderbolt && (
+                    <li>
+                      高速な外付けストレージ、ディスプレイ、ドックに接続できるThunderbolt
+                    </li>
+                  )}
                   <li>
-                    高速な外付けストレージ、ディスプレイ、ドックに接続できるThunderbolt
+                    リフレッシュレート{ipad.highRefreshRate ? '120Hz' : '60Hz'}
                   </li>
-                )}
-                <li>
-                  リフレッシュレート{ipad.highRefreshRate ? '120Hz' : '60Hz'}
-                </li>
-                <li>スピーカ数:{ipad.speakerCount}つ</li>
-                <li>
-                  センターフレームに{ipad.centerFrame ? '対応' : '非対応'}
-                </li>
-                <li>高速通信できる5Gに{ipad.fiveG ? '対応' : '非対応'}</li>
-                {ipad.highPerformCamera && (
-                  <li>超広角カメラやLiDARスキャナ搭載</li>
-                )}
-                <li>原産国:中国</li>
-              </>
-            )}
-          </ul>
-          <p onClick={() => setShow((prevState) => !prevState)}>
-            {show ? (
-              <div className='flex cursor-pointer'>
-                <ExpandLessIcon className='hover:opacity-70' />
-                <div className='text-blue-500 hover:text-red-400 hover:border-b-2 border-red-400 p-0 m-0'>
-                  表示件数の減らす
+                  <li>スピーカ数:{ipad.speakerCount}つ</li>
+                  <li>
+                    センターフレームに{ipad.centerFrame ? '対応' : '非対応'}
+                  </li>
+                  <li>高速通信できる5Gに{ipad.fiveG ? '対応' : '非対応'}</li>
+                  {ipad.highPerformCamera && (
+                    <li>超広角カメラやLiDARスキャナ搭載</li>
+                  )}
+                  <li>原産国:中国</li>
+                </>
+              )}
+            </ul>
+            <p onClick={() => setShow((prevState) => !prevState)}>
+              {show ? (
+                <div className='flex cursor-pointer'>
+                  <ExpandLessIcon className='hover:opacity-70' />
+                  <div className='text-blue-500 hover:text-red-400 hover:border-b-2 border-red-400 p-0 m-0'>
+                    表示件数の減らす
+                  </div>
                 </div>
-              </div>
-            ) : (
-              <div className='flex cursor-pointer hover:opacity-70'>
-                <ExpandMoreIcon />
-                <div className='text-blue-500 hover:text-red-400 hover:border-b-2 border-red-400 p-0 m-0'>
-                  表示件数の増やす
+              ) : (
+                <div className='flex cursor-pointer hover:opacity-70'>
+                  <ExpandMoreIcon />
+                  <div className='text-blue-500 hover:text-red-400 hover:border-b-2 border-red-400 p-0 m-0'>
+                    表示件数の増やす
+                  </div>
                 </div>
-              </div>
-            )}
-          </p>
+              )}
+            </p>
+          </div>
         </div>
       </div>
       <Footer />
