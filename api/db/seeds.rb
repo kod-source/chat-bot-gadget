@@ -678,7 +678,7 @@ Mac.find_by(product_id: Product.find_by(name: '13インチMacBook Air').id).imag
   [
     {
       title: 'スペースグレイ',
-      url: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/macbook-air-space-gray-config-201810?wid=1078&hei=624&fmt=jpeg&qlt=80&.v=1633033424000'
+      url: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/macbook-air-space-gray-select-201810?wid=904&hei=840&fmt=jpeg&qlt=80&.v=1633027804000'
     },
     {
       title: 'ゴールド',
