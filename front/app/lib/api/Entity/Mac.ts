@@ -1,0 +1,30 @@
+export class Mac {
+  constructor(
+    public Id: number,
+    public productId: number,
+    public appleSilicon: boolean,
+    public chips: string[],
+    public size: number,
+    public maxMemory: number,
+    public maxCpuCore: number,
+    public maxGpuCore: number | null,
+    public maxStorage: number,
+    public batteryDrivenTime: number,
+    public touchBar: boolean,
+    public storages: string[],
+    public memorys: string[],
+    public miniLedDisplay: boolean,
+    public proMotionDisplay: boolean,
+    public weight: number,
+    public inCameraPixel: number,
+    public thunderboltCount: number,
+    public hdmiPort: boolean,
+    public sdCardSlot: boolean,
+    public notch: boolean,
+    public wiFiSix: boolean,
+    public powerAdapter: number,
+    public fanExistence: boolean,
+    public createdAt: Date,
+    public updatedAt: Date
+  ) {}
+}

@@ -539,13 +539,13 @@ Mac.create!(
       mini_led_display: false,
       pro_motion_display: false,
       weight: 1.29,
-      in_camra_pixel: 720,
+      in_camera_pixel: 720,
       thunderbolt_count: 2,
       hdmi_port: false,
-      sa_card_slot: false,
+      sd_card_slot: false,
       notch: false,
       wi_fi_six: true,
-      power_adaper: 30,
+      power_adapter: 30,
       fan_existence: false
     },
     {
@@ -564,13 +564,13 @@ Mac.create!(
       mini_led_display: false,
       pro_motion_display: false,
       weight: 1.4,
-      in_camra_pixel: 720,
+      in_camera_pixel: 720,
       thunderbolt_count: 2,
       hdmi_port: false,
-      sa_card_slot: false,
+      sd_card_slot: false,
       notch: false,
       wi_fi_six: true,
-      power_adaper: 61,
+      power_adapter: 61,
       fan_existence: true
     },
     {
@@ -589,13 +589,13 @@ Mac.create!(
       mini_led_display: true,
       pro_motion_display: true,
       weight: 1.6,
-      in_camra_pixel: 1080,
+      in_camera_pixel: 1080,
       thunderbolt_count: 3,
       hdmi_port: true,
-      sa_card_slot: true,
+      sd_card_slot: true,
       notch: true,
       wi_fi_six: true,
-      power_adaper: 67,
+      power_adapter: 67,
       fan_existence: true
     },
     {
@@ -614,13 +614,13 @@ Mac.create!(
       mini_led_display: true,
       pro_motion_display: true,
       weight: 2.1,
-      in_camra_pixel: 1080,
+      in_camera_pixel: 1080,
       thunderbolt_count: 3,
       hdmi_port: true,
-      sa_card_slot: true,
+      sd_card_slot: true,
       notch: true,
       wi_fi_six: true,
-      power_adaper: 140,
+      power_adapter: 140,
       fan_existence: true
     },
     {
@@ -638,13 +638,13 @@ Mac.create!(
       mini_led_display: false,
       pro_motion_display: false,
       weight: 1.4,
-      in_camra_pixel: 720,
+      in_camera_pixel: 720,
       thunderbolt_count: 4,
       hdmi_port: false,
-      sa_card_slot: false,
+      sd_card_slot: false,
       notch: false,
       wi_fi_six: false,
-      power_adaper: 61,
+      power_adapter: 61,
       fan_existence: true
     },
     {
@@ -662,17 +662,187 @@ Mac.create!(
       mini_led_display: false,
       pro_motion_display: false,
       weight: 2.0,
-      in_camra_pixel: 720,
+      in_camera_pixel: 720,
       thunderbolt_count: 4,
       hdmi_port: false,
-      sa_card_slot: false,
+      sd_card_slot: false,
       notch: false,
       wi_fi_six: false,
-      power_adaper: 96,
+      power_adapter: 96,
       fan_existence: true
     }
   ]
 )
+
+Mac.find_by(product_id: Product.find_by(name: '13インチMacBook Air').id).image_swipers.create!(
+  [
+    {
+      title: 'スペースグレイ',
+      url: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/macbook-air-space-gray-select-201810?wid=904&hei=840&fmt=jpeg&qlt=80&.v=1633027804000'
+    },
+    {
+      title: 'ゴールド',
+      url: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/macbook-air-gold-select-201810?wid=904&hei=840&fmt=jpeg&qlt=80&.v=1633027804000'
+    },
+    {
+      title: 'シルバー',
+      url: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/macbook-air-silver-select-201810?wid=904&hei=840&fmt=jpeg&qlt=80&.v=1633027804000'
+    },
+    {
+      title: 'キーボード',
+      url: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/macbook-air-gallery1-20201110_GEO_JP?wid=4000&hei=3072&fmt=jpeg&qlt=80&.v=1603911917000'
+    },
+    {
+      title: '端子',
+      url: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/macbook-air-gallery2-20201110?wid=4000&hei=3072&fmt=jpeg&qlt=80&.v=1603399116000'
+    },
+    {
+      title: '横画像',
+      url: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/macbook-air-gallery4-20201110?wid=4000&hei=3072&fmt=jpeg&qlt=80&.v=1603399116000'
+    },
+    {
+      title: '同梱物',
+      url: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/macbook-air-silver-box-hw-201810?wid=1110&hei=784&fmt=jpeg&qlt=80&.v=1539296025543'
+    }
+  ]
+)
+Mac.find_by(product_id: Product.find_by(name: '13インチMacBook Pro').id).image_swipers.create!(
+  [
+    {
+      title: 'スペースグレイ',
+      url: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/mbp-spacegray-select-202011_GEO_JP?wid=904&hei=840&fmt=jpeg&qlt=80&.v=1632948894000'
+    },
+    {
+      title: 'シルバー',
+      url: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/mbp-silver-select-202011_GEO_JP?wid=904&hei=840&fmt=jpeg&qlt=80&.v=1632950246000',
+    },
+    {
+      title: '横写真',
+      url: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/mbp-silver-gallery1-202011?wid=4000&hei=3072&fmt=jpeg&qlt=80&.v=1632937794000'
+    },
+    {
+      title: '正面',
+      url: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/mbp-silver-gallery2-202011_GEO_JP?wid=4000&hei=3072&fmt=jpeg&qlt=80&.v=1632936085000'
+    },
+    {
+      title: '端子',
+      url: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/mbp-silver-gallery3-202011?wid=4000&hei=3072&fmt=jpeg&qlt=80&.v=1603908512000'
+    },
+    {
+      title: '上部',
+      url: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/mbp-silver-gallery4-202011?wid=4000&hei=3072&fmt=jpeg&qlt=80&.v=1603475932000'
+    }
+  ]
+)
+Mac.find_by(product_id: Product.find_by(name: '14インチMacBook Pro').id).image_swipers.create!(
+  [
+    {
+      title: 'スペースグレイ',
+      url: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/mbp14-spacegray-select-202110_GEO_JP?wid=904&hei=840&fmt=jpeg&qlt=80&.v=1633657361000'
+    },
+    {
+      title: 'シルバー',
+      url: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/mbp14-silver-select-202110_GEO_JP?wid=904&hei=840&fmt=jpeg&qlt=80&.v=1633657233000'
+    },
+    {
+      title: '正面',
+      url: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/mbp14-silver-gallery2-202110?wid=4000&hei=3072&fmt=jpeg&qlt=80&.v=1632796176000'
+    },
+    {
+      title: '端子',
+      url: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/mbp14-silver-gallery3-202110?wid=4000&hei=3072&fmt=jpeg&qlt=80&.v=1632796167000'
+    },
+    {
+      title: '上部',
+      url: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/mbp14-silver-gallery4-202110?wid=4000&hei=3072&fmt=jpeg&qlt=80&.v=1632796175000'
+    },
+    {
+      title: '全体',
+      url: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/mbp14-silver-gallery5-202110?wid=4000&hei=3072&fmt=jpeg&qlt=80&.v=1632796173000'
+    }
+  ]
+)
+Mac.find_by(product_id: Product.find_by(name: '16インチMacBook Pro').id).image_swipers.create(
+  [
+    {
+      title: 'スペースグレイ',
+      url: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/mbp16-spacegray-select-202110_GEO_JP?wid=904&hei=840&fmt=jpeg&qlt=80&.v=1633657684000'
+    },
+    {
+      title: 'シルバー',
+      url: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/mbp16-silver-select-202110_GEO_JP?wid=904&hei=840&fmt=jpeg&qlt=80&.v=1633657507000'
+    },
+    {
+      title: '正面',
+      url: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/mbp16-spacegray-gallery2-202110?wid=4000&hei=3072&fmt=jpeg&qlt=80&.v=1632799174000'
+    },
+    {
+      title: '端子',
+      url: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/mbp16-spacegray-gallery3-202110?wid=4000&hei=3072&fmt=jpeg&qlt=80&.v=1632799177000'
+    },
+    {
+      title: '上部',
+      url: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/mbp16-spacegray-gallery4-202110?wid=4000&hei=3072&fmt=jpeg&qlt=80&.v=1632799181000'
+    },
+    {
+      title: '全体',
+      url: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/mbp16-spacegray-gallery5-202110?wid=4000&hei=3072&fmt=jpeg&qlt=80&.v=1632799183000'
+    }
+  ]
+)
+Mac.find_by(product_id: Product.find_by(name: '13インチMacBook Pro [整備済製品]').id).image_swipers.create!(
+  [
+    {
+      title: 'スペースグレイ',
+      url: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/refurb-mbp13touchbar-performance-space-gallery-2020_GEO_JP?wid=400&hei=400&fmt=jpeg&qlt=80&.v=1593570148000'
+    },
+    {
+      title: '横写真',
+      url: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/refurb-mbp13touchbar-performance-space-gallery-2020_AV1?wid=1144&hei=1144&fmt=jpeg&qlt=80&.v=1591921664000'
+    },
+    {
+      title: '横の端子',
+      url: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/refurb-mbp13touchbar-performance-space-gallery-2020_AV2?wid=1144&hei=1144&fmt=jpeg&qlt=80&.v=1592520584000'
+    },
+    {
+      title: '正面',
+      url: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/refurb-mbp13touchbar-performance-space-gallery-2020_AV3?wid=1144&hei=1144&fmt=jpeg&qlt=80&.v=1592520595000'
+    },
+    {
+      title: '箱',
+      url: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/refurb-mbp13touchbar-performance-space-gallery-2020_AV4?wid=1144&hei=1144&fmt=jpeg&qlt=80&.v=1592520591000'
+    }
+  ]
+)
+Mac.find_by(product_id: Product.find_by(name: '16インチMacBook Pro [整備済製品]').id).image_swipers.create!(
+  [
+    {
+      title: 'スペースグレイ',
+      url: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/refurb-mbp16touch-space-gallery-2019_GEO_JP?wid=400&hei=400&fmt=jpeg&qlt=80&.v=1582233091168'
+    },
+    {
+      title: 'シルバー',
+      url: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/refurb-mbp16touch-silver-gallery-2019_GEO_JP?wid=400&hei=400&fmt=jpeg&qlt=80&.v=1582233074431'
+    },
+    {
+      title: '横写真',
+      url: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/refurb-mbp13touchbar-performance-space-gallery-2020_AV1?wid=1144&hei=1144&fmt=jpeg&qlt=80&.v=1591921664000'
+    },
+    {
+      title: '横の端子',
+      url: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/refurb-mbp13touchbar-performance-space-gallery-2020_AV2?wid=1144&hei=1144&fmt=jpeg&qlt=80&.v=1592520584000'
+    },
+    {
+      title: '正面',
+      url: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/refurb-mbp13touchbar-performance-space-gallery-2020_AV3?wid=1144&hei=1144&fmt=jpeg&qlt=80&.v=1592520595000'
+    },
+    {
+      title: '箱',
+      url: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/refurb-mbp13touchbar-performance-space-gallery-2020_AV4?wid=1144&hei=1144&fmt=jpeg&qlt=80&.v=1592520591000'
+    }
+  ]
+)
+
 Product.find_by(name: '13インチMacBook Air').likes.create!(
   user_id: User.find_by(name: 'ホストユーザー').id,
 )
