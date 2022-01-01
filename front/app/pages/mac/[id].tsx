@@ -259,6 +259,7 @@ const MacShow: NextPage<Props> = ({ id }) => {
                       SDカードスロット{mac.sdCardSlot ? '搭載' : '非搭載'}
                     </li>
                     <li>HDMIポート{mac.hdmiPort ? '搭載' : '非搭載'}</li>
+                    <li>原産国:中国</li>
                   </>
                 )}
               </ul>
