@@ -12,7 +12,11 @@ class IpadsController < ApplicationController
   end
 
   def search
-    products = Product.includes(:ipad).where(most_low_price: ...params[:price])
+    ipad_product_ids = Ipad.all.map{ |i| i.product_id }
+    products = Product.includes(:ipad).where(
+      id: ipad_product_ids,
+      most_low_price: ...params[:price],
+    )
     ipad_ids = products.map{ |p| p.ipad.id }
     ipads = search_thunderbolt(
               search_high_refresh_rate(
