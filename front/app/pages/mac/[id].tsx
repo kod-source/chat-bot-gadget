@@ -148,7 +148,7 @@ const MacShow: NextPage<Props> = ({ id }) => {
           </div>
           <div className='mt-8'>
             <h1 className='text-3xl border-b-2 pb-3 font-bold'>主な特徴</h1>
-            <div className='text-center w-1/4'>
+            <div className='text-center w-1/2 lg:w-1/4'>
               <p className='my-5'>
                 最大
                 <br />
