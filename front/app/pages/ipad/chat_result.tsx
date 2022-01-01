@@ -9,6 +9,7 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { LikeRepository } from 'lib/api/repository/likeRepostiroy';
+import { Loading } from 'lib/components/Loading';
 
 interface Props {
   nextId: string;
@@ -77,7 +78,7 @@ const chatResult: NextPage<Props> = (props) => {
     }
   };
 
-  if (!products) return null;
+  if (!products) return <Loading />;
 
   return (
     <>
