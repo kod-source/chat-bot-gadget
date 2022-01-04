@@ -1,5 +1,6 @@
 import { Avatar, Button, Skeleton } from '@mui/material';
 import { IpadParam } from 'lib/api/repository/ipadRepository';
+import { MacParam } from 'lib/api/repository/macRepository';
 import { Answer, ChatState } from 'lib/interfaces';
 import { AuthContext } from 'pages/_app';
 import React, { FC, useContext, useEffect, useRef } from 'react';
@@ -11,7 +12,7 @@ interface Props {
   avatar: string;
   onSelectAnswer: (answer: Answer) => void;
   isChatLoading: boolean;
-  ipadSearchParam: IpadParam | null;
+  searchParam: IpadParam | MacParam | null;
   restartChats: () => void;
   endChats: () => void;
 }
@@ -25,7 +26,7 @@ export const Chats: FC<Props> = (props) => {
     avatar,
     onSelectAnswer,
     isChatLoading,
-    ipadSearchParam,
+    searchParam,
     restartChats,
     endChats,
   } = props;
@@ -109,16 +110,16 @@ export const Chats: FC<Props> = (props) => {
                   onClick={() => onSelectAnswer(a)}
                 >
                   {a.content.split('\n').map((c) => (
-                      <p key={c}>
-                        {c}
-                        <br />
-                      </p>
-                    ))}
+                    <p key={c}>
+                      {c}
+                      <br />
+                    </p>
+                  ))}
                 </Button>
               )}
             </div>
           ))}
-          {ipadSearchParam && (
+          {searchParam && (
             <SpeedDialTooltipOpen
               restartChats={restartChats}
               endChats={endChats}

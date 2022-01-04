@@ -44,12 +44,12 @@
       {
         "content": "13インチ〜14インチくらい",
         "nextId": "fan",
-        "params": { "appleSilicon": true }
+        "params": { "size": 13 }
       },
       {
         "content": "16インチ以上",
         "nextId": "fan",
-        "params": { "appleSilicon": false }
+        "params": { "size": 16 }
       },
       {
         "content": "一つ前に質問に戻る",
@@ -183,17 +183,17 @@
     "answers": [
       {
         "content": "必要",
-        "nextId": "wiFiSix",
+        "nextId": "end",
         "params": { "wiFiSix": true }
       },
       {
         "content": "どちらでも良い",
-        "nextId": "wiFiSix",
+        "nextId": "end",
         "params": {}
       },
       {
         "content": "一つ前の質問に戻る",
-        "nextId": "notch",
+        "nextId": "end",
         "params": {}
       }
     ],
