@@ -1,0 +1,202 @@
+{
+  "init": {
+    "answers": [
+      {
+        "content": "15万円以内",
+        "nextId": "chip",
+        "params": { "price": 150000 }
+      },
+      {
+        "content": "20万円以内",
+        "nextId": "chip",
+        "params": { "price": 200000 }
+      },
+      {
+        "content": "決まっていない",
+        "nextId": "chip",
+        "params": { "price": 1000000 }
+      }
+    ],
+    "question": "予算はいくらですか？"
+  },
+  "chip": {
+    "answers": [
+      {
+        "content": "Apple Siliconチップ",
+        "nextId": "size",
+        "params": { "appleSilicon": true }
+      },
+      {
+        "content": "Intelチップ",
+        "nextId": "size",
+        "params": { "appleSilicon": false }
+      },
+      {
+        "content": "どちらでも良い",
+        "nextId": "size",
+        "params": {}
+      }
+    ],
+    "question": "Apple Siliconのチップとintelのチップどちらがよろしいでしょうか？\n（intelチップではないと動かないアプリを使用予定ではない限りApple SiliconチップのMacをお勧めします！）"
+  },
+  "size": {
+    "answers": [
+      {
+        "content": "13インチ〜14インチくらい",
+        "nextId": "fan",
+        "params": { "appleSilicon": true }
+      },
+      {
+        "content": "16インチ以上",
+        "nextId": "fan",
+        "params": { "appleSilicon": false }
+      },
+      {
+        "content": "一つ前に質問に戻る",
+        "nextId": "chip",
+        "params": {}
+      }
+    ],
+    "question": "画面サイズはどれくらいがよろしいでしょうか？"
+  },
+  "fan": {
+    "answers": [
+      {
+        "content": "必要",
+        "nextId": "use",
+        "params": { "fanExistence": true }
+      },
+      {
+        "content": "不必要",
+        "nextId": "use",
+        "params": { "fanExistence": false }
+      },
+      {
+        "content": "どちらでも",
+        "nextId": "use",
+        "params": {}
+      }
+    ],
+    "question": "ファンは必要ですか？\nApple Siliconチップの場合は発熱が少ないため、重い作業を長時間しないのであれば非搭載でも問題ないかもです。\nしかしApple Siliconチップでも発熱がひどくでファンレスでは作業ができないという方もいるのでご自身の作業したいになるかと思います。"
+  },
+  "use": {
+    "answers": [
+      {
+        "content": "必要",
+        "nextId": "maxMemory",
+        "params": { "chips": ["M1 Pro", "core i9"] }
+      },
+      {
+        "content": "決まってない",
+        "nextId": "maxMemory",
+        "params": {}
+      },
+      {
+        "content": "一つ前の質問に戻る",
+        "nextId": "fan",
+        "params": {}
+      }
+    ],
+    "question": "4Kの高度な動画編集など高負荷な作業をする予定で高スペックなPCが必要でしょうか？"
+  },
+  "maxMemory": {
+    "answers": [
+      {
+        "content": "32GB以上必要",
+        "nextId": "thunderboltCount",
+        "params": { "maxMemory": 32 }
+      },
+      {
+        "content": "16GBで足りると思う",
+        "nextId": "thunderboltCount",
+        "params": { "maxMemory": 16 }
+      },
+      {
+        "content": "一つ前の質問に戻る",
+        "nextId": "use",
+        "params": {}
+      }
+    ],
+    "question": "16GBよりも多いメモリは必要でしょうか？\n（M1のMacBookは最大メモリが16GBですので足りなくなる場合もあるかもしれないです。）\nしかし、M1シリーズはユニファイドメモリを搭載しており、intel Macよりも効率的にメモリを使うことができるため16GBで足りる人がほとんどかと思われます。"
+  },
+  "thunderboltCount": {
+    "answers": [
+      {
+        "content": "4つ",
+        "nextId": "sdCardSlot",
+        "params": { "thunderboltCount": 4 }
+      },
+      {
+        "content": "3つ以上",
+        "nextId": "sdCardSlot",
+        "params": { "thunderboltCount": 3 }
+      },
+      {
+        "content": "2つ以上",
+        "nextId": "sdCardSlot",
+        "params": { "thunderboltCount": 2 }
+      }
+    ],
+    "question": "thunderboltCount端子はいくつ必要でしょうか？\n(4つを選ぶを現状はintelチップ搭載のMacのみ対象をなります。\n3つ以上を選択するとM1チップ搭載のMac以外が対象となります。)"
+  },
+  "sdCardSlot": {
+    "answers": [
+      {
+        "content": "必要",
+        "nextId": "notch",
+        "params": { "sdCardSlot": true }
+      },
+      {
+        "content": "どちらでも良い",
+        "nextId": "notch",
+        "params": {}
+      },
+      {
+        "content": "一つ前の質問に戻る",
+        "nextId": "thunderboltCount",
+        "params": {}
+      }
+    ],
+    "question": "HDMIポートやSDカードスロットは必要ですか？\n現状はM1ProやM1Max搭載のMacにのみ搭載しております。"
+  },
+  "notch": {
+    "answers": [
+      {
+        "content": "必要（画面サイズを大きくしたいため）",
+        "nextId": "wiFiSix",
+        "params": { "notch": true }
+      },
+      {
+        "content": "いらない",
+        "nextId": "wiFiSix",
+        "params": { "notch": false }
+      },
+      {
+        "content": "どちらでも良い",
+        "nextId": "wiFiSix",
+        "params": {}
+      }
+    ],
+    "question": "ノッチがあるMacBookでも問題ないでしょうか？\nノッチがあると少しダサく見えるかもです。あと上部のツールバーがたくさん並ぶとノッチを干渉する可能性もあります。\nしかし、画面の余白が減りより大きく画面を使用することができるメリットもあります。"
+  },
+  "wiFiSix": {
+    "answers": [
+      {
+        "content": "必要",
+        "nextId": "wiFiSix",
+        "params": { "wiFiSix": true }
+      },
+      {
+        "content": "どちらでも良い",
+        "nextId": "wiFiSix",
+        "params": {}
+      },
+      {
+        "content": "一つ前の質問に戻る",
+        "nextId": "notch",
+        "params": {}
+      }
+    ],
+    "question": "Wi-Fi6に対応したMacBookが欲しいですか？\n Wi-Fi6に対応することでより高速に Wi-Fiを使用することができます。\nしかし Wi-Fi6を使用するにはWi-Fi6に対応したルーターを別途購入が必要になります。"
+  }
+}
