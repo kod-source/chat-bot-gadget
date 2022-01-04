@@ -20,33 +20,24 @@ import { Chats } from 'lib/components/Chats';
 import MacIconImage from 'public/MacIconImage.jpg';
 import { ChooseMacParams } from 'lib/Function/ChooseMacParams';
 
-interface State {
-  chats: ChatState[];
-  answers: MacAnswer[];
-  nextId: MacNextId;
-  isChatLoading: boolean;
-}
-
 const Mac: NextPage = () => {
   const router = useRouter();
   const [startMacBot, setStartMacBot] = useState(false);
-  const [state, setState] = useState<State>({
-    chats: [
-      {
-        text: 'ご利用ありがとうございます。\nこんにちは。Mac君です。\n\nこれからいくつかの質問をし、あなたに最適なMacBookをお探しします。',
-        isQuestion: true,
-      },
-    ],
-    answers: [],
-    nextId: 'init',
-    isChatLoading: true,
-  });
+  const [chats, setChats] = useState<ChatState[]>([
+    {
+      text: 'ご利用ありがとうございます。\nこんにちは。Mac君です。\n\nこれからいくつかの質問をし、あなたに最適なMacBookをお探しします。',
+      isQuestion: true,
+    },
+  ]);
+  const [answers, setAnswers] = useState<MacAnswer[]>([]);
+  const [nextId, setNextId] = useState<MacNextId>('init');
+  const [isChatLoading, setIsChatLoading] = useState<boolean>(true);
   const [macSearchParam, setMacSearchParam] = useState<MacParam | null>(null);
 
   const getSearchMac = async (macSelectData: MacData | null) => {
     if (macSearchParam) {
       // ここは次に実装する
-      const products = []
+      const products = [];
       if (products.length === 0) {
         noneProductsSelectChats();
         setTimeout(() => {
@@ -54,7 +45,7 @@ const Mac: NextPage = () => {
         }, 500);
         return;
       }
-      if (products.length === 1 || state.nextId === 'end') {
+      if (products.length === 1 || nextId === 'end') {
         endChats();
         return;
       }
@@ -66,53 +57,47 @@ const Mac: NextPage = () => {
 
   useEffect(() => {
     if (!startMacBot) return;
-    const macSelectData = MacService.selectData(state.nextId);
+    const macSelectData = MacService.selectData(nextId);
     getSearchMac(macSelectData);
-  }, [state.nextId, startMacBot]);
+  }, [nextId, startMacBot]);
 
   const selectChatsWithAnswers = (macSelectData: MacData | null) => {
     setTimeout(() => {
-      setState({
-        ...state,
-        chats: [
-          ...state.chats,
-          { text: macSelectData?.question || '', isQuestion: true },
-        ],
-        answers: macSelectData?.answers || [],
-        isChatLoading: false,
-      });
+      setChats((prevState) => [
+        ...prevState,
+        { text: macSelectData?.question || '', isQuestion: true },
+      ]);
+      setAnswers(macSelectData?.answers || []);
+      setIsChatLoading(false);
     }, 500);
   };
 
   const noneProductsSelectChats = () => {
     setTimeout(() => {
-      setState({
-        ...state,
-        chats: [
-          ...state.chats,
-          {
-            text: '申し訳ございません。\n相当のiPadは見つかりませんでした🥺\n\nお手数ですが、もう一度最初からやり直してください🙏',
-            isQuestion: true,
-          },
-        ],
-      });
+      setChats((prevState) => [
+        ...prevState,
+        {
+          text: '申し訳ございません。\n相当のiPadは見つかりませんでした🥺\n\nお手数ですが、もう一度最初からやり直してください🙏',
+          isQuestion: true,
+        },
+      ]);
     }, 500);
   };
 
   const restartChats = () => {
     setTimeout(() => {
-      setState({ ...state, isChatLoading: true, nextId: 'init' });
       setMacSearchParam(null);
+      setNextId('init');
     }, 500);
   };
 
   const onSelectAnswer = (answer: MacAnswer) => {
-    setState({
-      ...state,
-      isChatLoading: true,
-      chats: [...state.chats, { text: answer.content, isQuestion: false }],
-      nextId: answer.nextId as MacNextId,
-    });
+    setIsChatLoading(true);
+    setChats((prevState) => [
+      ...prevState,
+      { text: answer.content, isQuestion: false },
+    ]);
+    setNextId(answer.nextId as MacNextId);
     ChooseMacParams(answer, macSearchParam, setMacSearchParam);
   };
 
@@ -120,12 +105,10 @@ const Mac: NextPage = () => {
     if (!macSearchParam) return null;
     const urlSearchParams = MacService.appendUrlSearchParams(
       macSearchParam,
-      state.nextId
+      nextId
     );
     router.push(`/mac/chat_result?${urlSearchParams?.toString()}`);
   };
-
-  const { chats, answers, isChatLoading } = state;
 
   return (
     <div>
