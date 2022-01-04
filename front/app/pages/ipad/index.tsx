@@ -17,7 +17,6 @@ import {
 import ipadIconImage from 'public/ipadIcon.jpg';
 import { ChooseIpadParams } from 'lib/Function/ChooseIpadParams';
 import { IpadService } from 'lib/api/Service/IpadService';
-import { Product } from 'lib/api/Entity/Product';
 import { useRouter } from 'next/dist/client/router';
 
 const IpadPage: NextPage = () => {
@@ -130,7 +129,7 @@ const IpadPage: NextPage = () => {
           avatar={ipadIconImage.src}
           onSelectAnswer={(answer) => onSelectAnswer(answer)}
           isChatLoading={isChatLoading}
-          ipadSearchParam={ipadSearchParam}
+          searchParam={ipadSearchParam}
           restartChats={restartChats}
           endChats={endChats}
         />
