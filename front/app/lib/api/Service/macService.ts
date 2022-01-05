@@ -34,8 +34,11 @@ export class MacService {
         param.sdCardSlot ? 'true' : 'false'
       );
     }
-    if (param.size) {
-      urlSearchParams.append('size', param.size.toString());
+    if (param.maxSize) {
+      urlSearchParams.append('max_size', param.maxSize.toString());
+    }
+    if (param.minSize) {
+      urlSearchParams.append('min_size', param.minSize.toString());
     }
     if (param.thunderboltCount) {
       urlSearchParams.append(
@@ -112,8 +115,11 @@ export class MacService {
     if (param.sdCardSlot != null) {
       urlSearchParams.append('sdCardSlot', param.sdCardSlot ? 'true' : 'false');
     }
-    if (param.size) {
-      urlSearchParams.append('size', param.size.toString());
+    if (param.maxSize) {
+      urlSearchParams.append('maxSize', param.maxSize.toString());
+    }
+    if (param.minSize) {
+      urlSearchParams.append('miniSize', param.minSize.toString());
     }
     if (param.thunderboltCount) {
       urlSearchParams.append(

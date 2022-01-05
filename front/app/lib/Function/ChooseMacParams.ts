@@ -23,8 +23,12 @@ export const ChooseMacParams = (
     setMacSearchParam({ ...macSearchParam, price: params.price });
   } else if (params.sdCardSlot != null) {
     setMacSearchParam({ ...macSearchParam, sdCardSlot: params.sdCardSlot });
-  } else if (params.size) {
-    setMacSearchParam({ ...macSearchParam, size: params.size });
+  } else if (params.maxSize) {
+    setMacSearchParam({
+      ...macSearchParam,
+      maxSize: params.maxSize,
+      minSize: params.minSize,
+    });
   } else if (params.thunderboltCount) {
     setMacSearchParam({
       ...macSearchParam,

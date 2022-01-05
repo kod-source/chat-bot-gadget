@@ -36,8 +36,7 @@ const Mac: NextPage = () => {
 
   const getSearchMac = async (macSelectData: MacData | null) => {
     if (macSearchParam) {
-      // ここは次に実装する
-      const products = [];
+      const products = await MacRepository.searchResProduct(macSearchParam);
       if (products.length === 0) {
         noneProductsSelectChats();
         setTimeout(() => {

@@ -44,12 +44,12 @@
       {
         "content": "13インチ〜14インチくらい",
         "nextId": "fan",
-        "params": { "size": 13 }
+        "params": { "minSize": 12.9, "maxSize": 15 }
       },
       {
         "content": "16インチ以上",
         "nextId": "fan",
-        "params": { "size": 16 }
+        "params": { "minSize": 15.9, "maxSize": 50 }
       },
       {
         "content": "一つ前に質問に戻る",

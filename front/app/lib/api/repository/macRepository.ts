@@ -1,7 +1,13 @@
 import axios from 'axios';
 import { Mac } from '../Entity/Mac';
+import { Product } from '../Entity/Product';
 import { MacFactory, MacResponseObject } from '../Factory/MacFactory';
+import {
+  ProductFactory,
+  ProductResponseObject,
+} from '../Factory/ProductFactory';
 import { MacsUrl } from '../hostUrl/url';
+import { MacService } from '../Service/macService';
 
 export type MacNextId =
   | 'init'
@@ -24,7 +30,8 @@ export interface MacData {
 export interface MacParam {
   price?: number;
   appleSilicon?: boolean;
-  size?: number;
+  minSize?: number;
+  maxSize?: number;
   fanExistence?: boolean;
   chips?: string[];
   maxMemory?: number;
@@ -52,5 +59,14 @@ export class MacRepository {
       withCredentials: true,
     });
     return MacFactory.createFromResponse(res.data);
+  }
+
+  static async searchResProduct(param: MacParam): Promise<Product[]> {
+    const urlSearchParams = MacService.buildSearchParams(param);
+    const res = await axios.get<ProductResponseObject[]>(
+      `${MacsUrl}/search?${urlSearchParams.toString()}`,
+      { withCredentials: true }
+    );
+    return res.data.map(ProductFactory.createFromResponse);
   }
 }

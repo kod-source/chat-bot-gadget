@@ -14,5 +14,6 @@ Rails.application.routes.draw do
   get '/ipads/search', to: 'ipads#search'
   resources :ipads, only: [:index, :show]
   resources :image_swipers, only: [:index]
+  get '/macs/search', to: 'macs#search'
   resources :macs, only: [:index, :show]
 end
