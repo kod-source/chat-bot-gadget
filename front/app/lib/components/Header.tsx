@@ -86,7 +86,7 @@ export const Header: FC = () => {
                 iPad
               </p>
             </Link>
-            <Link href='mac'>
+            <Link href='/mac'>
               <p className='p-2 mr-10 text-gray-800 border-transparent underline cursor-pointer rounded-md hover:opacity-70 hover:border hover:bg-gray-300 hover:no-underline font-serif'>
                 MacBook
               </p>

@@ -119,7 +119,7 @@ export class MacService {
       urlSearchParams.append('maxSize', param.maxSize.toString());
     }
     if (param.minSize) {
-      urlSearchParams.append('miniSize', param.minSize.toString());
+      urlSearchParams.append('minSize', param.minSize.toString());
     }
     if (param.thunderboltCount) {
       urlSearchParams.append(

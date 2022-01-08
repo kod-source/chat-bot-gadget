@@ -76,7 +76,7 @@ const Mac: NextPage = () => {
       setChats((prevState) => [
         ...prevState,
         {
-          text: '申し訳ございません。\n相当のiPadは見つかりませんでした🥺\n\nお手数ですが、もう一度最初からやり直してください🙏',
+          text: '申し訳ございません。\n相当のMacBookは見つかりませんでした🥺\n\nお手数ですが、もう一度最初からやり直してください🙏',
           isQuestion: true,
         },
       ]);

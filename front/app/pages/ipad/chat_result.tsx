@@ -79,11 +79,19 @@ const chatResult: NextPage<Props> = (props) => {
   };
 
   if (!products) return <Loading />;
-
+  const mostLowPriceProduct = products.reduce((a, b) =>
+    a.mostLowPrice < b.mostLowPrice ? a : b
+  );
   return (
     <>
       <Head>
-        <title>あなたのおすすめのiPadは{products[0].name}</title>
+        <title>
+          あなたのおすすめのiPadは
+          {props.nextId === 'end'
+            ? mostLowPriceProduct.name
+            : products.map((p) => p.name)}
+          です
+        </title>
       </Head>
       <div className='fixed top-0 w-full z-10'>
         <Header />
