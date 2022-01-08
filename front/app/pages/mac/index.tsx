@@ -19,6 +19,7 @@ import { useRouter } from 'next/dist/client/router';
 import { Chats } from 'lib/components/Chats';
 import MacIconImage from 'public/MacIconImage.jpg';
 import { ChooseMacParams } from 'lib/Function/ChooseMacParams';
+import { Header } from 'lib/components/Header';
 
 const Mac: NextPage = () => {
   const router = useRouter();
@@ -114,6 +115,9 @@ const Mac: NextPage = () => {
       <Head>
         <title>MacBook</title>
       </Head>
+      <div className='fixed top-0 w-full z-10'>
+        <Header />
+      </div>
       {startMacBot ? (
         <Chats
           chats={chats}
