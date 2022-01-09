@@ -512,7 +512,7 @@ Product.create!(
     },
     {
       name: '16インチMacBook Pro [整備済製品]',
-      memo: "こちらはintelチップの搭載したのMabBook Proになります。\n" + "intelチップではないと動かないアプリを使用しないかりぎりはApple Silicon搭載のMac Bookを購入するのをお勧めします。\n" + "しかしApple Siliconに対応していないアプリなどがあるのが現状です。\n" + "こちらのMacBook はとてもファンが周りときには雑音くらいなる時もあり、バッテリー性能もそこまで解くないため、購入させる場合はそちらも考慮することをお勧めします。" + "是非一度店頭などお試しください！\n\n" + "※こちらの価格はWiFiモデルの価格となっており、価格は税込みの価格です。",
+      memo: "こちらはintelチップの搭載したのMabBook Proになります。\n" + "intelチップではないと動かないアプリを使用しないかりぎりはApple Silicon搭載のMac Bookを購入するのをお勧めします。\n" + "しかしApple Siliconに対応していないアプリなどがあるのが現状です。\n" + "こちらのMacBook はとてもファンが周り時には雑音くらいなる時もあり、バッテリー性能もそこまで良くないため、購入させる場合はそちらも考慮することをお勧めします。" + "是非一度店頭などお試しください！\n\n" + "※こちらの価格はWiFiモデルの価格となっており、価格は税込みの価格です。",
       image: 'https://store.storeimages.cdn-apple.com/8567/as-images.apple.com/is/refurb-mbp16touch-space-gallery-2020_GEO_JP?wid=1144&hei=1144&fmt=jpeg&qlt=80&.v=1596750726000',
       most_low_price: 227800,
       highest_price: 424150,

@@ -15,7 +15,7 @@ import { CardMessage } from 'lib/components/CardMessage';
 import { Footer } from 'lib/components/Footer';
 
 const Home: NextPage = () => {
-  const { user, isSignedIn } = useContext(AuthContext);
+  const { isSignedIn } = useContext(AuthContext);
 
   return (
     <div>

@@ -1,7 +1,7 @@
 import { Footer } from 'lib/components/Footer';
 import { Header } from 'lib/components/Header';
 import { NextPage, GetServerSideProps } from 'next';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Head from 'next/head';
 import { Product } from 'lib/api/Entity/Product';
 import { Ipad } from 'lib/api/Entity/Ipad';
@@ -29,6 +29,9 @@ import ConnectWithoutContactIcon from '@mui/icons-material/ConnectWithoutContact
 import BorderColorIcon from '@mui/icons-material/BorderColor';
 import KeyboardIcon from '@mui/icons-material/Keyboard';
 import KeyboardHideIcon from '@mui/icons-material/KeyboardHide';
+import { AuthContext } from 'pages/_app';
+import { AlertState } from 'lib/interfaces';
+import { AlertMessage } from 'lib/components/AlertMessage';
 
 interface State {
   product: Product;
@@ -42,16 +45,31 @@ interface Props {
 }
 
 const IpadShow: NextPage<Props> = ({ id }) => {
+  const { isSignedIn } = useContext(AuthContext);
   const [state, setState] = useState<State>();
   const [show, setShow] = useState(false);
+  const [alertState, setAlertState] = useState<AlertState>({
+    open: false,
+    type: 'info',
+    message: '',
+  });
 
   const fetchData = async () => {
     const product = await ProductRepository.get(id);
     const ipad = await IpadRepository.get(id);
-    const likes = await LikeRepository.my();
     const imageSwipers = await ImageSwiperRepository.showIpad(ipad.id);
-    const likeProductIds = likes.map((like) => like.productId);
-    setState({ product, ipad, likeProductIds, imageSwipers });
+    if (isSignedIn) {
+      const likes = await LikeRepository.my();
+      const likeProductIds = likes.map((l) => l.productId);
+      setState({ product, ipad, likeProductIds, imageSwipers });
+    } else {
+      setState({
+        product: product,
+        ipad: ipad,
+        likeProductIds: [],
+        imageSwipers: imageSwipers,
+      });
+    }
   };
 
   useEffect(() => {
@@ -62,18 +80,28 @@ const IpadShow: NextPage<Props> = ({ id }) => {
   const { product, ipad, likeProductIds, imageSwipers } = state;
 
   const addLikeVButton = async () => {
-    await LikeRepository.create(product.id);
-    setState({ ...state, likeProductIds: [...likeProductIds, product.id] });
+    if (isSignedIn) {
+      await LikeRepository.create(product.id);
+      setState({ ...state, likeProductIds: [...likeProductIds, product.id] });
+    } else {
+      setAlertState({
+        open: true,
+        type: 'warning',
+        message: 'ログインすることで商品をお気に入りに登録することができます',
+      });
+    }
   };
 
   const deleteLikeButton = async () => {
-    await LikeRepository.delete(product.id);
-    setState({
-      ...state,
-      likeProductIds: likeProductIds.filter(
-        (productId) => productId !== product.id
-      ),
-    });
+    if (isSignedIn) {
+      await LikeRepository.delete(product.id);
+      setState({
+        ...state,
+        likeProductIds: likeProductIds.filter(
+          (productId) => productId !== product.id
+        ),
+      });
+    }
   };
   return (
     <>
@@ -319,6 +347,12 @@ const IpadShow: NextPage<Props> = ({ id }) => {
         </div>
       </div>
       <Footer />
+      <AlertMessage
+        open={alertState.open}
+        handleClose={() => setAlertState({ ...alertState, open: false })}
+        type={alertState.type}
+        message={alertState.message}
+      />
     </>
   );
 };

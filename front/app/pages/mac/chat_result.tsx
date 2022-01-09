@@ -7,7 +7,9 @@ import { Loading } from 'lib/components/Loading';
 import { ProductResultPage } from 'lib/components/ProductResultPage';
 import { GetServerSideProps, NextPage } from 'next';
 import Head from 'next/head';
+import { AuthContext } from 'pages/_app';
 import React, { useState } from 'react';
+import { useContext } from 'react';
 import { useEffect } from 'react';
 
 interface Props {
@@ -26,6 +28,7 @@ interface Props {
 }
 
 const ChatResult: NextPage<Props> = (props) => {
+  const { isSignedIn } = useContext(AuthContext);
   const [products, setProducts] = useState<Product[]>();
   const [likeProductIds, setLikeProductIds] = useState<number[]>([]);
 
@@ -51,8 +54,10 @@ const ChatResult: NextPage<Props> = (props) => {
         ? previousValue
         : currentValue
     );
-    const likes = await LikeRepository.my();
-    setLikeProductIds(likes.map((l) => l.productId));
+    if (isSignedIn) {
+      const likes = await LikeRepository.my();
+      setLikeProductIds(likes.map((l) => l.productId));
+    }
     setProducts(props.nextId === 'end' ? [mostLowPriceProduct] : products);
   };
 
@@ -94,6 +99,7 @@ const ChatResult: NextPage<Props> = (props) => {
         products={products}
         linkPath='/mac'
         likeProductIds={likeProductIds}
+        isSignIn={isSignedIn}
         onClickLikeButton={onClickLikeButton}
       />
       <Footer />
