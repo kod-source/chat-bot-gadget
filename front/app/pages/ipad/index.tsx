@@ -118,6 +118,12 @@ const IpadPage: NextPage = () => {
     <div className='min-h-[100vh] relative box-border'>
       <Head>
         <title>iPad</title>
+        <link
+          rel='icon'
+          type='image/png'
+          sizes='16x16'
+          href='/ipadIcon.jpg'
+        ></link>
       </Head>
       <div className='fixed top-0 w-full z-10'>
         <Header />

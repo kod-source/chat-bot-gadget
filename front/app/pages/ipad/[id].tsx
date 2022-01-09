@@ -107,6 +107,12 @@ const IpadShow: NextPage<Props> = ({ id }) => {
     <>
       <Head>
         <title>{product.name}</title>
+        <link
+          rel='icon'
+          type='image/png'
+          sizes='16x16'
+          href={product.image}
+        ></link>
       </Head>
       <div className='fixed top-0 w-full z-10'>
         <Header />

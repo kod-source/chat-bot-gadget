@@ -138,6 +138,12 @@ const UserProfile: NextPage = () => {
     <div>
       <Head>
         <title>マイページ</title>
+        <link
+          rel='icon'
+          type='image/png'
+          sizes='16x16'
+          href={user ? user.avatar?.url : '/gadgetImage.jpg'}
+        ></link>
       </Head>
       <div className='fixed top-0 w-full z-10'>
         <Header />
