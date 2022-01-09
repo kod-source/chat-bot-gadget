@@ -5,11 +5,12 @@ import { Footer } from 'lib/components/Footer';
 import { Header } from 'lib/components/Header';
 import { ProductResultPage } from 'lib/components/ProductResultPage';
 import { GetServerSideProps, NextPage } from 'next';
-import React from 'react';
+import React, { useContext } from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { LikeRepository } from 'lib/api/repository/likeRepostiroy';
 import { Loading } from 'lib/components/Loading';
+import { AuthContext } from 'pages/_app';
 
 interface Props {
   nextId: string;
@@ -31,6 +32,7 @@ interface Props {
 }
 
 const chatResult: NextPage<Props> = (props) => {
+  const { isSignedIn } = useContext(AuthContext);
   const [products, setProducts] = useState<Product[]>();
   const [likeProductIds, setLikeProductIds] = useState<number[]>([]);
 
@@ -59,9 +61,11 @@ const chatResult: NextPage<Props> = (props) => {
     const mostLowPriceProduct = products.reduce((a, b) =>
       a.mostLowPrice < b.mostLowPrice ? a : b
     );
-    const likes = await LikeRepository.my();
+    if (isSignedIn) {
+      const likes = await LikeRepository.my();
+      setLikeProductIds(likes.map((l) => l.productId));
+    }
     setProducts(props.nextId === 'end' ? [mostLowPriceProduct] : products);
-    setLikeProductIds(likes.map((l) => l.productId));
   };
 
   useEffect(() => {
@@ -100,6 +104,7 @@ const chatResult: NextPage<Props> = (props) => {
         products={products}
         linkPath='/ipad'
         likeProductIds={likeProductIds}
+        isSignIn={isSignedIn}
         onClickLikeButton={onClickLikeButton}
       />
       <Footer />

@@ -6,11 +6,13 @@ import Image from 'next/image';
 import { Button, IconButton } from '@mui/material';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import AppRegistrationSharpIcon from '@mui/icons-material/AppRegistrationSharp';
 
 interface Props {
   products: Product[];
   linkPath: string;
   likeProductIds: number[];
+  isSignIn: boolean;
   onClickLikeButton: (id: number) => void;
 }
 
@@ -18,6 +20,7 @@ export const ProductResultPage: FC<Props> = ({
   products,
   linkPath,
   likeProductIds,
+  isSignIn,
   onClickLikeButton,
 }) => {
   const singularProduct = products.length === 1;
@@ -56,24 +59,41 @@ export const ProductResultPage: FC<Props> = ({
                       {product.highestPrice.toLocaleString()}円　税込
                     </p>
                     <div className='flex justify-center my-2 sm:my-4'>
-                      <p className='text-sm sm:text-xl'>
-                        {likeProductIds.includes(product.id)
-                          ? 'お気に入りから削除しますか？'
-                          : 'お気に入りに追加しますか？'}
-                        <IconButton
-                          aria-label='add to favorites'
-                          onClick={() => onClickLikeButton(product.id)}
-                        >
-                          <FavoriteIcon
-                            fontSize='large'
-                            className={
-                              likeProductIds.includes(product.id)
-                                ? 'text-red-500'
-                                : ''
-                            }
-                          />
-                        </IconButton>
-                      </p>
+                      {isSignIn ? (
+                        <p className='text-sm sm:text-xl'>
+                          {likeProductIds.includes(product.id)
+                            ? 'お気に入りから削除しますか？'
+                            : 'お気に入りに追加しますか？'}
+                          <IconButton
+                            aria-label='add to favorites'
+                            onClick={() => onClickLikeButton(product.id)}
+                          >
+                            <FavoriteIcon
+                              fontSize='large'
+                              className={
+                                likeProductIds.includes(product.id)
+                                  ? 'text-red-500'
+                                  : ''
+                              }
+                            />
+                          </IconButton>
+                        </p>
+                      ) : (
+                        <div>
+                          <p className='text-sm sm:text-xl my-2'>
+                            ログインすることで商品をお気に入りに登録することができます
+                          </p>
+                          <Link href='/signup' passHref>
+                            <Button
+                              variant='contained'
+                              className='p-1 h-12 w-56 bg-green-500 transition ease-in-out duration-300 hover:bg-green-400 hover:-translate-y-1 hover:scale-110'
+                            >
+                              <AppRegistrationSharpIcon />
+                              無料ユーザー登録はこちら
+                            </Button>
+                          </Link>
+                        </div>
+                      )}
                     </div>
                     <div className='mt-4 sm:mt-8 sm:flex sm:justify-center'>
                       <Link href={product.url}>
