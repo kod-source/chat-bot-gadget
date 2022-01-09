@@ -114,6 +114,12 @@ const Mac: NextPage = () => {
     <div>
       <Head>
         <title>MacBook</title>
+        <link
+          rel='icon'
+          type='image/png'
+          sizes='16x16'
+          href='/MacBookPageImage.jpg'
+        ></link>
       </Head>
       <div className='fixed top-0 w-full z-10'>
         <Header />

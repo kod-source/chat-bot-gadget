@@ -21,6 +21,12 @@ const Home: NextPage = () => {
     <div>
       <Head>
         <title>GadgetBot</title>
+        <link
+          rel='icon'
+          type='image/png'
+          sizes='16x16'
+          href='/gadgetImage.jpg'
+        ></link>
       </Head>
       <div className='fixed top-0 w-full z-10'>
         <Header />

@@ -9,6 +9,12 @@ const Terms: NextPage = () => {
     <div>
       <Head>
         <title>利用規約</title>
+        <link
+          rel='icon'
+          type='image/png'
+          sizes='16x16'
+          href='/gadgetImage.jpg'
+        ></link>
       </Head>
       <div className='fixed top-0 w-full z-10'>
         <Header />
@@ -31,7 +37,9 @@ const Terms: NextPage = () => {
               本規約の規定が前条の個別規定の規定と矛盾する場合には，個別規定において特段の定めなき限り，個別規定の規定が優先されるものとします。
             </li>
           </ul>
-          <h1 className='my-4 font-mono sm:text-4xl text-2xl'>第2条（利用登録）</h1>
+          <h1 className='my-4 font-mono sm:text-4xl text-2xl'>
+            第2条（利用登録）
+          </h1>
           <ul className='list-decimal ml-8'>
             <li>
               本サービスにおいては，登録希望者が本規約に同意の上，管理者の定める方法によって利用登録を申請し，管理者がこの承認を登録希望者に通知することによって，利用登録が完了するものとします。
@@ -59,7 +67,9 @@ const Terms: NextPage = () => {
               ユーザーID及びパスワードが第三者によって使用されたことによって生じた損害は，管理者に故意又は重大な過失がある場合を除き，管理者は一切の責任を負わないものとします。
             </li>
           </ul>
-          <h1 className='my-4 font-mono sm:text-4xl text-2xl'>第4条（禁止事項）</h1>
+          <h1 className='my-4 font-mono sm:text-4xl text-2xl'>
+            第4条（禁止事項）
+          </h1>
           <p>
             ユーザーは，本サービスの利用にあたり，以下の行為をしてはなりません。
           </p>
@@ -130,7 +140,9 @@ const Terms: NextPage = () => {
               管理者は，本サービスの提供の停止または中断により，ユーザーまたは第三者が被ったいかなる不利益または損害についても，一切の責任を負わないものとします。
             </li>
           </ul>
-          <h1 className='my-4 font-mono sm:text-4xl text-2xl'>第6条（著作権）</h1>
+          <h1 className='my-4 font-mono sm:text-4xl text-2xl'>
+            第6条（著作権）
+          </h1>
           <ul className='list-decimal ml-8'>
             <li>
               ユーザーは，自ら著作権等の必要な知的財産権を有するか，または必要な権利者の許諾を得た文章，画像や映像等の情報に関してのみ，本サービスを利用し，投稿ないしアップロードすることができるものとします。
@@ -196,7 +208,9 @@ const Terms: NextPage = () => {
           <p>
             管理者は，ユーザーに通知することなく，本サービスの内容を変更しまたは本サービスの提供を中止することができるものとし，これによってユーザーに生じた損害について一切の責任を負いません。
           </p>
-          <h1 className='my-4 font-mono sm:text-4xl text-2xl'>第11条（利用規約の変更）</h1>
+          <h1 className='my-4 font-mono sm:text-4xl text-2xl'>
+            第11条（利用規約の変更）
+          </h1>
           <p>
             管理者は，必要と判断した場合には，ユーザーに通知することなくいつでも本規約を変更することができるものとします。なお，本規約の変更後，本サービスの利用を開始した場合には，当該ユーザーは変更後の規約に同意したものとみなします。
           </p>
@@ -206,7 +220,9 @@ const Terms: NextPage = () => {
           <p>
             管理者は，本サービスの利用によって取得する個人情報については，管理者「プライバシーポリシー」に従い適切に取り扱うものとします。
           </p>
-          <h1 className='my-4 font-mono sm:text-4xl text-2xl'>第13条（通知または連絡）</h1>
+          <h1 className='my-4 font-mono sm:text-4xl text-2xl'>
+            第13条（通知または連絡）
+          </h1>
           <p>
             ユーザーと管理者との間の通知または連絡は，管理者の定める方法によって行うものとします。管理者は,ユーザーから,管理者が別途定める方式に従った変更届け出がない限り,現在登録されている連絡先が有効なものとみなして当該連絡先へ通知または連絡を行い,これらは,発信時にユーザーへ到達したものとみなします。
           </p>
