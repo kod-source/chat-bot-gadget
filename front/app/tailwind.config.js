@@ -29,6 +29,9 @@ module.exports = {
         '.text-shadow-none': {
           textShadow: 'none',
         },
+        '.bg-gradient-home': {
+          backgroundImage: "url('public/TheAppleEcosystem.png')",
+        },
       };
 
       addUtilities(newUtilities);

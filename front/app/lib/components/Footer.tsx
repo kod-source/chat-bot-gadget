@@ -5,7 +5,7 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 export const Footer: FC = () => {
   return (
     <footer>
-      <div className='py-3 sm:flex sm:justify-center bg-gray-100 text-center'>
+      <div className='py-3 sm:flex sm:justify-center bg-[#e9e6df] text-center'>
         <Link href='/terms'>
           <p className='mx-3 p-2 text-gray-800 border-transparent cursor-pointer rounded-md hover:opacity-70 hover:border hover:bg-gray-300 font-serif'>
             利用規約
