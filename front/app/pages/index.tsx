@@ -41,7 +41,6 @@ const Home: NextPage = () => {
       </div>
       <div className='mt-16'>
         <div className='bg-gradient-home h-[600px] w-full bg-cover' />
-        {/* <div className='absolute top-[450px] left-[10%]'> */}
         <div className='absolute top-[450px] left-[30%] translate-x-[-50%]'>
           <Image src='/HomeAppleImage.png' width={600} height={750} />
         </div>
