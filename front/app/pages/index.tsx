@@ -100,8 +100,8 @@ const Home: NextPage = () => {
             <div className='mr-[25%] hidden sm:block'>
               <Image src='/ipadImage.jpg' width={700} height={750} />
             </div>
-            <Box className='sm:absolute sm:top-[15%] sm:left-1/2 w-[80%] sm:w-[50%] lg:w-[40%] lg:top-[20%]  lg:left-[50%]'>
-              <Card className='bg-[#e9e6df] sm:py-5 sm:px-8 p-3'>
+            <Box className='sm:absolute sm:top-[10%] sm:left-1/2 w-[80%] sm:w-[50%] lg:w-[40%] lg:top-[20%]  lg:left-[50%]'>
+              <Card className='bg-[#e9e6df] lg:py-5 lg:px-8 p-3'>
                 <CardContent>
                   <Typography variant='h4' component='div'>
                     iPad
@@ -139,8 +139,8 @@ const Home: NextPage = () => {
             <div className='ml-[15%] hidden sm:block'>
               <Image src='/macBookImage.jpg' width={700} height={750} />
             </div>
-            <Box className='sm:absolute lg:top-[20%] sm:top-[15%] sm:right-[50%] lg:w-[40%] sm:w-[50%] w-[80%] ml-auto'>
-              <Card className='bg-[#e9e6df] py-5 px-6'>
+            <Box className='sm:absolute lg:top-[20%] sm:top-[10%] sm:right-[50%] lg:w-[40%] sm:w-[50%] w-[80%] ml-auto'>
+              <Card className='bg-[#e9e6df] lg:py-5 lg:px-8 p-3'>
                 <CardContent>
                   <Typography variant='h4' component='div'>
                     MacBook
@@ -180,8 +180,8 @@ const Home: NextPage = () => {
             <div className='mr-[25%] hidden sm:block'>
               <Image src='/iphoneImage.jpg' width={700} height={750} />
             </div>
-            <Box className='sm:absolute sm:top-[15%] sm:left-1/2 w-[80%] sm:w-[50%] lg:w-[40%] lg:top-[20%]  lg:left-[50%]'>
-              <Card className='bg-[#e9e6df] py-5 px-8'>
+            <Box className='sm:absolute sm:top-[10%] sm:left-1/2 w-[80%] sm:w-[50%] lg:w-[40%] lg:top-[20%]  lg:left-[50%]'>
+              <Card className='bg-[#e9e6df] lg:py-5 lg:px-8 p-3'>
                 <CardContent>
                   <Typography variant='h4' component='div'>
                     iPhone
