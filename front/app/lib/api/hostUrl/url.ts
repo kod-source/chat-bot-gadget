@@ -1,16 +1,12 @@
-const localhost = 'http://localhost:3000';
-
-export const loggedInUrl = `${localhost}/logged_in`;
-export const signUpUrl = `${localhost}/signup`;
-export const loginUrl = `${localhost}/login`;
-export const logoutUrl = `${localhost}/logout`;
-export const contactSendMailUrl = `${localhost}/contact_send_mail`;
-export const editUserProfileUrl = `${localhost}/users`;
-export const likeProductsUrl = `${localhost}/like_products`;
-export const LikesUrl = `${localhost}/likes`;
-export const ProductsUrl = `${localhost}/products`;
-export const IpadsUrl = `${localhost}/ipads`;
-export const ImageSwiperUrl = `${localhost}/image_swipers`;
-export const MacsUrl = `${localhost}/macs`;
-
-
+export const loggedInUrl = `${process.env.NEXT_PUBLIC_DB_HOST}/logged_in`;
+export const signUpUrl = `${process.env.NEXT_PUBLIC_DB_HOST}/signup`;
+export const loginUrl = `${process.env.NEXT_PUBLIC_DB_HOST}/login`;
+export const logoutUrl = `${process.env.NEXT_PUBLIC_DB_HOST}/logout`;
+export const contactSendMailUrl = `${process.env.NEXT_PUBLIC_DB_HOST}/contact_send_mail`;
+export const editUserProfileUrl = `${process.env.NEXT_PUBLIC_DB_HOST}/users`;
+export const likeProductsUrl = `${process.env.NEXT_PUBLIC_DB_HOST}/like_products`;
+export const LikesUrl = `${process.env.NEXT_PUBLIC_DB_HOST}/likes`;
+export const ProductsUrl = `${process.env.NEXT_PUBLIC_DB_HOST}/products`;
+export const IpadsUrl = `${process.env.NEXT_PUBLIC_DB_HOST}/ipads`;
+export const ImageSwiperUrl = `${process.env.NEXT_PUBLIC_DB_HOST}/image_swipers`;
+export const MacsUrl = `${process.env.NEXT_PUBLIC_DB_HOST}/macs`;
